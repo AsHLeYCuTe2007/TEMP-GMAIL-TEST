@@ -3,87 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOST COMMENTER - AUTO-LINK VERSION</title>
+    <title>GHOST SYSTEM V7</title>
     <style>
-        body { background: #000; color: #0f0; font-family: monospace; padding: 20px; text-align: center; }
-        .box { border: 1px solid #0f0; padding: 20px; max-width: 450px; margin: auto; border-radius: 8px; box-shadow: 0 0 10px #0f0; }
-        textarea, input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 12px; margin: 8px 0; box-sizing: border-box; border-radius: 4px; }
-        button { width: 100%; padding: 15px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; margin-top: 10px; text-transform: uppercase; }
-        #log { margin-top: 15px; font-size: 11px; text-align: left; height: 150px; overflow-y: scroll; border-top: 1px solid #333; padding-top: 10px; background: #050505; }
+        body { 
+            background: #000; 
+            color: #0f0; 
+            font-family: monospace; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        .container { 
+            border: 1px solid #0f0; 
+            padding: 30px; 
+            max-width: 500px; 
+            margin: auto; 
+            border-radius: 10px;
+        }
+        textarea, input { 
+            width: 100%; 
+            background: #111; 
+            border: 1px solid #0f0; 
+            color: #0f0; 
+            padding: 12px; 
+            margin: 10px 0; 
+            box-sizing: border-box; 
+        }
+        button { 
+            width: 100%; 
+            padding: 15px; 
+            background: #0f0; 
+            color: #000; 
+            font-weight: bold; 
+            border: none; 
+            cursor: pointer; 
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        #log { 
+            margin-top: 20px; 
+            font-size: 12px; 
+            text-align: left; 
+            height: 180px; 
+            overflow-y: auto; 
+            border: 1px solid #333; 
+            padding: 10px; 
+            background: #050505;
+        }
     </style>
 </head>
 <body>
 
-<div class="box">
-    <h2>GHOST COMMENTER V5</h2>
-    <textarea id="state" rows="4" placeholder="Paste AppState JSON (c3cfbstate)"></textarea>
-    <input type="text" id="postLink" placeholder="Paste Facebook Post Link Here">
-    <input type="number" id="limit" value="10" placeholder="Amount">
-    <input type="number" id="delay" value="3000" placeholder="Delay (ms)">
+<div class="container">
+    <h2>GHOST SYSTEM PRO</h2>
+    <textarea id="state" rows="6" placeholder="Paste AppState JSON Here"></textarea>
+    <input type="text" id="postLink" placeholder="Facebook Post Link">
+    <input type="number" id="limit" value="10">
+    <input type="number" id="delay" value="3000">
     <button onclick="deploy()">Deploy Attack</button>
-    <div id="log">System: Ready...</div>
+    <div id="log">System Status: Ready...</div>
 </div>
 
 <script>
-    const log = (m) => { const l = document.getElementById('log'); l.innerHTML += `<div>> ${m}</div>`; l.scrollTop = 9999; };
+    const statusBox = document.getElementById('log');
+
+    function logMessage(m) {
+        statusBox.innerHTML += `<div>> ${m}</div>`;
+        statusBox.scrollTop = statusBox.scrollHeight;
+    }
 
     function extractId(url) {
-        const idMatch = url.match(/(?:list|gm|p|posts|videos|reels|fbid)\/(\d+)/) || url.match(/id=(\d+)/);
+        const idMatch = url.match(/(?:list|gm|p|posts|videos|reels|fbid|photos)\/(\d+)/) || url.match(/id=(\d+)/);
         return idMatch ? idMatch[1] : null;
     }
 
     async function deploy() {
-        const sStr = document.getElementById('state').value;
-        const link = document.getElementById('postLink').value;
-        const lim = parseInt(document.getElementById('limit').value);
-        const dly = parseInt(document.getElementById('delay').value);
+        const stateInput = document.getElementById('state').value;
+        const linkInput = document.getElementById('postLink').value;
+        const limitInput = parseInt(document.getElementById('limit').value);
+        const delayInput = parseInt(document.getElementById('delay').value);
+        const postId = extractId(linkInput);
 
-        const pId = extractId(link);
-        if (!sStr || !pId) return alert("Invalid AppState or Link!");
+        if (!stateInput || !postId) {
+            alert("Check AppState or Link!");
+            return;
+        }
 
-        let s;
-        try { s = JSON.parse(sStr); } catch(e) { return alert("Invalid JSON"); }
+        let stateData;
+        try {
+            stateData = JSON.parse(stateInput);
+        } catch (e) {
+            alert("Invalid JSON format!");
+            return;
+        }
 
-        const dtsg = s.find(i => i.key === 'fb_dtsg')?.value || prompt("Input fb_dtsg:");
-        const uid = s.find(i => i.key === 'c_user')?.value;
-        const ck = s.map(i => `${i.key}=${i.value}`).join('; ');
+        const dtsgValue = stateData.find(i => i.key === 'fb_dtsg')?.value || stateData.find(i => i.key === 'fbdtsg')?.value;
+        const cookieValue = stateData.map(i => `${i.key}=${i.value}`).join('; ');
 
-        log("Target ID Detected: " + pId);
-        log("Starting attack...");
-        
-        for (let i = 0; i < lim; i++) {
+        logMessage("Target ID: " + postId);
+        logMessage("Initiating...");
+
+        for (let i = 0; i < limitInput; i++) {
             try {
-                const res = await fetch(`https://www.facebook.com/api/graphql/`, {
+                const fbUrl = `https://mbasic.facebook.com/a/comment.php?fs=8&actionsource=2&ft_ent_identifier=${postId}`;
+                
+                await fetch(fbUrl, {
                     method: "POST",
+                    mode: "no-cors",
                     headers: { 
-                        "content-type": "application/x-www-form-urlencoded",
-                        "cookie": ck 
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Cookie": cookieValue
                     },
                     body: new URLSearchParams({
-                        'fb_dtsg': dtsg,
-                        'variables': JSON.stringify({
-                            "input": {
-                                "client_mutation_id": i,
-                                "actor_id": uid,
-                                "feedback_id": btoa("feedback:" + pId),
-                                "message": { "text": "ㅤ" }
-                            }
-                        }),
-                        'doc_id': '5413123928711312'
+                        "fb_dtsg": dtsgValue,
+                        "comment_text": "ㅤ",
+                        "jazoest": "22110"
                     })
                 });
 
-                if (res.ok) {
-                    log(`Success #${i+1}: Ghost comment sent.`);
-                } else {
-                    log(`Failed #${i+1}: Server error.`);
-                }
-            } catch (e) {
-                log(`Failed #${i+1}: Browser Connection Issue.`);
+                logMessage(`Comment Sent #${i + 1}`);
+            } catch (err) {
+                logMessage(`Error at #${i + 1}`);
             }
-            await new Promise(r => setTimeout(r, dly));
+            await new Promise(res => setTimeout(res, delayInput));
         }
-        log("TASK FINISHED.");
+        logMessage("SYSTEM FINISHED");
     }
 </script>
 </body>
