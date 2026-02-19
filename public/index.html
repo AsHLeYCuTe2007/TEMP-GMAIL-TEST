@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOST SYSTEM V18</title>
+    <title>GHOST V19 FINAL FIX</title>
     <style>
         body { background: #000; color: #0f0; font-family: monospace; padding: 20px; text-align: center; }
-        .box { border: 2px solid #0f0; padding: 25px; max-width: 500px; margin: auto; border-radius: 12px; box-shadow: 0 0 20px #0f0; }
+        .box { border: 2px solid #0f0; padding: 25px; max-width: 500px; margin: auto; border-radius: 12px; box-shadow: 0 0 20px #f00; }
         textarea, input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 12px; margin: 10px 0; box-sizing: border-box; }
-        button { width: 100%; padding: 18px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; font-size: 16px; margin-top: 10px; }
-        #log { margin-top: 20px; font-size: 11px; text-align: left; height: 180px; overflow-y: auto; border: 1px solid #333; padding: 10px; background: #050505; border-left: 3px solid #0f0; }
+        button { width: 100%; padding: 18px; background: #f00; color: #fff; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; font-size: 16px; }
+        #log { margin-top: 20px; font-size: 11px; text-align: left; height: 180px; overflow-y: auto; border: 1px solid #333; padding: 10px; background: #050505; color: #0f0; }
         iframe { display: none; }
     </style>
 </head>
 <body>
 
 <div class="box">
-    <h2>GHOST V18 + AUTO-REACT</h2>
+    <h2 style="color: #f00;">GHOST V19 - ANTI-SHADOWBAN</h2>
     <textarea id="state" rows="5" placeholder="Paste AppState JSON"></textarea>
     <input type="text" id="postLink" placeholder="Facebook Post Link">
     <input type="number" id="limit" value="5">
-    <input type="number" id="delay" value="10000">
-    <button onclick="deploy()">START ULTIMATE ATTACK</button>
-    <div id="log">System: Awaiting Deployment...</div>
+    <input type="number" id="delay" value="15000">
+    <button onclick="deploy()">FORCED DEPLOYMENT</button>
+    <div id="log">System Status: Waiting for breach...</div>
 </div>
 
 <div id="bridge"></div>
@@ -39,9 +39,10 @@
         const msgArr = [
             "sed -auto", "Mic testing 1..2.3.. -auto", "kek -auto",
             "chal bro -auto", "noU pro -auto", "lmao -auto",
-            ":) :) :) -auto", ":| -auto", " No logic lel -auto", "swepn!l pari -auto"
+            ":) :) :) -auto", ":| -auto", "No logic lel -auto", "swepn!l pari -auto"
         ];
-        return msgArr[Math.floor(Math.random() * msgArr.length)];
+        const randomHex = Math.floor(Math.random()*16777215).toString(16);
+        return msgArr[Math.floor(Math.random() * msgArr.length)] + " [" + randomHex + "]";
     }
 
     function extractId(url) {
@@ -56,62 +57,54 @@
         const delay = parseInt(document.getElementById('delay').value);
         const pId = extractId(link);
 
-        if (!stateStr || !pId) return alert("System Error: Check Inputs!");
+        if (!stateStr || !pId) return alert("Error: Missing Link/AppState");
 
         let state;
-        try { state = JSON.parse(stateStr); } catch(e) { return alert("Invalid JSON!"); }
+        try { state = JSON.parse(stateStr); } catch(e) { return alert("Invalid AppState!"); }
 
         const dtsg = state.find(i => i.key === 'fb_dtsg')?.value || state.find(i => i.key === 'fbdtsg')?.value;
         const jazoest = state.find(i => i.key === 'jazoest')?.value || "22110";
         const uid = state.find(i => i.key === 'c_user')?.value;
 
-        log("Driver: Initializing Selenium Logic...");
-        log("Target ID: " + pId);
+        log("Bypassing Shadowban Filters...");
+        log("Target Post ID: " + pId);
 
         for (let i = 0; i < limit; i++) {
-            const frameId = `exec_${Date.now()}`;
+            const frameId = `f_${Date.now()}`;
             const ifr = document.createElement('iframe');
             ifr.name = frameId;
             document.body.appendChild(ifr);
 
-            const reactForm = document.createElement('form');
-            reactForm.method = "GET";
-            reactForm.action = `https://mbasic.facebook.com/reactions/picker/?is_permalink=1&ft_id=${pId}`;
-            reactForm.target = frameId;
-            document.getElementById('bridge').appendChild(reactForm);
-            
-            log("Action: Sending Auto-Reaction...");
-            reactForm.submit();
+            const frm = document.createElement('form');
+            frm.method = "POST";
+            frm.action = `https://mbasic.facebook.com/a/comment.php?fs=8&actionsource=2&ft_ent_identifier=${pId}&av=${uid}`;
+            frm.target = frameId;
 
-            await new Promise(r => setTimeout(r, 2000));
-
-            const commentForm = document.createElement('form');
-            commentForm.method = "POST";
-            commentForm.action = `https://mbasic.facebook.com/a/comment.php?fs=8&actionsource=2&ft_ent_identifier=${pId}&av=${uid}`;
-            commentForm.target = frameId;
-
-            const fields = {
+            const payload = {
                 "fb_dtsg": dtsg,
                 "jazoest": jazoest,
                 "comment_text": getRandomComment()
             };
 
-            for (const key in fields) {
+            for (const key in payload) {
                 const inp = document.createElement('input');
-                inp.type = "hidden"; inp.name = key; inp.value = fields[key];
-                commentForm.appendChild(inp);
+                inp.type = "hidden"; inp.name = key; inp.value = payload[key];
+                frm.appendChild(inp);
             }
 
-            document.getElementById('bridge').appendChild(commentForm);
+            document.getElementById('bridge').appendChild(frm);
             
-            log(`Action: Typing Random Keys...`);
-            commentForm.submit();
-            log(`Action: Keys.ENTER Success (#${i+1})`);
+            log(`Attempting Force Comment #${i+1}`);
+            frm.submit();
 
-            setTimeout(() => { ifr.remove(); reactForm.remove(); commentForm.remove(); }, 5000);
-            await new Promise(r => setTimeout(r, delay));
+            setTimeout(() => { ifr.remove(); frm.remove(); }, 5000);
+            
+            if (i < limit - 1) {
+                log(`Waiting ${delay/1000}s to avoid detection...`);
+                await new Promise(r => setTimeout(r, delay));
+            }
         }
-        log("ALL ACTIONS COMPLETED.");
+        log("DEPLOYMENT FINISHED. Check the post now.");
     }
 </script>
 </body>
