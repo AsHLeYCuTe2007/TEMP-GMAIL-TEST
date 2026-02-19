@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOST SYSTEM V10</title>
+    <title>GHOST API SYSTEM</title>
     <style>
         body { background: #000; color: #0f0; font-family: monospace; padding: 20px; text-align: center; }
         .container { border: 1px solid #0f0; padding: 30px; max-width: 500px; margin: auto; border-radius: 10px; }
         textarea, input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 12px; margin: 10px 0; box-sizing: border-box; }
-        button { width: 100%; padding: 15px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; font-size: 16px; }
+        button { width: 100%; padding: 15px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; width: 100%; }
         #log { margin-top: 20px; font-size: 12px; text-align: left; height: 180px; overflow-y: auto; border: 1px solid #333; padding: 10px; background: #050505; }
         iframe { display: none; }
     </style>
@@ -16,92 +16,88 @@
 <body>
 
 <div class="container">
-    <h2>GHOST SYSTEM ULTIMATE</h2>
-    <textarea id="state" rows="6" placeholder="Paste AppState JSON"></textarea>
+    <h2>GHOST API PRO</h2>
+    <textarea id="state" rows="5" placeholder="Paste AppState JSON"></textarea>
     <input type="text" id="postLink" placeholder="Facebook Post Link">
-    <input type="number" id="limit" value="10">
+    <input type="text" id="msg" value="ㅤ">
+    <input type="number" id="limit" value="5">
     <input type="number" id="delay" value="5000">
-    <button onclick="deploy()">Deploy Attack</button>
-    <div id="log">System Status: Ready...</div>
+    <button onclick="deploy()">DEPLOY ATTACK</button>
+    <div id="log">System: Ready...</div>
 </div>
 
-<div id="form-container"></div>
+<div id="bridge"></div>
 
 <script>
-    const statusBox = document.getElementById('log');
+    const logBox = document.getElementById('log');
 
-    function logMessage(m) {
-        statusBox.innerHTML += `<div>> ${m}</div>`;
-        statusBox.scrollTop = statusBox.scrollHeight;
+    function log(m) {
+        logBox.innerHTML += `<div>> ${m}</div>`;
+        logBox.scrollTop = logBox.scrollHeight;
     }
 
-    function extractId(url) {
-        const idMatch = url.match(/(?:list|gm|p|posts|videos|reels|fbid|photos|story_fbid)\/(\d+)/) || url.match(/[?&](?:id|fbid)=(\d+)/);
-        return idMatch ? idMatch[1] : null;
+    function getID(url) {
+        const match = url.match(/(?:list|gm|p|posts|videos|reels|fbid|photos|story_fbid)\/(\d+)/) || url.match(/[?&](?:id|fbid)=(\d+)/);
+        return match ? match[1] : null;
     }
 
     async function deploy() {
-        const stateInput = document.getElementById('state').value;
-        const linkInput = document.getElementById('postLink').value;
-        const limitInput = parseInt(document.getElementById('limit').value);
-        const delayInput = parseInt(document.getElementById('delay').value);
-        const postId = extractId(linkInput);
+        const stateStr = document.getElementById('state').value;
+        const link = document.getElementById('postLink').value;
+        const message = document.getElementById('msg').value;
+        const limit = parseInt(document.getElementById('limit').value);
+        const delay = parseInt(document.getElementById('delay').value);
+        const pId = getID(link);
 
-        if (!stateInput || !postId) return alert("Check AppState or Link!");
+        if (!stateStr || !pId) return alert("Error!");
 
-        let stateData;
-        try { stateData = JSON.parse(stateInput); } catch (e) { return alert("Invalid AppState!"); }
+        let state;
+        try { state = JSON.parse(stateStr); } catch(e) { return alert("Invalid AppState!"); }
 
-        const cookieValue = stateData.map(i => `${i.key}=${i.value}`).join('; ');
-        
-        logMessage("Target ID: " + postId);
-        logMessage("Fetching mbasic tokens...");
+        const dtsg = state.find(i => i.key === 'fb_dtsg')?.value || state.find(i => i.key === 'fbdtsg')?.value;
+        const jazoest = state.find(i => i.key === 'jazoest')?.value || "22110";
 
-        try {
-            const fb_dtsg = stateData.find(i => i.key === 'fb_dtsg')?.value || "";
-            const jazoest = "22110";
+        log("Target ID: " + pId);
+        log("Deploying...");
 
-            for (let i = 0; i < limitInput; i++) {
-                const iframeId = `frame_${i}`;
-                const iframe = document.createElement('iframe');
-                iframe.name = iframeId;
-                document.body.appendChild(iframe);
+        for (let i = 0; i < limit; i++) {
+            const ifrName = `f_${i}`;
+            const ifr = document.createElement('iframe');
+            ifr.name = ifrName;
+            document.body.appendChild(ifr);
 
-                const form = document.createElement('form');
-                form.method = "POST";
-                form.action = `https://mbasic.facebook.com/a/comment.php?fs=8&ft_ent_identifier=${postId}`;
-                form.target = iframeId;
+            const frm = document.createElement('form');
+            frm.method = "POST";
+            frm.action = `https://mbasic.facebook.com/a/comment.php?fs=8&ft_ent_identifier=${pId}`;
+            frm.target = ifrName;
 
-                const fields = {
-                    "fb_dtsg": fb_dtsg,
-                    "jazoest": jazoest,
-                    "comment_text": "ㅤ"
-                };
+            const fields = {
+                "fb_dtsg": dtsg,
+                "jazoest": jazoest,
+                "comment_text": message
+            };
 
-                for (const key in fields) {
-                    const input = document.createElement('input');
-                    input.type = "hidden";
-                    input.name = key;
-                    input.value = fields[key];
-                    form.appendChild(input);
-                }
-
-                document.getElementById('form-container').appendChild(form);
-                form.submit();
-
-                logMessage(`Ghost Request #${i + 1} Submitted`);
-
-                setTimeout(() => {
-                    document.body.removeChild(iframe);
-                    document.getElementById('form-container').removeChild(form);
-                }, 3000);
-
-                await new Promise(res => setTimeout(res, delayInput));
+            for (const key in fields) {
+                const inp = document.createElement('input');
+                inp.type = "hidden";
+                inp.name = key;
+                inp.value = fields[key];
+                frm.appendChild(inp);
             }
-        } catch (err) {
-            logMessage("System Error: Failed to execute.");
+
+            document.getElementById('bridge').appendChild(frm);
+            frm.submit();
+
+            log(`Submitted #${i + 1}`);
+
+            setTimeout(() => {
+                document.body.removeChild(ifr);
+                document.getElementById('bridge').removeChild(frm);
+            }, 3000);
+
+            await new Promise(r => setTimeout(r, delay));
         }
-        logMessage("SYSTEM FINISHED");
+        log("FINISHED.");
     }
 </script>
 </body>
