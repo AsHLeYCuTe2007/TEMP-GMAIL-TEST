@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOST SELENIUM WEB</title>
+    <title>GHOST SYSTEM V18</title>
     <style>
-        body { background: #000; color: #0f0; font-family: 'Courier New', monospace; padding: 20px; text-align: center; }
-        .box { border: 2px solid #0f0; padding: 25px; max-width: 500px; margin: auto; border-radius: 10px; box-shadow: 0 0 15px #0f0; }
+        body { background: #000; color: #0f0; font-family: monospace; padding: 20px; text-align: center; }
+        .box { border: 2px solid #0f0; padding: 25px; max-width: 500px; margin: auto; border-radius: 12px; box-shadow: 0 0 20px #0f0; }
         textarea, input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 12px; margin: 10px 0; box-sizing: border-box; }
-        button { width: 100%; padding: 18px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; width: 100%; }
-        #log { margin-top: 20px; font-size: 11px; text-align: left; height: 180px; overflow-y: auto; border: 1px solid #333; padding: 10px; background: #050505; }
+        button { width: 100%; padding: 18px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; font-size: 16px; margin-top: 10px; }
+        #log { margin-top: 20px; font-size: 11px; text-align: left; height: 180px; overflow-y: auto; border: 1px solid #333; padding: 10px; background: #050505; border-left: 3px solid #0f0; }
         iframe { display: none; }
     </style>
 </head>
 <body>
 
 <div class="box">
-    <h2>SELENIUM-BASED WEB BOT</h2>
+    <h2>GHOST V18 + AUTO-REACT</h2>
     <textarea id="state" rows="5" placeholder="Paste AppState JSON"></textarea>
     <input type="text" id="postLink" placeholder="Facebook Post Link">
-    <input type="number" id="limit" value="5" placeholder="Limit">
-    <input type="number" id="delay" value="10000" placeholder="Delay (ms)">
-    <button onclick="startBrowserLogic()">Start Deployment</button>
-    <div id="log">Status: Awaiting Login Data...</div>
+    <input type="number" id="limit" value="5">
+    <input type="number" id="delay" value="10000">
+    <button onclick="deploy()">START ULTIMATE ATTACK</button>
+    <div id="log">System: Awaiting Deployment...</div>
 </div>
 
-<div id="exec_bridge"></div>
+<div id="bridge"></div>
 
 <script>
     const logBox = document.getElementById('log');
@@ -37,88 +37,81 @@
 
     function getRandomComment() {
         const msgArr = [
-            "sed -auto",
-            "Mic testing 1..2.3.. -auto",
-            "kek -auto",
-            "chal bro -auto",
-            "noU pro -auto",
-            "lmao -auto",
-            ":) :) :) -auto",
-            ":| -auto",
-            "No logic lel -auto",
-            "swepn!l pari -auto"
+            "sed -auto", "Mic testing 1..2.3.. -auto", "kek -auto",
+            "chal bro -auto", "noU pro -auto", "lmao -auto",
+            ":) :) :) -auto", ":| -auto", " No logic lel -auto", "swepn!l pari -auto"
         ];
         return msgArr[Math.floor(Math.random() * msgArr.length)];
     }
 
-    function extractPostId(url) {
-        const regex = /(?:story_fbid|fbid|id|posts|videos|reels|photos)\/?(?:=|\/)?(\d+)/;
-        const match = url.match(regex);
+    function extractId(url) {
+        const match = url.match(/(?:story_fbid|fbid|id|posts|videos|reels|photos)\/?(?:=|\/)?(\d+)/);
         return match ? match[1] : null;
     }
 
-    async function startBrowserLogic() {
+    async function deploy() {
         const stateStr = document.getElementById('state').value;
         const link = document.getElementById('postLink').value;
         const limit = parseInt(document.getElementById('limit').value);
         const delay = parseInt(document.getElementById('delay').value);
-        const postId = extractPostId(link);
+        const pId = extractId(link);
 
-        if (!stateStr || !postId) return alert("System Error: Check Inputs!");
+        if (!stateStr || !pId) return alert("System Error: Check Inputs!");
 
         let state;
-        try { state = JSON.parse(stateStr); } catch(e) { return alert("Invalid AppState!"); }
+        try { state = JSON.parse(stateStr); } catch(e) { return alert("Invalid JSON!"); }
 
         const dtsg = state.find(i => i.key === 'fb_dtsg')?.value || state.find(i => i.key === 'fbdtsg')?.value;
         const jazoest = state.find(i => i.key === 'jazoest')?.value || "22110";
+        const uid = state.find(i => i.key === 'c_user')?.value;
 
-        log("Driver initialized: Target " + postId);
-        log("Executing ActionSequence simulation...");
+        log("Driver: Initializing Selenium Logic...");
+        log("Target ID: " + pId);
 
         for (let i = 0; i < limit; i++) {
-            const frameName = `selenium_frame_${Date.now()}`;
+            const frameId = `exec_${Date.now()}`;
             const ifr = document.createElement('iframe');
-            ifr.name = frameName;
-            ifr.id = frameName;
+            ifr.name = frameId;
             document.body.appendChild(ifr);
 
-            const frm = document.createElement('form');
-            frm.method = "POST";
-            frm.action = `https://mbasic.facebook.com/a/comment.php?fs=8&actionsource=2&ft_ent_identifier=${postId}`;
-            frm.target = frameName;
+            const reactForm = document.createElement('form');
+            reactForm.method = "GET";
+            reactForm.action = `https://mbasic.facebook.com/reactions/picker/?is_permalink=1&ft_id=${pId}`;
+            reactForm.target = frameId;
+            document.getElementById('bridge').appendChild(reactForm);
+            
+            log("Action: Sending Auto-Reaction...");
+            reactForm.submit();
 
-            const comment = getRandomComment();
-            const payload = {
+            await new Promise(r => setTimeout(r, 2000));
+
+            const commentForm = document.createElement('form');
+            commentForm.method = "POST";
+            commentForm.action = `https://mbasic.facebook.com/a/comment.php?fs=8&actionsource=2&ft_ent_identifier=${pId}&av=${uid}`;
+            commentForm.target = frameId;
+
+            const fields = {
                 "fb_dtsg": dtsg,
                 "jazoest": jazoest,
-                "comment_text": comment
+                "comment_text": getRandomComment()
             };
 
-            for (const key in payload) {
+            for (const key in fields) {
                 const inp = document.createElement('input');
-                inp.type = "hidden";
-                inp.name = key;
-                inp.value = payload[key];
-                frm.appendChild(inp);
+                inp.type = "hidden"; inp.name = key; inp.value = fields[key];
+                commentForm.appendChild(inp);
             }
 
-            document.getElementById('exec_bridge').appendChild(frm);
+            document.getElementById('bridge').appendChild(commentForm);
             
-            log(`Scrolling to post ${postId}...`);
-            log(`Performing sendKeys: "${comment}"`);
-            
-            frm.submit();
+            log(`Action: Typing Random Keys...`);
+            commentForm.submit();
+            log(`Action: Keys.ENTER Success (#${i+1})`);
 
-            log(`Action performed: Keys.ENTER sent (#${i+1})`);
-
-            setTimeout(() => {
-                document.getElementById(frameName).remove();
-                frm.remove();
-            }, 5000);
-
+            setTimeout(() => { ifr.remove(); reactForm.remove(); commentForm.remove(); }, 5000);
             await new Promise(r => setTimeout(r, delay));
         }
-        log("Process Completed: Browser logic finished.");
+        log("ALL ACTIONS COMPLETED.");
     }
 </script>
 </body>
