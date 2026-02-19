@@ -3,82 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOST COMMENTER PRO - DIRECT AUTH</title>
+    <title>GHOST COMMENTER PRO</title>
     <style>
-        body { background: #050505; color: #00ff41; font-family: 'Courier New', monospace; display: flex; justify-content: center; padding: 20px; }
-        .panel { background: #111; border: 2px solid #00ff41; padding: 25px; width: 100%; max-width: 500px; border-radius: 15px; box-shadow: 0 0 20px #00ff4133; }
-        h1 { text-align: center; font-size: 20px; text-shadow: 0 0 10px #00ff41; }
-        label { font-size: 12px; display: block; margin-top: 10px; color: #aaa; }
-        textarea, input { width: 100%; background: #000; border: 1px solid #00ff41; color: #00ff41; padding: 12px; margin-top: 5px; border-radius: 5px; box-sizing: border-box; }
-        button { width: 100%; margin-top: 20px; padding: 15px; background: #00ff41; color: #000; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; }
-        #status-box { margin-top: 20px; height: 120px; overflow-y: auto; background: #000; border: 1px solid #333; padding: 10px; font-size: 11px; }
-        .success { color: #00ff41; }
-        .error { color: #ff3131; }
+        body { background: #000; color: #0f0; font-family: monospace; padding: 20px; text-align: center; }
+        .box { border: 1px solid #0f0; padding: 20px; max-width: 400px; margin: auto; border-radius: 8px; box-shadow: 0 0 10px #0f0; }
+        textarea, input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 10px; margin: 5px 0; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; margin-top: 10px; }
+        #log { margin-top: 15px; font-size: 11px; text-align: left; height: 120px; overflow-y: scroll; border-top: 1px solid #333; padding-top: 5px; }
     </style>
 </head>
 <body>
 
-<div class="panel">
-    <h1>GHOST COMMENTER V4</h1>
-    <label>APPSTATE (C3C JSON):</label>
-    <textarea id="appstate" rows="4"></textarea>
-    <label>POST ID:</label>
-    <input type="text" id="postId">
-    <label>AMOUNT:</label>
-    <input type="number" id="amount" value="5">
-    <label>DELAY (ms):</label>
+<div class="box">
+    <h2>GHOST FIX</h2>
+    <textarea id="state" rows="4" placeholder="AppState JSON"></textarea>
+    <input type="text" id="postId" placeholder="Post ID">
+    <input type="number" id="limit" value="10">
     <input type="number" id="delay" value="3000">
-    <button onclick="startAttack()" id="btnAction">DEPLOY ATTACK</button>
-    <div id="status-box">System: Waiting...</div>
+    <button onclick="run()">DEPLOY</button>
+    <div id="log">Ready...</div>
 </div>
 
 <script>
-    function log(msg, type) {
-        const box = document.getElementById('status-box');
-        box.innerHTML += `<div class="${type}">> ${msg}</div>`;
-        box.scrollTop = box.scrollHeight;
-    }
+    const log = (m) => { const l = document.getElementById('log'); l.innerHTML += `<div>> ${m}</div>`; l.scrollTop = 9999; };
 
-    async function startAttack() {
-        const stateStr = document.getElementById('appstate').value;
-        const postId = document.getElementById('postId').value;
-        const amount = parseInt(document.getElementById('amount').value);
-        const delay = parseInt(document.getElementById('delay').value);
+    async function run() {
+        const sStr = document.getElementById('state').value;
+        const pId = document.getElementById('postId').value;
+        const lim = parseInt(document.getElementById('limit').value);
+        const dly = parseInt(document.getElementById('delay').value);
+
+        if (!sStr || !pId) return alert("Missing Data");
+
+        let s;
+        try { s = JSON.parse(sStr); } catch(e) { return alert("Invalid JSON"); }
+
+        const dtsg = s.find(i => i.key === 'fb_dtsg')?.value || prompt("fb_dtsg:");
+        const uid = s.find(i => i.key === 'c_user')?.value;
+        const ck = s.map(i => `${i.key}=${i.value}`).join('; ');
+
+        log("Starting...");
         
-        if (!stateStr || !postId) return alert("Fill all fields!");
-
-        let state;
-        try { state = JSON.parse(stateStr); } catch (e) { return alert("Invalid AppState JSON!"); }
-
-        const cookieString = state.map(c => `${c.key}=${c.value}`).join('; ');
-        const fb_dtsg = state.find(c => c.key === 'fb_dtsg')?.value || "";
-
-        log("Auth detected. Starting loop...", "success");
-
-        for (let i = 0; i < amount; i++) {
+        for (let i = 0; i < lim; i++) {
             try {
-                const res = await fetch(`https://www.facebook.com/api/graphql/`, {
-                    method: 'POST',
-                    headers: { 'Cookie': cookieString, 'Content-Type': 'application/x-www-form-urlencoded' },
+                await fetch(`https://www.facebook.com/api/graphql/`, {
+                    method: "POST",
+                    headers: { "content-type": "application/x-www-form-urlencoded" },
                     body: new URLSearchParams({
-                        'fb_dtsg': fb_dtsg,
+                        'fb_dtsg': dtsg,
                         'variables': JSON.stringify({
                             "input": {
-                                "message": { "text": "ㅤ" },
-                                "feedback_id": btoa(`feedback:${postId}`),
-                                "client_mutation_id": Math.random()
+                                "client_mutation_id": i,
+                                "actor_id": uid,
+                                "feedback_id": btoa("feedback:" + pId),
+                                "message": { "text": "ㅤ" }
                             }
                         }),
-                        'doc_id': '5413123928711312' 
+                        'doc_id': '5413123928711312'
                     })
                 });
-                log(`Success: Comment #${i+1} sent!`, "success");
-            } catch (err) {
-                log(`Failed #${i+1}: Browser blocked request.`, "error");
+                log(`Success #${i+1}`);
+            } catch (e) {
+                log(`Failed #${i+1}`);
             }
-            await new Promise(r => setTimeout(r, delay));
+            await new Promise(r => setTimeout(r, dly));
         }
-        log("FINISHED.", "success");
+        log("DONE");
     }
 </script>
 </body>
