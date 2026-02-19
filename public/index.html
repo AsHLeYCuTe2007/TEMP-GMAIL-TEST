@@ -3,40 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghost Commenter Pro v3</title>
+    <title>GHOST COMMENTER PRO</title>
     <style>
-        body { background: #000; color: #0f0; font-family: 'Courier New', monospace; padding: 20px; }
-        .container { max-width: 600px; margin: auto; border: 1px solid #0f0; padding: 20px; box-shadow: 0 0 10px #0f0; }
-        textarea, input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 10px; margin: 10px 0; }
-        button { width: 100%; padding: 15px; background: #0f0; color: #000; border: none; font-weight: bold; cursor: pointer; }
-        #log { height: 150px; overflow-y: auto; border: 1px solid #333; padding: 10px; font-size: 12px; margin-top: 10px; background: #050505; }
+        body { background: #050505; color: #00ff41; font-family: 'Courier New', monospace; display: flex; justify-content: center; padding: 20px; }
+        .panel { background: #111; border: 2px solid #00ff41; padding: 25px; width: 100%; max-width: 500px; border-radius: 15px; box-shadow: 0 0 20px #00ff4133; }
+        h1 { text-align: center; font-size: 20px; text-shadow: 0 0 10px #00ff41; }
+        label { font-size: 12px; display: block; margin-top: 10px; color: #aaa; }
+        textarea, input { width: 100%; background: #000; border: 1px solid #00ff41; color: #00ff41; padding: 12px; margin-top: 5px; border-radius: 5px; box-sizing: border-box; }
+        .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        button { width: 100%; margin-top: 20px; padding: 15px; background: #00ff41; color: #000; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; transition: 0.3s; }
+        button:hover { background: #008f11; box-shadow: 0 0 15px #00ff41; }
+        #status-box { margin-top: 20px; height: 120px; overflow-y: auto; background: #000; border: 1px solid #333; padding: 10px; font-size: 11px; color: #00ff41; }
+        .success { color: #00ff41; }
+        .error { color: #ff3131; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>GHOST COMMENTER (C3C STATE)</h2>
-        <textarea id="state" rows="5" placeholder="Paste C3C FBState JSON here..."></textarea>
-        <input type="text" id="postId" placeholder="Facebook Post ID">
-        <input type="text" id="comment" placeholder="Message (Blank = Invisible)" value="ㅤ">
-        <input type="number" id="delay" value="3000" placeholder="Delay (ms)">
-        <button id="startBtn">START GHOST ATTACK</button>
-        <div id="log">System Ready...</div>
+
+<div class="panel">
+    <h1>GHOST COMMENTER 2026</h1>
+    <hr style="border: 0.5px solid #333;">
+
+    <label>APPSTATE (JSON):</label>
+    <textarea id="appstate" rows="4"></textarea>
+
+    <label>POST ID:</label>
+    <input type="text" id="postId">
+
+    <label>MESSAGE:</label>
+    <input type="text" id="message" value="ㅤ">
+
+    <div class="controls">
+        <div>
+            <label>AMOUNT:</label>
+            <input type="number" id="amount" value="10">
+        </div>
+        <div>
+            <label>DELAY (ms):</label>
+            <input type="number" id="delay" value="2000">
+        </div>
     </div>
 
-    <script>
-        const log = (m) => { document.getElementById('log').innerHTML += `<div>> ${m}</div>`; };
-        
-        document.getElementById('startBtn').onclick = async () => {
-            const state = document.getElementById('state').value;
-            const post = document.getElementById('postId').value;
-            const msg = document.getElementById('comment').value;
-            
-            if(!state || !post) return alert("Kulang ang detalye, boss!");
-            
-            log("Initializing AppState Connection...");
-            log("Sending payload to server...");
-            log("SUCCESS: Ghost comment loop started.");
-        };
-    </script>
+    <button onclick="startAttack()" id="btnAction">DEPLOY</button>
+
+    <div id="status-box">Ready...</div>
+</div>
+
+<script>
+    function log(msg, type) {
+        const box = document.getElementById('status-box');
+        box.innerHTML += `<div class="${type}">> ${msg}</div>`;
+        box.scrollTop = box.scrollHeight;
+    }
+
+    async function startAttack() {
+        const stateStr = document.getElementById('appstate').value;
+        const postId = document.getElementById('postId').value;
+        const message = document.getElementById('message').value || "ㅤ";
+        const amount = parseInt(document.getElementById('amount').value);
+        const delay = parseInt(document.getElementById('delay').value);
+        const btn = document.getElementById('btnAction');
+
+        if (!stateStr || !postId) return alert("Missing Info!");
+
+        btn.disabled = true;
+        btn.innerText = "RUNNING...";
+
+        for (let i = 0; i < amount; i++) {
+            try {
+                const res = await fetch(`https://graph.facebook.com/${postId}/comments`, {
+                    method: 'POST',
+                    body: new URLSearchParams({
+                        'message': message,
+                        'access_token': '6628568379|c1e620fa708a1d5696fb991c1bde5662' 
+                    })
+                });
+                log(`Sent #${i + 1}`, "success");
+            } catch (err) {
+                log(`Failed #${i + 1}`, "error");
+            }
+            await new Promise(r => setTimeout(r, delay));
+        }
+
+        log("FINISHED.", "success");
+        btn.disabled = false;
+        btn.innerText = "DEPLOY";
+    }
+</script>
+
 </body>
 </html>
