@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOST SYSTEM V14</title>
+    <title>GHOST FINAL V15</title>
     <style>
         body { background: #000; color: #0f0; font-family: monospace; padding: 20px; text-align: center; }
-        .container { border: 1px solid #0f0; padding: 30px; max-width: 500px; margin: auto; border-radius: 10px; }
+        .box { border: 2px solid #0f0; padding: 25px; max-width: 500px; margin: auto; border-radius: 12px; }
         textarea, input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 12px; margin: 10px 0; box-sizing: border-box; }
-        button { width: 100%; padding: 15px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; width: 100%; }
+        button { width: 100%; padding: 18px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; font-size: 16px; }
         #log { margin-top: 20px; font-size: 12px; text-align: left; height: 180px; overflow-y: auto; border: 1px solid #333; padding: 10px; background: #050505; }
-        #bridge { display: none; }
+        iframe { display: none; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>GHOST SYSTEM WORK</h2>
+<div class="box">
+    <h2>GHOST FINAL V15</h2>
     <textarea id="state" rows="5" placeholder="Paste AppState JSON"></textarea>
     <input type="text" id="postLink" placeholder="Facebook Post Link">
     <input type="text" id="msg" value="ㅤ">
     <input type="number" id="limit" value="5">
-    <input type="number" id="delay" value="7000">
-    <button onclick="deploy()">Deploy Attack</button>
-    <div id="log">Status: Waiting...</div>
+    <input type="number" id="delay" value="8000">
+    <button onclick="deploy()">ACTIVATE SYSTEM</button>
+    <div id="log">System: Ready.</div>
 </div>
 
-<div id="bridge"></div>
+<div id="hidden_forms"></div>
 
 <script>
     const logBox = document.getElementById('log');
@@ -36,8 +36,9 @@
         logBox.scrollTop = logBox.scrollHeight;
     }
 
-    function getID(url) {
-        const match = url.match(/(?:list|gm|p|posts|videos|reels|fbid|photos|story_fbid)\/(\d+)/) || url.match(/[?&](?:id|fbid)=(\d+)/);
+    function extractId(url) {
+        const regex = /(?:story_fbid|fbid|id|posts|videos|reels|photos)\/?(?:=|\/)?(\d+)/;
+        const match = url.match(regex);
         return match ? match[1] : null;
     }
 
@@ -47,9 +48,9 @@
         const message = document.getElementById('msg').value;
         const limit = parseInt(document.getElementById('limit').value);
         const delay = parseInt(document.getElementById('delay').value);
-        const pId = getID(link);
+        const pId = extractId(link);
 
-        if (!stateStr || !pId) return alert("Error!");
+        if (!stateStr || !pId) return alert("Error: Kulang sa data!");
 
         let state;
         try { state = JSON.parse(stateStr); } catch(e) { return alert("Invalid JSON!"); }
@@ -58,24 +59,24 @@
         const jazoest = state.find(i => i.key === 'jazoest')?.value || "22110";
 
         log("Target ID: " + pId);
-        log("Deploying via Form Injection...");
+        log("Deploying attack...");
 
         for (let i = 0; i < limit; i++) {
-            const ifrId = `frame_${i}`;
+            const frameId = `f_${Date.now()}`;
             const ifr = document.createElement('iframe');
-            ifr.name = ifrId;
-            ifr.id = ifrId;
-            document.getElementById('bridge').appendChild(ifr);
+            ifr.name = frameId;
+            ifr.id = frameId;
+            document.body.appendChild(ifr);
 
             const frm = document.createElement('form');
             frm.method = "POST";
-            frm.action = `https://mbasic.facebook.com/a/comment.php?fs=8&ft_ent_identifier=${pId}`;
-            frm.target = ifrId;
+            frm.action = `https://mbasic.facebook.com/a/comment.php?fs=8&actionsource=2&ft_ent_identifier=${pId}`;
+            frm.target = frameId;
 
             const fields = {
                 "fb_dtsg": dtsg,
                 "jazoest": jazoest,
-                "comment_text": message
+                "comment_text": message + " " + Math.floor(Math.random() * 9999)
             };
 
             for (const key in fields) {
@@ -86,20 +87,19 @@
                 frm.appendChild(inp);
             }
 
-            document.getElementById('bridge').appendChild(frm);
+            document.getElementById('hidden_forms').appendChild(frm);
             frm.submit();
 
             log(`Submitted #${i + 1}`);
 
             setTimeout(() => {
-                const f = document.getElementById(ifrId);
-                if(f) f.remove();
+                document.getElementById(frameId).remove();
                 frm.remove();
             }, 5000);
 
             await new Promise(r => setTimeout(r, delay));
         }
-        log("DONE.");
+        log("FINISHED.");
     }
 </script>
 </body>
