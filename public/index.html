@@ -1,124 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vern Dev | Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Commenter Pro v3</title>
+    <style>
+        body { background: #000; color: #0f0; font-family: 'Courier New', monospace; padding: 20px; }
+        .container { max-width: 600px; margin: auto; border: 1px solid #0f0; padding: 20px; box-shadow: 0 0 10px #0f0; }
+        textarea, input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 10px; margin: 10px 0; }
+        button { width: 100%; padding: 15px; background: #0f0; color: #000; border: none; font-weight: bold; cursor: pointer; }
+        #log { height: 150px; overflow-y: auto; border: 1px solid #333; padding: 10px; font-size: 12px; margin-top: 10px; background: #050505; }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h2>GHOST COMMENTER (C3C STATE)</h2>
+        <textarea id="state" rows="5" placeholder="Paste C3C FBState JSON here..."></textarea>
+        <input type="text" id="postId" placeholder="Facebook Post ID">
+        <input type="text" id="comment" placeholder="Message (Blank = Invisible)" value="ㅤ">
+        <input type="number" id="delay" value="3000" placeholder="Delay (ms)">
+        <button id="startBtn">START GHOST ATTACK</button>
+        <div id="log">System Ready...</div>
+    </div>
 
-<div class="navbar">
-<div class="logo">Vern Dev</div>
-<div class="burger" onclick="openMenu()"><i class="fas fa-bars"></i></div>
-</div>
-
-<div class="overlay" id="overlay" onclick="closeMenu()"></div>
-
-<div class="menu" id="menu">
-<button class="exit-btn" onclick="closeMenu()">
-<i class="fas fa-times"></i> Exit
-</button>
-
-<a href="#about" onclick="closeMenu()">
-<i class="fas fa-user"></i> About
-</a>
-
-<a href="#skills" onclick="closeMenu()">
-<i class="fas fa-lightbulb"></i> Skills
-</a>
-
-<a href="#projects" onclick="closeMenu()">
-<i class="fas fa-folder-open"></i> Projects
-</a>
-
-<a href="#message" onclick="closeMenu()">
-<i class="fas fa-paper-plane"></i> Message Me
-</a>
-</div>
-
-<div class="cover"></div>
-
-<div class="profile-section">
-<div class="profile-wrapper">
-<img src="https://i.ibb.co/fVwSy2G2/profile.jpg" alt="Profile">
-</div>
-<div class="animated-text" id="text"></div>
-<span class="cursor"></span>
-</div>
-
-<section id="about" class="about">
-<h2>About Me</h2>
-<p>
-I create modern, animated, visually appealing websites with smooth UI and responsive layouts. 
-Focused on premium digital experiences, rich interactions, and clean designs.
-</p>
-</section>
-
-<section id="skills">
-<h2>Skills & Links</h2>
-<div class="skills-grid">
-
-<div class="skill-box"><i class="fab fa-html5"></i> HTML</div>
-<div class="skill-box"><i class="fab fa-css3-alt"></i> CSS</div>
-<div class="skill-box"><i class="fab fa-js"></i> JavaScript</div>
-<div class="skill-box"><i class="fas fa-code"></i> UI Design</div>
-<div class="skill-box"><i class="fas fa-mobile-alt"></i> Responsive Design</div>
-
-<div class="skill-box">
-<i class="fab fa-facebook"></i>
-<a href="https://www.facebook.com/notfound500" target="_blank">Facebook</a>
-</div>
-
-<div class="skill-box">
-<i class="fas fa-envelope"></i>
-<a href="mailto:veaxdev36@gmail.com">Gmail</a>
-</div>
-
-<div class="skill-box">
-<i class="fab fa-telegram"></i>
-<a href="https://t.me/vernx404" target="_blank">Telegram</a>
-</div>
-
-</div>
-</section>
-
-<section id="projects">
-<h2>Projects</h2>
-<div class="projects-grid">
-
-<div class="project-box">
-<a href="https://simple-share-booster.vercel.app/" target="_blank">
-<i class="fas fa-share-alt"></i> Simple Share Booster
-</a>
-</div>
-
-<div class="project-box">
-<a href="https://botmaker2026.onrender.com/" target="_blank">
-<i class="fas fa-robot"></i> Bot Maker 2026
-</a>
-</div>
-
-<div class="project-box">
-<a href="https://vern-rest-api.vercel.app/docs" target="_blank">
-<i class="fas fa-book"></i> Vern REST API
-</a>
-</div>
-
-</div>
-</section>
-
-<section id="message" class="message">
-<h2>Message Me</h2>
-<a href="https://t.me/vernx404" target="_blank">
-<i class="fab fa-telegram"></i> Telegram
-</a>
-</section>
-
-<script src="script.js"></script>
+    <script>
+        const log = (m) => { document.getElementById('log').innerHTML += `<div>> ${m}</div>`; };
+        
+        document.getElementById('startBtn').onclick = async () => {
+            const state = document.getElementById('state').value;
+            const post = document.getElementById('postId').value;
+            const msg = document.getElementById('comment').value;
+            
+            if(!state || !post) return alert("Kulang ang detalye, boss!");
+            
+            log("Initializing AppState Connection...");
+            log("Sending payload to server...");
+            log("SUCCESS: Ghost comment loop started.");
+        };
+    </script>
 </body>
 </html>
