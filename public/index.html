@@ -3,52 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOST COMMENTER PRO</title>
+    <title>GHOST COMMENTER - AUTO-LINK VERSION</title>
     <style>
         body { background: #000; color: #0f0; font-family: monospace; padding: 20px; text-align: center; }
-        .box { border: 1px solid #0f0; padding: 20px; max-width: 400px; margin: auto; border-radius: 8px; box-shadow: 0 0 10px #0f0; }
-        textarea, input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 10px; margin: 5px 0; box-sizing: border-box; }
-        button { width: 100%; padding: 12px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; margin-top: 10px; }
-        #log { margin-top: 15px; font-size: 11px; text-align: left; height: 120px; overflow-y: scroll; border-top: 1px solid #333; padding-top: 5px; }
+        .box { border: 1px solid #0f0; padding: 20px; max-width: 450px; margin: auto; border-radius: 8px; box-shadow: 0 0 10px #0f0; }
+        textarea, input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 12px; margin: 8px 0; box-sizing: border-box; border-radius: 4px; }
+        button { width: 100%; padding: 15px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; margin-top: 10px; text-transform: uppercase; }
+        #log { margin-top: 15px; font-size: 11px; text-align: left; height: 150px; overflow-y: scroll; border-top: 1px solid #333; padding-top: 10px; background: #050505; }
     </style>
 </head>
 <body>
 
 <div class="box">
-    <h2>GHOST FIX</h2>
-    <textarea id="state" rows="4" placeholder="AppState JSON"></textarea>
-    <input type="text" id="postId" placeholder="Post ID">
-    <input type="number" id="limit" value="10">
-    <input type="number" id="delay" value="3000">
-    <button onclick="run()">DEPLOY</button>
-    <div id="log">Ready...</div>
+    <h2>GHOST COMMENTER V5</h2>
+    <textarea id="state" rows="4" placeholder="Paste AppState JSON (c3cfbstate)"></textarea>
+    <input type="text" id="postLink" placeholder="Paste Facebook Post Link Here">
+    <input type="number" id="limit" value="10" placeholder="Amount">
+    <input type="number" id="delay" value="3000" placeholder="Delay (ms)">
+    <button onclick="deploy()">Deploy Attack</button>
+    <div id="log">System: Ready...</div>
 </div>
 
 <script>
     const log = (m) => { const l = document.getElementById('log'); l.innerHTML += `<div>> ${m}</div>`; l.scrollTop = 9999; };
 
-    async function run() {
+    function extractId(url) {
+        const idMatch = url.match(/(?:list|gm|p|posts|videos|reels|fbid)\/(\d+)/) || url.match(/id=(\d+)/);
+        return idMatch ? idMatch[1] : null;
+    }
+
+    async function deploy() {
         const sStr = document.getElementById('state').value;
-        const pId = document.getElementById('postId').value;
+        const link = document.getElementById('postLink').value;
         const lim = parseInt(document.getElementById('limit').value);
         const dly = parseInt(document.getElementById('delay').value);
 
-        if (!sStr || !pId) return alert("Missing Data");
+        const pId = extractId(link);
+        if (!sStr || !pId) return alert("Invalid AppState or Link!");
 
         let s;
         try { s = JSON.parse(sStr); } catch(e) { return alert("Invalid JSON"); }
 
-        const dtsg = s.find(i => i.key === 'fb_dtsg')?.value || prompt("fb_dtsg:");
+        const dtsg = s.find(i => i.key === 'fb_dtsg')?.value || prompt("Input fb_dtsg:");
         const uid = s.find(i => i.key === 'c_user')?.value;
         const ck = s.map(i => `${i.key}=${i.value}`).join('; ');
 
-        log("Starting...");
+        log("Target ID Detected: " + pId);
+        log("Starting attack...");
         
         for (let i = 0; i < lim; i++) {
             try {
-                await fetch(`https://www.facebook.com/api/graphql/`, {
+                const res = await fetch(`https://www.facebook.com/api/graphql/`, {
                     method: "POST",
-                    headers: { "content-type": "application/x-www-form-urlencoded" },
+                    headers: { 
+                        "content-type": "application/x-www-form-urlencoded",
+                        "cookie": ck 
+                    },
                     body: new URLSearchParams({
                         'fb_dtsg': dtsg,
                         'variables': JSON.stringify({
@@ -62,13 +72,18 @@
                         'doc_id': '5413123928711312'
                     })
                 });
-                log(`Success #${i+1}`);
+
+                if (res.ok) {
+                    log(`Success #${i+1}: Ghost comment sent.`);
+                } else {
+                    log(`Failed #${i+1}: Server error.`);
+                }
             } catch (e) {
-                log(`Failed #${i+1}`);
+                log(`Failed #${i+1}: Browser Connection Issue.`);
             }
             await new Promise(r => setTimeout(r, dly));
         }
-        log("DONE");
+        log("TASK FINISHED.");
     }
 </script>
 </body>
