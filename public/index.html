@@ -3,62 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOST SYSTEM V7</title>
+    <title>GHOST SYSTEM V8</title>
     <style>
-        body { 
-            background: #000; 
-            color: #0f0; 
-            font-family: monospace; 
-            padding: 20px; 
-            text-align: center; 
-        }
-        .container { 
-            border: 1px solid #0f0; 
-            padding: 30px; 
-            max-width: 500px; 
-            margin: auto; 
-            border-radius: 10px;
-        }
-        textarea, input { 
-            width: 100%; 
-            background: #111; 
-            border: 1px solid #0f0; 
-            color: #0f0; 
-            padding: 12px; 
-            margin: 10px 0; 
-            box-sizing: border-box; 
-        }
-        button { 
-            width: 100%; 
-            padding: 15px; 
-            background: #0f0; 
-            color: #000; 
-            font-weight: bold; 
-            border: none; 
-            cursor: pointer; 
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        #log { 
-            margin-top: 20px; 
-            font-size: 12px; 
-            text-align: left; 
-            height: 180px; 
-            overflow-y: auto; 
-            border: 1px solid #333; 
-            padding: 10px; 
-            background: #050505;
-        }
+        body { background: #000; color: #0f0; font-family: monospace; padding: 20px; text-align: center; }
+        .container { border: 1px solid #0f0; padding: 30px; max-width: 500px; margin: auto; border-radius: 10px; }
+        textarea, input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 12px; margin: 10px 0; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; font-size: 16px; }
+        #log { margin-top: 20px; font-size: 12px; text-align: left; height: 180px; overflow-y: auto; border: 1px solid #333; padding: 10px; background: #050505; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h2>GHOST SYSTEM PRO</h2>
-    <textarea id="state" rows="6" placeholder="Paste AppState JSON Here"></textarea>
+    <textarea id="state" rows="6" placeholder="Paste AppState JSON"></textarea>
     <input type="text" id="postLink" placeholder="Facebook Post Link">
     <input type="number" id="limit" value="10">
-    <input type="number" id="delay" value="3000">
+    <input type="number" id="delay" value="5000">
     <button onclick="deploy()">Deploy Attack</button>
     <div id="log">System Status: Ready...</div>
 </div>
@@ -72,7 +33,7 @@
     }
 
     function extractId(url) {
-        const idMatch = url.match(/(?:list|gm|p|posts|videos|reels|fbid|photos)\/(\d+)/) || url.match(/id=(\d+)/);
+        const idMatch = url.match(/(?:list|gm|p|posts|videos|reels|fbid|photos|story_fbid)\/(\d+)/) || url.match(/[?&](?:id|fbid)=(\d+)/);
         return idMatch ? idMatch[1] : null;
     }
 
@@ -84,7 +45,7 @@
         const postId = extractId(linkInput);
 
         if (!stateInput || !postId) {
-            alert("Check AppState or Link!");
+            alert("Error: Check AppState or Link!");
             return;
         }
 
@@ -92,19 +53,29 @@
         try {
             stateData = JSON.parse(stateInput);
         } catch (e) {
-            alert("Invalid JSON format!");
+            alert("Error: Invalid AppState!");
             return;
         }
 
-        const dtsgValue = stateData.find(i => i.key === 'fb_dtsg')?.value || stateData.find(i => i.key === 'fbdtsg')?.value;
         const cookieValue = stateData.map(i => `${i.key}=${i.value}`).join('; ');
-
         logMessage("Target ID: " + postId);
-        logMessage("Initiating...");
+        logMessage("Fetching valid tokens...");
 
-        for (let i = 0; i < limitInput; i++) {
-            try {
-                const fbUrl = `https://mbasic.facebook.com/a/comment.php?fs=8&actionsource=2&ft_ent_identifier=${postId}`;
+        try {
+            const getDtsg = await fetch(`https://mbasic.facebook.com/mbasic/comment/advanced/?target_id=${postId}`, {
+                headers: { "Cookie": cookieValue }
+            });
+            const html = await getDtsg.text();
+            const dtsg = html.match(/name="fb_dtsg" value="([^"]+)"/)?.[1];
+            const jazoest = html.match(/name="jazoest" value="([^"]+)"/)?.[1];
+
+            if (!dtsg) {
+                logMessage("Error: Failed to fetch fb_dtsg. Check AppState!");
+                return;
+            }
+
+            for (let i = 0; i < limitInput; i++) {
+                const fbUrl = `https://mbasic.facebook.com/a/comment.php?fs=8&ft_ent_identifier=${postId}`;
                 
                 await fetch(fbUrl, {
                     method: "POST",
@@ -114,17 +85,17 @@
                         "Cookie": cookieValue
                     },
                     body: new URLSearchParams({
-                        "fb_dtsg": dtsgValue,
-                        "comment_text": "ㅤ",
-                        "jazoest": "22110"
+                        "fb_dtsg": dtsg,
+                        "jazoest": jazoest,
+                        "comment_text": "ㅤ"
                     })
                 });
 
-                logMessage(`Comment Sent #${i + 1}`);
-            } catch (err) {
-                logMessage(`Error at #${i + 1}`);
+                logMessage(`Ghost Sent #${i + 1}`);
+                await new Promise(res => setTimeout(res, delayInput));
             }
-            await new Promise(res => setTimeout(res, delayInput));
+        } catch (err) {
+            logMessage("System Error: Connection Refused.");
         }
         logMessage("SYSTEM FINISHED");
     }
