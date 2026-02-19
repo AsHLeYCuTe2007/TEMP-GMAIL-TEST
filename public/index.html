@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOST SYSTEM V8</title>
+    <title>GHOST SYSTEM V9</title>
     <style>
         body { background: #000; color: #0f0; font-family: monospace; padding: 20px; text-align: center; }
         .container { border: 1px solid #0f0; padding: 30px; max-width: 500px; margin: auto; border-radius: 10px; }
         textarea, input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 12px; margin: 10px 0; box-sizing: border-box; }
         button { width: 100%; padding: 15px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; font-size: 16px; }
         #log { margin-top: 20px; font-size: 12px; text-align: left; height: 180px; overflow-y: auto; border: 1px solid #333; padding: 10px; background: #050505; }
+        iframe { display: none; }
     </style>
 </head>
 <body>
@@ -23,6 +24,8 @@
     <button onclick="deploy()">Deploy Attack</button>
     <div id="log">System Status: Ready...</div>
 </div>
+
+<div id="form-container"></div>
 
 <script>
     const statusBox = document.getElementById('log');
@@ -44,58 +47,56 @@
         const delayInput = parseInt(document.getElementById('delay').value);
         const postId = extractId(linkInput);
 
-        if (!stateInput || !postId) {
-            alert("Error: Check AppState or Link!");
-            return;
-        }
+        if (!stateInput || !postId) return alert("Check AppState or Link!");
 
         let stateData;
-        try {
-            stateData = JSON.parse(stateInput);
-        } catch (e) {
-            alert("Error: Invalid AppState!");
-            return;
-        }
+        try { stateData = JSON.parse(stateInput); } catch (e) { return alert("Invalid AppState!"); }
 
-        const cookieValue = stateData.map(i => `${i.key}=${i.value}`).join('; ');
+        const dtsg = stateData.find(i => i.key === 'fb_dtsg')?.value || stateData.find(i => i.key === 'fbdtsg')?.value;
+        const jazoest = stateData.find(i => i.key === 'jazoest')?.value || "22110";
+
         logMessage("Target ID: " + postId);
-        logMessage("Fetching valid tokens...");
+        logMessage("Bypassing Connection Refused...");
 
-        try {
-            const getDtsg = await fetch(`https://mbasic.facebook.com/mbasic/comment/advanced/?target_id=${postId}`, {
-                headers: { "Cookie": cookieValue }
-            });
-            const html = await getDtsg.text();
-            const dtsg = html.match(/name="fb_dtsg" value="([^"]+)"/)?.[1];
-            const jazoest = html.match(/name="jazoest" value="([^"]+)"/)?.[1];
+        for (let i = 0; i < limitInput; i++) {
+            const formId = `form_${i}`;
+            const iframeId = `frame_${i}`;
+            
+            const iframe = document.createElement('iframe');
+            iframe.name = iframeId;
+            iframe.id = iframeId;
+            document.body.appendChild(iframe);
 
-            if (!dtsg) {
-                logMessage("Error: Failed to fetch fb_dtsg. Check AppState!");
-                return;
+            const form = document.createElement('form');
+            form.method = "POST";
+            form.action = `https://mbasic.facebook.com/a/comment.php?fs=8&ft_ent_identifier=${postId}`;
+            form.target = iframeId;
+
+            const inputs = {
+                "fb_dtsg": dtsg,
+                "jazoest": jazoest,
+                "comment_text": "ㅤ"
+            };
+
+            for (const key in inputs) {
+                const input = document.createElement('input');
+                input.type = "hidden";
+                input.name = key;
+                input.value = inputs[key];
+                form.appendChild(input);
             }
 
-            for (let i = 0; i < limitInput; i++) {
-                const fbUrl = `https://mbasic.facebook.com/a/comment.php?fs=8&ft_ent_identifier=${postId}`;
-                
-                await fetch(fbUrl, {
-                    method: "POST",
-                    mode: "no-cors",
-                    headers: { 
-                        "Content-Type": "application/x-www-form-urlencoded",
-                        "Cookie": cookieValue
-                    },
-                    body: new URLSearchParams({
-                        "fb_dtsg": dtsg,
-                        "jazoest": jazoest,
-                        "comment_text": "ㅤ"
-                    })
-                });
+            document.getElementById('form-container').appendChild(form);
+            form.submit();
 
-                logMessage(`Ghost Sent #${i + 1}`);
-                await new Promise(res => setTimeout(res, delayInput));
-            }
-        } catch (err) {
-            logMessage("System Error: Connection Refused.");
+            logMessage(`Ghost Sent #${i + 1}`);
+            
+            setTimeout(() => {
+                document.body.removeChild(iframe);
+                document.getElementById('form-container').removeChild(form);
+            }, 2000);
+
+            await new Promise(res => setTimeout(res, delayInput));
         }
         logMessage("SYSTEM FINISHED");
     }
