@@ -8,7 +8,7 @@
         body { background: #000; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
         .container { width: 330px; height: 600px; background: #111; border-radius: 20px; overflow: hidden; position: relative; border: 2px solid #333; }
         video { width: 100%; height: 100%; object-fit: cover; }
-        .next-btn { margin-top: 20px; padding: 15px 40px; border: none; border-radius: 50px; background: #00f2ea; color: #000; font-weight: bold; cursor: pointer; font-size: 16px; box-shadow: 0 0 15px #00f2ea; }
+        .next-btn { margin-top: 20px; padding: 15px 40px; border: none; border-radius: 50px; background: #fe2c55; color: #fff; font-weight: bold; cursor: pointer; font-size: 16px; }
         #status { margin-top: 10px; font-size: 11px; color: #666; }
     </style>
 </head>
@@ -18,7 +18,7 @@
         <video id="shotiVideo" controls autoplay loop playsinline></video>
     </div>
 
-    <button class="next-btn" onclick="getShoti()">NEXT SHOTI ➔</button>
+    <button class="next-btn" onclick="getShoti()">NEXT SHOTI</button>
     <p id="status">Ready.</p>
 
     <script>
@@ -27,7 +27,7 @@
             const status = document.getElementById('status');
             status.innerText = "Loading...";
 
-            const proxy = "https://api.allorigins.win/get?url="; 
+            const proxy = "https://api.allorigins.win/get?url=";
             const myApi = "https://norch-project.gleeze.com/api/shoti";
 
             try {
@@ -35,7 +35,7 @@
                 const json = await response.json();
                 const data = JSON.parse(json.contents);
                 
-                let finalUrl = data.data?.url || data.url || data.video;
+                const finalUrl = data.data?.url || data.url || data.video;
 
                 if (finalUrl) {
                     video.src = finalUrl;
@@ -43,12 +43,10 @@
                     video.play();
                     status.innerText = "Playing!";
                 } else {
-                    status.innerText = "URL not found in API response.";
+                    status.innerText = "Error: URL not found in API.";
                 }
-
             } catch (error) {
-                status.innerText = "Fetch Error.";
-                console.error(error);
+                status.innerText = "Error: Network/CORS issue.";
             }
         }
 
