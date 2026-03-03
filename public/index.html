@@ -1,56 +1,3968 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Shoti</title>
-    <style>
-        body { background: #000; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .container { width: 330px; height: 600px; background: #111; border-radius: 20px; overflow: hidden; position: relative; border: 2px solid #333; }
-        video { width: 100%; height: 100%; object-fit: cover; }
-        .next-btn { margin-top: 20px; padding: 15px 40px; border: none; border-radius: 50px; background: #fe2c55; color: #fff; font-weight: bold; cursor: pointer; font-size: 16px; }
-        #status { margin-top: 10px; font-size: 11px; color: #666; }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <video id="shotiVideo" controls autoplay loop playsinline></video>
-    </div>
-
-    <button class="next-btn" onclick="getShoti()">NEXT SHOTI</button>
-    <p id="status">Ready.</p>
-
-    <script>
-        async function getShoti() {
-            const video = document.getElementById('shotiVideo');
-            const status = document.getElementById('status');
-            status.innerText = "Loading...";
-
-            const proxy = "https://api.allorigins.win/get?url=";
-            const myApi = "https://norch-project.gleeze.com/api/shoti";
-
-            try {
-                const response = await fetch(proxy + encodeURIComponent(myApi));
-                const json = await response.json();
-                const data = JSON.parse(json.contents);
-                
-                const finalUrl = data.data?.url || data.url || data.video;
-
-                if (finalUrl) {
-                    video.src = finalUrl;
-                    video.load();
-                    video.play();
-                    status.innerText = "Playing!";
-                } else {
-                    status.innerText = "Error: URL not found in API.";
-                }
-            } catch (error) {
-                status.innerText = "Error: Network/CORS issue.";
+<html dir="ltr" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Free Temp Mail - Disposable Email for OTPs &Sign-Ups</title>
+        <base href="https://tmailor.com/">
+        <script data-cfasync="false">
+            (function() {
+                try {
+                    var saved = localStorage.getItem('theme');
+                    var isDark = saved ? (saved === 'dark') : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                    document.documentElement.classList.toggle('dark', isDark);
+                } catch (e) {}
             }
-        }
+            )();
+        </script>
+        <style>
+            /*! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com*/
+            *,:after,:before {
+                box-sizing: border-box;
+                border: 0 solid #e5e7eb
+            }
 
-        window.onload = getShoti;
-    </script>
-</body>
+            :after,:before {
+                --tw-content: ""
+            }
+
+            :host,html {
+                line-height: 1.5;
+                -webkit-text-size-adjust: 100%;
+                -moz-tab-size: 4;
+                -o-tab-size: 4;
+                tab-size: 4;
+                font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+                font-feature-settings: normal;
+                font-variation-settings: normal;
+                -webkit-tap-highlight-color: transparent
+            }
+
+            body {
+                margin: 0;
+                line-height: inherit
+            }
+
+            hr {
+                height: 0;
+                color: inherit;
+                border-top-width: 1px
+            }
+
+            abbr:where([title]) {
+                -webkit-text-decoration: underline dotted;
+                text-decoration: underline dotted
+            }
+
+            h1,h2,h3,h4,h5,h6 {
+                font-size: inherit;
+                font-weight: inherit
+            }
+
+            a {
+                color: inherit;
+                text-decoration: inherit
+            }
+
+            b,strong {
+                font-weight: bolder
+            }
+
+            code,kbd,pre,samp {
+                font-family: Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+                font-feature-settings: normal;
+                font-variation-settings: normal;
+                font-size: 1em
+            }
+
+            small {
+                font-size: 80%
+            }
+
+            sub,sup {
+                font-size: 75%;
+                line-height: 0;
+                position: relative;
+                vertical-align: initial
+            }
+
+            sub {
+                bottom: -.25em
+            }
+
+            sup {
+                top: -.5em
+            }
+
+            table {
+                text-indent: 0;
+                border-color: inherit;
+                border-collapse: collapse
+            }
+
+            button,input,optgroup,select,textarea {
+                font-family: inherit;
+                font-feature-settings: inherit;
+                font-variation-settings: inherit;
+                font-size: 100%;
+                font-weight: inherit;
+                line-height: inherit;
+                color: inherit;
+                margin: 0;
+                padding: 0
+            }
+
+            button,select {
+                text-transform: none
+            }
+
+            [type=button],[type=reset],[type=submit],button {
+                -webkit-appearance: button;
+                background-color: initial;
+                background-image: none
+            }
+
+            :-moz-focusring {
+                outline: auto
+            }
+
+            :-moz-ui-invalid {
+                box-shadow: none
+            }
+
+            progress {
+                vertical-align: initial
+            }
+
+            ::-webkit-inner-spin-button,::-webkit-outer-spin-button {
+                height: auto
+            }
+
+            [type=search] {
+                -webkit-appearance: textfield;
+                outline-offset: -2px
+            }
+
+            ::-webkit-search-decoration {
+                -webkit-appearance: none
+            }
+
+            ::-webkit-file-upload-button {
+                -webkit-appearance: button;
+                font: inherit
+            }
+
+            summary {
+                display: list-item
+            }
+
+            blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre {
+                margin: 0
+            }
+
+            fieldset {
+                margin: 0
+            }
+
+            fieldset,legend {
+                padding: 0
+            }
+
+            menu,ol,ul {
+                list-style: none;
+                margin: 0;
+                padding: 0
+            }
+
+            dialog {
+                padding: 0
+            }
+
+            textarea {
+                resize: vertical
+            }
+
+            input::-moz-placeholder,textarea::-moz-placeholder {
+                opacity: 1;
+                color: #9ca3af
+            }
+
+            input::placeholder,textarea::placeholder {
+                opacity: 1;
+                color: #9ca3af
+            }
+
+            [role=button],button {
+                cursor: pointer
+            }
+
+            :disabled {
+                cursor: default
+            }
+
+            audio,canvas,embed,iframe,img,object,svg,video {
+                display: block;
+                vertical-align: middle
+            }
+
+            img,video {
+                max-width: 100%;
+                height: auto
+            }
+
+            [hidden] {
+                display: none
+            }
+
+            *,::backdrop,:after,:before {
+                --tw-border-spacing-x: 0;
+                --tw-border-spacing-y: 0;
+                --tw-translate-x: 0;
+                --tw-translate-y: 0;
+                --tw-rotate: 0;
+                --tw-skew-x: 0;
+                --tw-skew-y: 0;
+                --tw-scale-x: 1;
+                --tw-scale-y: 1;
+                --tw-pan-x: ;
+                --tw-pan-y: ;
+                --tw-pinch-zoom: ;
+                --tw-scroll-snap-strictness: proximity;
+                --tw-gradient-from-position: ;
+                --tw-gradient-via-position: ;
+                --tw-gradient-to-position: ;
+                --tw-ordinal: ;
+                --tw-slashed-zero: ;
+                --tw-numeric-figure: ;
+                --tw-numeric-spacing: ;
+                --tw-numeric-fraction: ;
+                --tw-ring-inset: ;
+                --tw-ring-offset-width: 0px;
+                --tw-ring-offset-color: #fff;
+                --tw-ring-color: #3b82f680;
+                --tw-ring-offset-shadow: 0 0 #0000;
+                --tw-ring-shadow: 0 0 #0000;
+                --tw-shadow: 0 0 #0000;
+                --tw-shadow-colored: 0 0 #0000;
+                --tw-blur: ;
+                --tw-brightness: ;
+                --tw-contrast: ;
+                --tw-grayscale: ;
+                --tw-hue-rotate: ;
+                --tw-invert: ;
+                --tw-saturate: ;
+                --tw-sepia: ;
+                --tw-drop-shadow: ;
+                --tw-backdrop-blur: ;
+                --tw-backdrop-brightness: ;
+                --tw-backdrop-contrast: ;
+                --tw-backdrop-grayscale: ;
+                --tw-backdrop-hue-rotate: ;
+                --tw-backdrop-invert: ;
+                --tw-backdrop-opacity: ;
+                --tw-backdrop-saturate: ;
+                --tw-backdrop-sepia:
+            }
+
+            .container {
+                width: 100%
+            }
+
+            @media (min-width: 640px) {
+                .container {
+                    max-width:640px
+                }
+            }
+
+            @media (min-width: 768px) {
+                .container {
+                    max-width:768px
+                }
+            }
+
+            @media (min-width: 1024px) {
+                .container {
+                    max-width:1024px
+                }
+            }
+
+            @media (min-width: 1280px) {
+                .container {
+                    max-width:1280px
+                }
+            }
+
+            @media (min-width: 1536px) {
+                .container {
+                    max-width:1536px
+                }
+            }
+
+            .prose {
+                color: var(--tw-prose-body);
+                max-width: 65ch
+            }
+
+            .prose :where(p):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 1.25em;
+                margin-bottom: 1.25em
+            }
+
+            .prose :where([class~=lead]):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: var(--tw-prose-lead);
+                font-size: 1.25em;
+                line-height: 1.6;
+                margin-top: 1.2em;
+                margin-bottom: 1.2em
+            }
+
+            .prose :where(a):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: var(--tw-prose-links);
+                text-decoration: underline;
+                font-weight: 500
+            }
+
+            .prose :where(strong):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: var(--tw-prose-bold);
+                font-weight: 600
+            }
+
+            .prose :where(a strong):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: inherit
+            }
+
+            .prose :where(blockquote strong):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: inherit
+            }
+
+            .prose :where(thead th strong):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: inherit
+            }
+
+            .prose :where(ol):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                list-style-type: decimal;
+                margin-top: 1.25em;
+                margin-bottom: 1.25em;
+                padding-inline-start:1.625em}
+
+            .prose :where(ol[type=A]):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                list-style-type: upper-alpha
+            }
+
+            .prose :where(ol[type=a]):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                list-style-type: lower-alpha
+            }
+
+            .prose :where(ol[type=A s]):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                list-style-type: upper-alpha
+            }
+
+            .prose :where(ol[type=a s]):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                list-style-type: lower-alpha
+            }
+
+            .prose :where(ol[type=I]):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                list-style-type: upper-roman
+            }
+
+            .prose :where(ol[type=i]):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                list-style-type: lower-roman
+            }
+
+            .prose :where(ol[type=I s]):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                list-style-type: upper-roman
+            }
+
+            .prose :where(ol[type=i s]):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                list-style-type: lower-roman
+            }
+
+            .prose :where(ol[type="1"]):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                list-style-type: decimal
+            }
+
+            .prose :where(ul):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                list-style-type: disc;
+                margin-top: 1.25em;
+                margin-bottom: 1.25em;
+                padding-inline-start:1.625em}
+
+            .prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker {
+                font-weight: 400;
+                color: var(--tw-prose-counters)
+            }
+
+            .prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker {
+                color: var(--tw-prose-bullets)
+            }
+
+            .prose :where(dt):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: var(--tw-prose-headings);
+                font-weight: 600;
+                margin-top: 1.25em
+            }
+
+            .prose :where(hr):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                border-color: var(--tw-prose-hr);
+                border-top-width: 1px;
+                margin-top: 3em;
+                margin-bottom: 3em
+            }
+
+            .prose :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                font-weight: 500;
+                font-style: italic;
+                color: var(--tw-prose-quotes);
+                border-inline-start-width:.25rem;border-inline-start-color:var(--tw-prose-quote-borders);quotes: "\201C""\201D""\2018""\2019";
+                margin-top: 1.6em;
+                margin-bottom: 1.6em;
+                padding-inline-start:1em}
+
+            .prose :where(blockquote p:first-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):before {
+                content: open-quote
+            }
+
+            .prose :where(blockquote p:last-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):after {
+                content: close-quote
+            }
+
+            .prose :where(h1):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: var(--tw-prose-headings);
+                font-weight: 800;
+                font-size: 2.25em;
+                margin-top: 0;
+                margin-bottom: .8888889em;
+                line-height: 1.1111111
+            }
+
+            .prose :where(h1 strong):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                font-weight: 900;
+                color: inherit
+            }
+
+            .prose :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: var(--tw-prose-headings);
+                font-weight: 700;
+                font-size: 1.5em;
+                margin-top: 2em;
+                margin-bottom: 1em;
+                line-height: 1.3333333
+            }
+
+            .prose :where(h2 strong):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                font-weight: 800;
+                color: inherit
+            }
+
+            .prose :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: var(--tw-prose-headings);
+                font-weight: 600;
+                font-size: 1.25em;
+                margin-top: 1.6em;
+                margin-bottom: .6em;
+                line-height: 1.6
+            }
+
+            .prose :where(h3 strong):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                font-weight: 700;
+                color: inherit
+            }
+
+            .prose :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: var(--tw-prose-headings);
+                font-weight: 600;
+                margin-top: 1.5em;
+                margin-bottom: .5em;
+                line-height: 1.5
+            }
+
+            .prose :where(h4 strong):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                font-weight: 700;
+                color: inherit
+            }
+
+            .prose :where(img):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                display: block;
+                margin: 2em auto;
+                border-radius: .5rem
+            }
+
+            .prose :where(picture):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                display: block;
+                margin-top: 2em;
+                margin-bottom: 2em
+            }
+
+            .prose :where(video):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 2em;
+                margin-bottom: 2em
+            }
+
+            .prose :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                font-weight: 500;
+                font-family: inherit;
+                color: var(--tw-prose-kbd);
+                box-shadow: 0 0 0 1px rgb(var(--tw-prose-kbd-shadows)/10%),0 3px 0 rgb(var(--tw-prose-kbd-shadows)/10%);
+                font-size: .875em;
+                border-radius: .3125rem;
+                padding-top: .1875em;
+                padding-inline-end:.375em;padding-bottom: .1875em;
+                padding-inline-start:.375em}
+
+            .prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: var(--tw-prose-code);
+                font-weight: 600;
+                font-size: .875em
+            }
+
+            .prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before {
+                content: "`"
+            }
+
+            .prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after {
+                content: "`"
+            }
+
+            .prose :where(a code):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: inherit
+            }
+
+            .prose :where(h1 code):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: inherit
+            }
+
+            .prose :where(h2 code):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: inherit;
+                font-size: .875em
+            }
+
+            .prose :where(h3 code):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: inherit;
+                font-size: .9em
+            }
+
+            .prose :where(h4 code):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: inherit
+            }
+
+            .prose :where(blockquote code):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: inherit
+            }
+
+            .prose :where(thead th code):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: inherit
+            }
+
+            .prose :where(pre):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: var(--tw-prose-pre-code);
+                background-color: var(--tw-prose-pre-bg);
+                overflow-x: auto;
+                font-weight: 400;
+                font-size: .875em;
+                line-height: 1.7142857;
+                margin-top: 1.7142857em;
+                margin-bottom: 1.7142857em;
+                border-radius: .375rem;
+                padding-top: .8571429em;
+                padding-inline-end:1.1428571em;padding-bottom: .8571429em;
+                padding-inline-start:1.1428571em}
+
+            .prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                background-color: initial;
+                border-width: 0;
+                border-radius: 0;
+                padding: 0;
+                font-weight: inherit;
+                color: inherit;
+                font-size: inherit;
+                font-family: inherit;
+                line-height: inherit
+            }
+
+            .prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):before {
+                content: none
+            }
+
+            .prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):after {
+                content: none
+            }
+
+            .prose :where(table):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                width: 100%;
+                table-layout: auto;
+                margin-top: 2em;
+                margin-bottom: 2em;
+                font-size: .875em;
+                line-height: 1.7142857
+            }
+
+            .prose :where(thead):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                border-bottom-width: 1px;
+                border-bottom-color: var(--tw-prose-th-borders)
+            }
+
+            .prose :where(thead th):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: var(--tw-prose-headings);
+                font-weight: 600;
+                vertical-align: bottom;
+                padding-inline-end:.5714286em;padding-bottom: .5714286em;
+                padding-inline-start:.5714286em}
+
+            .prose :where(tbody tr):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                border-bottom-width: 1px;
+                border-bottom-color: var(--tw-prose-td-borders)
+            }
+
+            .prose :where(tbody tr:last-child):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                border-bottom-width: 0
+            }
+
+            .prose :where(tbody td):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                vertical-align: initial
+            }
+
+            .prose :where(tfoot):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                border-top-width: 1px;
+                border-top-color: var(--tw-prose-th-borders)
+            }
+
+            .prose :where(tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                vertical-align: top
+            }
+
+            .prose :where(th,td):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                text-align: start
+            }
+
+            .prose :where(figure>*):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 0;
+                margin-bottom: 0
+            }
+
+            .prose :where(figcaption):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                color: var(--tw-prose-captions);
+                font-size: .875em;
+                line-height: 1.4285714;
+                margin-top: .8571429em
+            }
+
+            .prose {
+                --tw-prose-body: oklch(37.3% 0.034 259.733);
+                --tw-prose-headings: oklch(21% 0.034 264.665);
+                --tw-prose-lead: oklch(44.6% 0.03 256.802);
+                --tw-prose-links: oklch(21% 0.034 264.665);
+                --tw-prose-bold: oklch(21% 0.034 264.665);
+                --tw-prose-counters: oklch(55.1% 0.027 264.364);
+                --tw-prose-bullets: oklch(87.2% 0.01 258.338);
+                --tw-prose-hr: oklch(92.8% 0.006 264.531);
+                --tw-prose-quotes: oklch(21% 0.034 264.665);
+                --tw-prose-quote-borders: oklch(92.8% 0.006 264.531);
+                --tw-prose-captions: oklch(55.1% 0.027 264.364);
+                --tw-prose-kbd: oklch(21% 0.034 264.665);
+                --tw-prose-kbd-shadows: NaN NaN NaN;
+                --tw-prose-code: oklch(21% 0.034 264.665);
+                --tw-prose-pre-code: oklch(92.8% 0.006 264.531);
+                --tw-prose-pre-bg: oklch(27.8% 0.033 256.848);
+                --tw-prose-th-borders: oklch(87.2% 0.01 258.338);
+                --tw-prose-td-borders: oklch(92.8% 0.006 264.531);
+                --tw-prose-invert-body: oklch(87.2% 0.01 258.338);
+                --tw-prose-invert-headings: #fff;
+                --tw-prose-invert-lead: oklch(70.7% 0.022 261.325);
+                --tw-prose-invert-links: #fff;
+                --tw-prose-invert-bold: #fff;
+                --tw-prose-invert-counters: oklch(70.7% 0.022 261.325);
+                --tw-prose-invert-bullets: oklch(44.6% 0.03 256.802);
+                --tw-prose-invert-hr: oklch(37.3% 0.034 259.733);
+                --tw-prose-invert-quotes: oklch(96.7% 0.003 264.542);
+                --tw-prose-invert-quote-borders: oklch(37.3% 0.034 259.733);
+                --tw-prose-invert-captions: oklch(70.7% 0.022 261.325);
+                --tw-prose-invert-kbd: #fff;
+                --tw-prose-invert-kbd-shadows: 255 255 255;
+                --tw-prose-invert-code: #fff;
+                --tw-prose-invert-pre-code: oklch(87.2% 0.01 258.338);
+                --tw-prose-invert-pre-bg: #00000080;
+                --tw-prose-invert-th-borders: oklch(44.6% 0.03 256.802);
+                --tw-prose-invert-td-borders: oklch(37.3% 0.034 259.733);
+                font-size: 1rem;
+                line-height: 1.75
+            }
+
+            .prose :where(picture>img):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 0;
+                margin-bottom: 0
+            }
+
+            .prose :where(li):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: .5em;
+                margin-bottom: .5em
+            }
+
+            .prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                padding-inline-start:.375em}
+
+            .prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                padding-inline-start:.375em}
+
+            .prose :where(.prose>ul>li p):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: .75em;
+                margin-bottom: .75em
+            }
+
+            .prose :where(.prose>ul>li>p:first-child):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 1.25em
+            }
+
+            .prose :where(.prose>ul>li>p:last-child):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-bottom: 1.25em
+            }
+
+            .prose :where(.prose>ol>li>p:first-child):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 1.25em
+            }
+
+            .prose :where(.prose>ol>li>p:last-child):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-bottom: 1.25em
+            }
+
+            .prose :where(ul ul,ul ol,ol ul,ol ol):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: .75em;
+                margin-bottom: .75em
+            }
+
+            .prose :where(dl):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 1.25em;
+                margin-bottom: 1.25em
+            }
+
+            .prose :where(dd):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: .5em;
+                padding-inline-start:1.625em}
+
+            .prose :where(hr+*):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 0
+            }
+
+            .prose :where(h2+*):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 0
+            }
+
+            .prose :where(h3+*):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 0
+            }
+
+            .prose :where(h4+*):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 0
+            }
+
+            .prose :where(thead th:first-child):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                padding-inline-start:0}
+
+            .prose :where(thead th:last-child):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                padding-inline-end:0}
+
+            .prose :where(tbody td,tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                padding-top: .5714286em;
+                padding-inline-end:.5714286em;padding-bottom: .5714286em;
+                padding-inline-start:.5714286em}
+
+            .prose :where(tbody td:first-child,tfoot td:first-child):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                padding-inline-start:0}
+
+            .prose :where(tbody td:last-child,tfoot td:last-child):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                padding-inline-end:0}
+
+            .prose :where(figure):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 2em;
+                margin-bottom: 2em;
+                color: #fff;
+                border-radius: .5rem
+            }
+
+            .prose :where(figure):not(:where([class~=not-prose],[class~=not-prose] *)) a {
+                color: #60a5fa;
+                text-decoration: underline
+            }
+
+            .prose :where(figure):not(:where([class~=not-prose],[class~=not-prose] *)) a:hover {
+                color: #93c5fd
+            }
+
+            .prose :where(.prose>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-top: 0
+            }
+
+            .prose :where(.prose>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)) {
+                margin-bottom: 0
+            }
+
+            .absolute {
+                position: absolute
+            }
+
+            .relative {
+                position: relative
+            }
+
+            .inset-0 {
+                inset: 0
+            }
+
+            .end-1 {
+                inset-inline-end: .25rem
+            }
+
+            .right-2 {
+                right: .5rem
+            }
+
+            .right-2\.5 {
+                right: .625rem
+            }
+
+            .start-1 {
+                inset-inline-start: .25rem
+            }
+
+            .top-1 {
+                top: .25rem
+            }
+
+            .top-2 {
+                top: .5rem
+            }
+
+            .top-2\.5 {
+                top: .625rem
+            }
+
+            .z-10 {
+                z-index: 10
+            }
+
+            .z-30 {
+                z-index: 30
+            }
+
+            .order-1 {
+                order: 1
+            }
+
+            .order-2 {
+                order: 2
+            }
+
+            .mx-2 {
+                margin-left: .5rem;
+                margin-right: .5rem
+            }
+
+            .mx-auto {
+                margin-left: auto;
+                margin-right: auto
+            }
+
+            .my-1 {
+                margin-top: .25rem;
+                margin-bottom: .25rem
+            }
+
+            .my-2 {
+                margin-top: .5rem;
+                margin-bottom: .5rem
+            }
+
+            .my-3 {
+                margin-top: .75rem;
+                margin-bottom: .75rem
+            }
+
+            .my-4 {
+                margin-top: 1rem;
+                margin-bottom: 1rem
+            }
+
+            .my-8 {
+                margin-top: 2rem;
+                margin-bottom: 2rem
+            }
+
+            .mb-1 {
+                margin-bottom: .25rem
+            }
+
+            .mb-2 {
+                margin-bottom: .5rem
+            }
+
+            .mb-4 {
+                margin-bottom: 1rem
+            }
+
+            .mb-5 {
+                margin-bottom: 1.25rem
+            }
+
+            .mb-8 {
+                margin-bottom: 2rem
+            }
+
+            .me-2 {
+                margin-inline-end:.5rem}
+
+            .ml-1 {
+                margin-left: .25rem
+            }
+
+            .mt-2 {
+                margin-top: .5rem
+            }
+
+            .mt-3 {
+                margin-top: .75rem
+            }
+
+            .mt-4 {
+                margin-top: 1rem
+            }
+
+            .mt-6 {
+                margin-top: 1.5rem
+            }
+
+            .mt-8 {
+                margin-top: 2rem
+            }
+
+            .line-clamp-2 {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2
+            }
+
+            .block {
+                display: block
+            }
+
+            .inline-block {
+                display: inline-block
+            }
+
+            .flex {
+                display: flex
+            }
+
+            .inline-flex {
+                display: inline-flex
+            }
+
+            .grid {
+                display: grid
+            }
+
+            .hidden {
+                display: none
+            }
+
+            .size-10 {
+                width: 2.5rem;
+                height: 2.5rem
+            }
+
+            .size-14 {
+                width: 3.5rem;
+                height: 3.5rem
+            }
+
+            .size-20 {
+                width: 5rem;
+                height: 5rem
+            }
+
+            .size-5 {
+                width: 1.25rem;
+                height: 1.25rem
+            }
+
+            .size-6 {
+                width: 1.5rem;
+                height: 1.5rem
+            }
+
+            .size-8 {
+                width: 2rem;
+                height: 2rem
+            }
+
+            .size-\[210px\] {
+                width: 210px;
+                height: 210px
+            }
+
+            .h-10 {
+                height: 2.5rem
+            }
+
+            .h-12 {
+                height: 3rem
+            }
+
+            .h-16 {
+                height: 4rem
+            }
+
+            .h-5 {
+                height: 1.25rem
+            }
+
+            .h-6 {
+                height: 1.5rem
+            }
+
+            .h-8 {
+                height: 2rem
+            }
+
+            .h-\[100px\] {
+                height: 100px
+            }
+
+            .h-\[19px\] {
+                height: 19px
+            }
+
+            .h-\[200px\] {
+                height: 200px
+            }
+
+            .h-\[400px\] {
+                height: 400px
+            }
+
+            .h-\[600px\] {
+                height: 600px
+            }
+
+            .h-\[80px\] {
+                height: 80px
+            }
+
+            .h-auto {
+                height: auto
+            }
+
+            .h-full {
+                height: 100%
+            }
+
+            .h-max {
+                height: -moz-max-content;
+                height: max-content
+            }
+
+            .min-h-14 {
+                min-height: 3.5rem
+            }
+
+            .min-h-\[150px\] {
+                min-height: 150px
+            }
+
+            .min-h-\[250px\] {
+                min-height: 250px
+            }
+
+            .min-h-\[330px\] {
+                min-height: 330px
+            }
+
+            .min-h-\[400px\] {
+                min-height: 400px
+            }
+
+            .w-10 {
+                width: 2.5rem
+            }
+
+            .w-12 {
+                width: 3rem
+            }
+
+            .w-16 {
+                width: 4rem
+            }
+
+            .w-5 {
+                width: 1.25rem
+            }
+
+            .w-8 {
+                width: 2rem
+            }
+
+            .w-\[100px\] {
+                width: 100px
+            }
+
+            .w-\[150px\] {
+                width: 150px
+            }
+
+            .w-\[19px\] {
+                width: 19px
+            }
+
+            .w-\[300px\] {
+                width: 300px
+            }
+
+            .w-\[60px\] {
+                width: 60px
+            }
+
+            .w-full {
+                width: 100%
+            }
+
+            .max-w-full {
+                max-width: 100%
+            }
+
+            .max-w-lg {
+                max-width: 32rem
+            }
+
+            .flex-1 {
+                flex: 1 1 0%
+            }
+
+            .shrink-0 {
+                flex-shrink: 0
+            }
+
+            .origin-top-left {
+                transform-origin: top left
+            }
+
+            .translate-x-1 {
+                --tw-translate-x: 0.25rem
+            }
+
+            .rotate-180,.translate-x-1 {
+                transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+            }
+
+            .rotate-180 {
+                --tw-rotate: 180deg
+            }
+
+            .transform {
+                transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+            }
+
+            @keyframes spin {
+                to {
+                    transform: rotate(1turn)
+                }
+            }
+
+            .animate-spin {
+                animation: spin 1s linear infinite
+            }
+
+            .cursor-pointer {
+                cursor: pointer
+            }
+
+            .select-none {
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none
+            }
+
+            .flex-row {
+                flex-direction: row
+            }
+
+            .flex-col {
+                flex-direction: column
+            }
+
+            .flex-wrap {
+                flex-wrap: wrap
+            }
+
+            .items-start {
+                align-items: flex-start
+            }
+
+            .items-center {
+                align-items: center
+            }
+
+            .justify-center {
+                justify-content: center
+            }
+
+            .justify-between {
+                justify-content: space-between
+            }
+
+            .gap-2 {
+                gap: .5rem
+            }
+
+            .gap-3 {
+                gap: .75rem
+            }
+
+            .gap-4 {
+                gap: 1rem
+            }
+
+            .gap-6 {
+                gap: 1.5rem
+            }
+
+            .gap-x-2 {
+                -moz-column-gap: .5rem;
+                column-gap: .5rem
+            }
+
+            .gap-x-4 {
+                -moz-column-gap: 1rem;
+                column-gap: 1rem
+            }
+
+            .gap-y-2 {
+                row-gap: .5rem
+            }
+
+            .gap-y-4 {
+                row-gap: 1rem
+            }
+
+            .space-x-2>:not([hidden])~:not([hidden]) {
+                --tw-space-x-reverse: 0;
+                margin-right: calc(.5rem*var(--tw-space-x-reverse));
+                margin-left: calc(.5rem*(1 - var(--tw-space-x-reverse)))
+            }
+
+            .divide-y>:not([hidden])~:not([hidden]) {
+                --tw-divide-y-reverse: 0;
+                border-top-width: calc(1px*(1 - var(--tw-divide-y-reverse)));
+                border-bottom-width: calc(1px*var(--tw-divide-y-reverse))
+            }
+
+            .divide-slate-200>:not([hidden])~:not([hidden]) {
+                --tw-divide-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-divide-opacity))
+            }
+
+            .overflow-hidden {
+                overflow: hidden
+            }
+
+            .overflow-y-scroll {
+                overflow-y: scroll
+            }
+
+            .text-ellipsis {
+                text-overflow: ellipsis
+            }
+
+            .text-nowrap {
+                text-wrap: nowrap
+            }
+
+            .rounded {
+                border-radius: .25rem
+            }
+
+            .rounded-full {
+                border-radius: 9999px
+            }
+
+            .rounded-lg {
+                border-radius: .5rem
+            }
+
+            .rounded-md {
+                border-radius: .375rem
+            }
+
+            .rounded-t-md {
+                border-top-left-radius: .375rem;
+                border-top-right-radius: .375rem
+            }
+
+            .border {
+                border-width: 1px
+            }
+
+            .border-y {
+                border-top-width: 1px
+            }
+
+            .border-b,.border-y {
+                border-bottom-width: 1px
+            }
+
+            .border-t {
+                border-top-width: 1px
+            }
+
+            .border-gray-200 {
+                --tw-border-opacity: 1;
+                border-color: rgb(229 231 235/var(--tw-border-opacity))
+            }
+
+            .border-gray-400\/30 {
+                border-color: #9ca3af4d
+            }
+
+            .border-red-900 {
+                --tw-border-opacity: 1;
+                border-color: rgb(127 29 29/var(--tw-border-opacity))
+            }
+
+            .border-stone-200 {
+                --tw-border-opacity: 1;
+                border-color: rgb(231 229 228/var(--tw-border-opacity))
+            }
+
+            .border-transparent {
+                border-color: #0000
+            }
+
+            .border-b-stone-200 {
+                --tw-border-opacity: 1;
+                border-bottom-color: rgb(231 229 228/var(--tw-border-opacity))
+            }
+
+            .border-b-stone-50 {
+                --tw-border-opacity: 1;
+                border-bottom-color: rgb(250 250 249/var(--tw-border-opacity))
+            }
+
+            .border-t-stone-200 {
+                --tw-border-opacity: 1;
+                border-top-color: rgb(231 229 228/var(--tw-border-opacity))
+            }
+
+            .bg-gray-100 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(243 244 246/var(--tw-bg-opacity))
+            }
+
+            .bg-gray-200 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(229 231 235/var(--tw-bg-opacity))
+            }
+
+            .bg-gray-50 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(249 250 251/var(--tw-bg-opacity))
+            }
+
+            .bg-gray-700 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(55 65 81/var(--tw-bg-opacity))
+            }
+
+            .bg-gray-900 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(17 24 39/var(--tw-bg-opacity))
+            }
+
+            .bg-indigo-600 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(79 70 229/var(--tw-bg-opacity))
+            }
+
+            .bg-red-600 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(220 38 38/var(--tw-bg-opacity))
+            }
+
+            .bg-red-700\/75 {
+                background-color: #b91c1cbf
+            }
+
+            .bg-slate-800 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(30 41 59/var(--tw-bg-opacity))
+            }
+
+            .bg-stone-200 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(231 229 228/var(--tw-bg-opacity))
+            }
+
+            .bg-transparent {
+                background-color: initial
+            }
+
+            .bg-white {
+                --tw-bg-opacity: 1;
+                background-color: rgb(255 255 255/var(--tw-bg-opacity))
+            }
+
+            .bg-\[url\(\/img\/bg-robot\.webp\)\] {
+                background-image: url(/img/bg-robot.webp)
+            }
+
+            .bg-gradient-to-b {
+                background-image: linear-gradient(to bottom,var(--tw-gradient-stops))
+            }
+
+            .from-sky-50 {
+                --tw-gradient-from: #f0f9ff var(--tw-gradient-from-position);
+                --tw-gradient-to: #f0f9ff00 var(--tw-gradient-to-position);
+                --tw-gradient-stops: var(--tw-gradient-from),var(--tw-gradient-to)
+            }
+
+            .to-transparent {
+                --tw-gradient-to: #0000 var(--tw-gradient-to-position)
+            }
+
+            .p-1 {
+                padding: .25rem
+            }
+
+            .p-2 {
+                padding: .5rem
+            }
+
+            .p-2\.5 {
+                padding: .625rem
+            }
+
+            .p-3 {
+                padding: .75rem
+            }
+
+            .p-4 {
+                padding: 1rem
+            }
+
+            .px-0 {
+                padding-left: 0;
+                padding-right: 0
+            }
+
+            .px-1 {
+                padding-left: .25rem;
+                padding-right: .25rem
+            }
+
+            .px-2 {
+                padding-left: .5rem;
+                padding-right: .5rem
+            }
+
+            .px-3 {
+                padding-left: .75rem;
+                padding-right: .75rem
+            }
+
+            .px-4 {
+                padding-left: 1rem;
+                padding-right: 1rem
+            }
+
+            .px-5 {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem
+            }
+
+            .py-16 {
+                padding-top: 4rem;
+                padding-bottom: 4rem
+            }
+
+            .py-2 {
+                padding-top: .5rem;
+                padding-bottom: .5rem
+            }
+
+            .py-3 {
+                padding-top: .75rem;
+                padding-bottom: .75rem
+            }
+
+            .py-5 {
+                padding-top: 1.25rem;
+                padding-bottom: 1.25rem
+            }
+
+            .py-6 {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem
+            }
+
+            .py-8 {
+                padding-top: 2rem;
+                padding-bottom: 2rem
+            }
+
+            .pb-16 {
+                padding-bottom: 4rem
+            }
+
+            .pb-4 {
+                padding-bottom: 1rem
+            }
+
+            .pe-1 {
+                padding-inline-end:.25rem}
+
+            .pe-16 {
+                padding-inline-end:4rem}
+
+            .pe-2 {
+                padding-inline-end:.5rem}
+
+            .pr-1 {
+                padding-right: .25rem
+            }
+
+            .pr-1\.5 {
+                padding-right: .375rem
+            }
+
+            .ps-2 {
+                padding-inline-start:.5rem}
+
+            .ps-6 {
+                padding-inline-start:1.5rem}
+
+            .pt-4 {
+                padding-top: 1rem
+            }
+
+            .text-left {
+                text-align: left
+            }
+
+            .text-center {
+                text-align: center
+            }
+
+            .text-right {
+                text-align: right
+            }
+
+            .text-start {
+                text-align: start
+            }
+
+            .text-end {
+                text-align: end
+            }
+
+            .text-2xl {
+                font-size: 1.5rem;
+                line-height: 2rem
+            }
+
+            .text-base {
+                font-size: 1rem;
+                line-height: 1.5rem
+            }
+
+            .text-lg {
+                font-size: 1.125rem;
+                line-height: 1.75rem
+            }
+
+            .text-sm {
+                font-size: .875rem;
+                line-height: 1.25rem
+            }
+
+            .text-xl {
+                font-size: 1.25rem;
+                line-height: 1.75rem
+            }
+
+            .text-xs {
+                font-size: .75rem;
+                line-height: 1rem
+            }
+
+            .font-bold {
+                font-weight: 700
+            }
+
+            .font-extrabold {
+                font-weight: 800
+            }
+
+            .font-light {
+                font-weight: 300
+            }
+
+            .font-medium {
+                font-weight: 500
+            }
+
+            .font-semibold {
+                font-weight: 600
+            }
+
+            .uppercase {
+                text-transform: uppercase
+            }
+
+            .leading-6 {
+                line-height: 1.5rem
+            }
+
+            .leading-8 {
+                line-height: 2rem
+            }
+
+            .leading-relaxed {
+                line-height: 1.625
+            }
+
+            .tracking-tight {
+                letter-spacing: -.025em
+            }
+
+            .tracking-wide {
+                letter-spacing: .025em
+            }
+
+            .text-black {
+                --tw-text-opacity: 1;
+                color: rgb(0 0 0/var(--tw-text-opacity))
+            }
+
+            .text-blue-50 {
+                --tw-text-opacity: 1;
+                color: rgb(239 246 255/var(--tw-text-opacity))
+            }
+
+            .text-blue-500 {
+                --tw-text-opacity: 1;
+                color: rgb(59 130 246/var(--tw-text-opacity))
+            }
+
+            .text-blue-600 {
+                --tw-text-opacity: 1;
+                color: rgb(37 99 235/var(--tw-text-opacity))
+            }
+
+            .text-blue-700 {
+                --tw-text-opacity: 1;
+                color: rgb(29 78 216/var(--tw-text-opacity))
+            }
+
+            .text-gray-500 {
+                --tw-text-opacity: 1;
+                color: rgb(107 114 128/var(--tw-text-opacity))
+            }
+
+            .text-gray-900 {
+                --tw-text-opacity: 1;
+                color: rgb(17 24 39/var(--tw-text-opacity))
+            }
+
+            .text-inherit {
+                color: inherit
+            }
+
+            .text-red-900 {
+                --tw-text-opacity: 1;
+                color: rgb(127 29 29/var(--tw-text-opacity))
+            }
+
+            .text-sky-950 {
+                --tw-text-opacity: 1;
+                color: rgb(8 47 73/var(--tw-text-opacity))
+            }
+
+            .text-slate-500 {
+                --tw-text-opacity: 1;
+                color: rgb(100 116 139/var(--tw-text-opacity))
+            }
+
+            .text-slate-600 {
+                --tw-text-opacity: 1;
+                color: rgb(71 85 105/var(--tw-text-opacity))
+            }
+
+            .text-white {
+                --tw-text-opacity: 1;
+                color: rgb(255 255 255/var(--tw-text-opacity))
+            }
+
+            .underline {
+                text-decoration-line: underline
+            }
+
+            .underline-offset-4 {
+                text-underline-offset: 4px
+            }
+
+            .antialiased {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale
+            }
+
+            .opacity-0 {
+                opacity: 0
+            }
+
+            .opacity-100 {
+                opacity: 1
+            }
+
+            .opacity-70 {
+                opacity: .7
+            }
+
+            .opacity-80 {
+                opacity: .8
+            }
+
+            .opacity-85 {
+                opacity: .85
+            }
+
+            .opacity-90 {
+                opacity: .9
+            }
+
+            .shadow-lg {
+                --tw-shadow: 0 10px 15px -3px #0000001a,0 4px 6px -4px #0000001a;
+                --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)
+            }
+
+            .shadow-lg,.shadow-md {
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            .shadow-md {
+                --tw-shadow: 0 4px 6px -1px #0000001a,0 2px 4px -2px #0000001a;
+                --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)
+            }
+
+            .shadow-sm {
+                --tw-shadow: 0 1px 2px 0 #0000000d;
+                --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            .filter {
+                filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+            }
+
+            .transition-all {
+                transition-property: all;
+                transition-timing-function: cubic-bezier(.4,0,.2,1);
+                transition-duration: .15s
+            }
+
+            .transition-colors {
+                transition-property: color,background-color,border-color,text-decoration-color,fill,stroke;
+                transition-timing-function: cubic-bezier(.4,0,.2,1);
+                transition-duration: .15s
+            }
+
+            .transition-opacity {
+                transition-property: opacity;
+                transition-timing-function: cubic-bezier(.4,0,.2,1);
+                transition-duration: .15s
+            }
+
+            .transition-transform {
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(.4,0,.2,1);
+                transition-duration: .15s
+            }
+
+            .duration-300 {
+                transition-duration: .3s
+            }
+
+            ::-webkit-scrollbar {
+                width: 10px
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background-color: #888;
+                border-radius: 4px
+            }
+
+            html.dark ::-webkit-scrollbar-thumb {
+                background-color: #555
+            }
+
+            .ripple {
+                position: relative;
+                overflow: hidden
+            }
+
+            .ripple:after {
+                content: "";
+                position: absolute;
+                background: #fff6;
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple .6s linear
+            }
+
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0
+                }
+            }
+
+            .ripple-effect {
+                position: absolute;
+                background: #ffffff80;
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple .6s linear;
+                pointer-events: none
+            }
+
+            .tm-news-link a {
+                --tw-text-opacity: 1;
+                color: rgb(37 99 235/var(--tw-text-opacity));
+                text-decoration-line: underline
+            }
+
+            .tm-news-link a:hover {
+                --tw-text-opacity: 1;
+                color: rgb(220 38 38/var(--tw-text-opacity))
+            }
+
+            .tm-navbar {
+                position: absolute;
+                top: 3rem;
+                inset-inline-start: 0;
+                z-index: 20;
+                --tw-bg-opacity: 1;
+                background-color: rgb(209 213 219/var(--tw-bg-opacity))
+            }
+
+            :is(.dark .tm-navbar) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(31 41 55/var(--tw-bg-opacity))
+            }
+
+            .menu-link {
+                display: flex;
+                width: 100%;
+                border-radius: .375rem;
+                padding: .75rem;
+                --tw-text-opacity: 1;
+                color: rgb(0 0 0/var(--tw-text-opacity))
+            }
+
+            .menu-link:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(243 244 246/var(--tw-bg-opacity));
+                --tw-text-opacity: 1;
+                color: rgb(59 130 246/var(--tw-text-opacity))
+            }
+
+            :is(.dark .menu-link) {
+                --tw-text-opacity: 1;
+                color: rgb(249 250 251/var(--tw-text-opacity))
+            }
+
+            :is(.dark .menu-link:hover) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(31 41 55/var(--tw-bg-opacity));
+                --tw-text-opacity: 1;
+                color: rgb(132 204 22/var(--tw-text-opacity))
+            }
+
+            .tm-select {
+                width: 100%;
+                cursor: pointer;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                border-radius: .25rem;
+                border-width: 1px;
+                --tw-border-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(255 255 255/var(--tw-bg-opacity));
+                padding: .5rem 2rem .5rem .75rem;
+                font-size: .875rem;
+                line-height: 1.25rem;
+                --tw-shadow: 0 1px 2px 0 #0000000d;
+                --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            .tm-select:hover {
+                --tw-border-opacity: 1;
+                border-color: rgb(148 163 184/var(--tw-border-opacity))
+            }
+
+            .tm-select:focus {
+                --tw-border-opacity: 1;
+                border-color: rgb(75 85 99/var(--tw-border-opacity));
+                --tw-shadow: 0 4px 6px -1px #0000001a,0 2px 4px -2px #0000001a;
+                --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+                outline: 2px solid #0000;
+                outline-offset: 2px
+            }
+
+            :is(.dark .tm-select) {
+                --tw-border-opacity: 1;
+                border-color: rgb(3 7 18/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(17 24 39/var(--tw-bg-opacity))
+            }
+
+            .tm-max-box {
+                max-width: 740px
+            }
+
+            .tm-box {
+                border-radius: .375rem;
+                border-width: 1px;
+                --tw-border-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(255 255 255/var(--tw-bg-opacity));
+                --tw-shadow: 0 4px 6px -1px #0000001a,0 2px 4px -2px #0000001a;
+                --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            :is(.dark .tm-box) {
+                --tw-border-opacity: 1;
+                border-color: rgb(3 7 18/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(17 24 39/var(--tw-bg-opacity))
+            }
+
+            .tm-box.gap-0 {
+                gap: 0!important
+            }
+
+            .tm-box-group>:not([hidden])~:not([hidden]) {
+                --tw-divide-y-reverse: 0;
+                border-top-width: calc(1px*(1 - var(--tw-divide-y-reverse)));
+                border-bottom-width: calc(1px*var(--tw-divide-y-reverse));
+                --tw-divide-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-divide-opacity))
+            }
+
+            .tm-box-group {
+                overflow-y: auto;
+                border-radius: .375rem;
+                border-width: 1px;
+                --tw-border-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(255 255 255/var(--tw-bg-opacity));
+                --tw-shadow: 0 4px 6px -1px #0000001a,0 2px 4px -2px #0000001a;
+                --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            :is(.dark .tm-box-group)>:not([hidden])~:not([hidden]) {
+                --tw-divide-opacity: 1;
+                border-color: rgb(31 41 55/var(--tw-divide-opacity))
+            }
+
+            :is(.dark .tm-box-group) {
+                --tw-border-opacity: 1;
+                border-color: rgb(3 7 18/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(17 24 39/var(--tw-bg-opacity))
+            }
+
+            .tm-box-group-mobile>:not([hidden])~:not([hidden]) {
+                --tw-divide-y-reverse: 0;
+                border-top-width: calc(1px*(1 - var(--tw-divide-y-reverse)));
+                border-bottom-width: calc(1px*var(--tw-divide-y-reverse));
+                --tw-divide-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-divide-opacity))
+            }
+
+            .tm-box-group-mobile {
+                border-width: 1px;
+                --tw-border-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(255 255 255/var(--tw-bg-opacity))
+            }
+
+            :is(.dark .tm-box-group-mobile)>:not([hidden])~:not([hidden]) {
+                --tw-divide-opacity: 1;
+                border-color: rgb(31 41 55/var(--tw-divide-opacity))
+            }
+
+            :is(.dark .tm-box-group-mobile) {
+                --tw-border-opacity: 1;
+                border-color: rgb(3 7 18/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(17 24 39/var(--tw-bg-opacity))
+            }
+
+            .tm-waiting-load {
+                border-radius: .375rem;
+                background-color: #e5e7ebbf
+            }
+
+            :is(.dark .tm-waiting-load) {
+                background-color: #1f2937bf
+            }
+
+            .tm-card {
+                margin-left: auto;
+                margin-right: auto;
+                gap: .75rem;
+                border-radius: .375rem;
+                border-width: 1px;
+                --tw-border-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(255 255 255/var(--tw-bg-opacity));
+                --tw-shadow: 0 4px 6px -1px #0000001a,0 2px 4px -2px #0000001a;
+                --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            :is(.dark .tm-card) {
+                --tw-border-opacity: 1;
+                border-color: rgb(3 7 18/var(--tw-border-opacity));
+                background-color: #1f293780
+            }
+
+            .tm-input-group {
+                display: flex;
+                width: 100%;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center
+            }
+
+            .tm-input-group>:not([hidden])~:not([hidden]) {
+                --tw-divide-x-reverse: 0;
+                border-right-width: calc(1px*var(--tw-divide-x-reverse));
+                border-left-width: calc(1px*(1 - var(--tw-divide-x-reverse)));
+                --tw-divide-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-divide-opacity))
+            }
+
+            .tm-input-group {
+                border-radius: .375rem;
+                border-width: 1px;
+                --tw-border-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(249 250 251/var(--tw-bg-opacity));
+                --tw-shadow: 0 1px 2px 0 #0000000d;
+                --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            :is(.dark .tm-input-group)>:not([hidden])~:not([hidden]) {
+                --tw-divide-opacity: 1;
+                border-color: rgb(17 24 39/var(--tw-divide-opacity))
+            }
+
+            :is(.dark .tm-input-group) {
+                --tw-border-opacity: 1;
+                border-color: rgb(12 10 9/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(31 41 55/var(--tw-bg-opacity))
+            }
+
+            .tm-box-mobile-group>:not([hidden])~:not([hidden]) {
+                --tw-divide-y-reverse: 0;
+                border-top-width: calc(1px*(1 - var(--tw-divide-y-reverse)));
+                border-bottom-width: calc(1px*var(--tw-divide-y-reverse));
+                --tw-divide-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-divide-opacity))
+            }
+
+            .tm-box-mobile-group {
+                overflow-y: auto;
+                border-width: 1px;
+                --tw-border-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(255 255 255/var(--tw-bg-opacity));
+                --tw-shadow: 0 4px 6px -1px #0000001a,0 2px 4px -2px #0000001a;
+                --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            :is(.dark .tm-box-mobile-group)>:not([hidden])~:not([hidden]) {
+                --tw-divide-opacity: 1;
+                border-color: rgb(17 24 39/var(--tw-divide-opacity))
+            }
+
+            :is(.dark .tm-box-mobile-group) {
+                --tw-border-opacity: 1;
+                border-color: rgb(3 7 18/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(17 24 39/var(--tw-bg-opacity))
+            }
+
+            .tm-input {
+                cursor: pointer;
+                border-radius: .375rem;
+                border-width: 1px;
+                --tw-border-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(249 250 251/var(--tw-bg-opacity));
+                --tw-text-opacity: 1;
+                color: rgb(0 0 0/var(--tw-text-opacity))
+            }
+
+            .tm-input::-moz-placeholder {
+                --tw-text-opacity: 1;
+                color: rgb(148 163 184/var(--tw-text-opacity))
+            }
+
+            .tm-input::placeholder {
+                --tw-text-opacity: 1;
+                color: rgb(148 163 184/var(--tw-text-opacity))
+            }
+
+            .tm-input:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(229 231 235/var(--tw-bg-opacity))
+            }
+
+            .tm-input:focus {
+                background-color: initial
+            }
+
+            .tm-input:active,.tm-input:focus {
+                outline: 2px solid #0000;
+                outline-offset: 2px
+            }
+
+            :is(.dark .tm-input) {
+                --tw-border-opacity: 1;
+                border-color: rgb(12 10 9/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(31 41 55/var(--tw-bg-opacity));
+                --tw-text-opacity: 1;
+                color: rgb(248 250 252/var(--tw-text-opacity))
+            }
+
+            :is(.dark .tm-input)::-moz-placeholder {
+                --tw-text-opacity: 1;
+                color: rgb(226 232 240/var(--tw-text-opacity))
+            }
+
+            :is(.dark .tm-input)::placeholder {
+                --tw-text-opacity: 1;
+                color: rgb(226 232 240/var(--tw-text-opacity))
+            }
+
+            :is(.dark .tm-input:hover) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(55 65 81/var(--tw-bg-opacity))
+            }
+
+            .tm-input-form {
+                border-radius: .375rem;
+                border-width: 1px;
+                --tw-border-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(249 250 251/var(--tw-bg-opacity));
+                --tw-text-opacity: 1;
+                color: rgb(0 0 0/var(--tw-text-opacity))
+            }
+
+            .tm-input-form::-moz-placeholder {
+                background-color: initial;
+                --tw-text-opacity: 1;
+                color: rgb(148 163 184/var(--tw-text-opacity))
+            }
+
+            .tm-input-form::placeholder {
+                background-color: initial;
+                --tw-text-opacity: 1;
+                color: rgb(148 163 184/var(--tw-text-opacity))
+            }
+
+            .tm-input-form:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(229 231 235/var(--tw-bg-opacity))
+            }
+
+            .tm-input-form:focus {
+                background-color: initial
+            }
+
+            .tm-input-form:active,.tm-input-form:focus {
+                outline: 2px solid #0000;
+                outline-offset: 2px
+            }
+
+            :is(.dark .tm-input-form) {
+                --tw-border-opacity: 1;
+                border-color: rgb(12 10 9/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(31 41 55/var(--tw-bg-opacity));
+                --tw-text-opacity: 1;
+                color: rgb(248 250 252/var(--tw-text-opacity))
+            }
+
+            :is(.dark .tm-input-form)::-moz-placeholder {
+                --tw-text-opacity: 1;
+                color: rgb(226 232 240/var(--tw-text-opacity))
+            }
+
+            :is(.dark .tm-input-form)::placeholder {
+                --tw-text-opacity: 1;
+                color: rgb(226 232 240/var(--tw-text-opacity))
+            }
+
+            :is(.dark .tm-input-form:hover) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(55 65 81/var(--tw-bg-opacity))
+            }
+
+            .tm-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: .5rem;
+                overflow: hidden;
+                text-wrap: nowrap;
+                border-radius: .375rem;
+                border-width: 1px;
+                border-color: #0000;
+                --tw-bg-opacity: 1;
+                background-color: rgb(30 41 59/var(--tw-bg-opacity));
+                text-align: center;
+                --tw-text-opacity: 1;
+                color: rgb(255 255 255/var(--tw-text-opacity));
+                --tw-shadow: 0 1px 2px 0 #0000000d;
+                --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+                transition-property: all;
+                transition-timing-function: cubic-bezier(.4,0,.2,1);
+                transition-duration: .15s
+            }
+
+            .tm-btn,.tm-btn:hover {
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            .tm-btn:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(51 65 85/var(--tw-bg-opacity));
+                --tw-shadow: 0 10px 15px -3px #0000001a,0 4px 6px -4px #0000001a;
+                --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)
+            }
+
+            .tm-btn:active,.tm-btn:focus {
+                --tw-bg-opacity: 1;
+                background-color: rgb(51 65 85/var(--tw-bg-opacity));
+                --tw-shadow: 0 0 #0000;
+                --tw-shadow-colored: 0 0 #0000;
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            .tm-btn:disabled {
+                pointer-events: none;
+                opacity: .5
+            }
+
+            :is(.dark .tm-btn) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(29 78 216/var(--tw-bg-opacity))
+            }
+
+            :is(.dark .tm-btn:hover) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(59 130 246/var(--tw-bg-opacity))
+            }
+
+            .tm-btn-white {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: .5rem;
+                overflow: hidden;
+                text-wrap: nowrap;
+                border-radius: .375rem;
+                border-width: 1px;
+                border-color: #0000;
+                --tw-bg-opacity: 1;
+                background-color: rgb(255 255 255/var(--tw-bg-opacity));
+                text-align: center;
+                --tw-text-opacity: 1;
+                color: rgb(0 0 0/var(--tw-text-opacity));
+                --tw-shadow: 0 1px 2px 0 #0000000d;
+                --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+                transition-property: all;
+                transition-timing-function: cubic-bezier(.4,0,.2,1);
+                transition-duration: .15s
+            }
+
+            .tm-btn-white,.tm-btn-white:hover {
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            .tm-btn-white:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(226 232 240/var(--tw-bg-opacity));
+                --tw-shadow: 0 10px 15px -3px #0000001a,0 4px 6px -4px #0000001a;
+                --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)
+            }
+
+            .tm-btn-white:active {
+                --tw-shadow: 0 0 #0000;
+                --tw-shadow-colored: 0 0 #0000;
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            .tm-btn-white:disabled {
+                pointer-events: none;
+                opacity: .5
+            }
+
+            .tm-btn-danger {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: .5rem;
+                overflow: hidden;
+                text-wrap: nowrap;
+                border-radius: .375rem;
+                border-width: 1px;
+                border-color: #0000;
+                --tw-bg-opacity: 1;
+                background-color: rgb(220 38 38/var(--tw-bg-opacity));
+                text-align: center;
+                --tw-text-opacity: 1;
+                color: rgb(255 255 255/var(--tw-text-opacity));
+                --tw-shadow: 0 1px 2px 0 #0000000d;
+                --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+                transition-property: all;
+                transition-timing-function: cubic-bezier(.4,0,.2,1);
+                transition-duration: .15s
+            }
+
+            .tm-btn-danger,.tm-btn-danger:hover {
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            .tm-btn-danger:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(153 27 27/var(--tw-bg-opacity));
+                --tw-shadow: 0 10px 15px -3px #0000001a,0 4px 6px -4px #0000001a;
+                --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)
+            }
+
+            .tm-btn-danger:active {
+                --tw-shadow: 0 0 #0000;
+                --tw-shadow-colored: 0 0 #0000;
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            .tm-btn-danger:disabled {
+                pointer-events: none;
+                opacity: .5
+            }
+
+            .tm-box-mobile {
+                gap: .75rem;
+                overflow-y: auto;
+                border-width: 1px;
+                --tw-border-opacity: 1;
+                border-color: rgb(226 232 240/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(255 255 255/var(--tw-bg-opacity))
+            }
+
+            :is(.dark .tm-box-mobile) {
+                --tw-border-opacity: 1;
+                border-color: rgb(3 7 18/var(--tw-border-opacity));
+                --tw-bg-opacity: 1;
+                background-color: rgb(17 24 39/var(--tw-bg-opacity))
+            }
+
+            .tm-box-mobile.gap-0 {
+                gap: 0!important
+            }
+
+            .table-auto td,.table-auto th {
+                padding-left: 5px;
+                padding-right: 5px
+            }
+
+            :is(.dark .dark\:prose-invert) {
+                --tw-prose-body: var(--tw-prose-invert-body);
+                --tw-prose-headings: var(--tw-prose-invert-headings);
+                --tw-prose-lead: var(--tw-prose-invert-lead);
+                --tw-prose-links: var(--tw-prose-invert-links);
+                --tw-prose-bold: var(--tw-prose-invert-bold);
+                --tw-prose-counters: var(--tw-prose-invert-counters);
+                --tw-prose-bullets: var(--tw-prose-invert-bullets);
+                --tw-prose-hr: var(--tw-prose-invert-hr);
+                --tw-prose-quotes: var(--tw-prose-invert-quotes);
+                --tw-prose-quote-borders: var(--tw-prose-invert-quote-borders);
+                --tw-prose-captions: var(--tw-prose-invert-captions);
+                --tw-prose-kbd: var(--tw-prose-invert-kbd);
+                --tw-prose-kbd-shadows: var(--tw-prose-invert-kbd-shadows);
+                --tw-prose-code: var(--tw-prose-invert-code);
+                --tw-prose-pre-code: var(--tw-prose-invert-pre-code);
+                --tw-prose-pre-bg: var(--tw-prose-invert-pre-bg);
+                --tw-prose-th-borders: var(--tw-prose-invert-th-borders);
+                --tw-prose-td-borders: var(--tw-prose-invert-td-borders)
+            }
+
+            @media (min-width: 1280px) {
+                .xl\:container {
+                    width:100%
+                }
+
+                @media (min-width: 640px) {
+                    .xl\:container {
+                        max-width:640px
+                    }
+                }
+
+                @media (min-width: 768px) {
+                    .xl\:container {
+                        max-width:768px
+                    }
+                }
+
+                @media (min-width: 1024px) {
+                    .xl\:container {
+                        max-width:1024px
+                    }
+                }
+
+                @media (min-width: 1280px) {
+                    .xl\:container {
+                        max-width:1280px
+                    }
+                }
+
+                @media (min-width: 1536px) {
+                    .xl\:container {
+                        max-width:1536px
+                    }
+                }
+            }
+
+            .last\:rounded-b-md:last-child {
+                border-bottom-right-radius: .375rem;
+                border-bottom-left-radius: .375rem
+            }
+
+            .last\:border-b-0:last-child {
+                border-bottom-width: 0
+            }
+
+            .hover\:bg-indigo-800:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(55 48 163/var(--tw-bg-opacity))
+            }
+
+            .hover\:bg-slate-200:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(226 232 240/var(--tw-bg-opacity))
+            }
+
+            .hover\:bg-slate-700:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(51 65 85/var(--tw-bg-opacity))
+            }
+
+            .hover\:text-blue-500:hover {
+                --tw-text-opacity: 1;
+                color: rgb(59 130 246/var(--tw-text-opacity))
+            }
+
+            .hover\:text-white:hover {
+                --tw-text-opacity: 1;
+                color: rgb(255 255 255/var(--tw-text-opacity))
+            }
+
+            .hover\:underline:hover {
+                text-decoration-line: underline
+            }
+
+            .hover\:opacity-100:hover {
+                opacity: 1
+            }
+
+            .hover\:shadow-lg:hover {
+                --tw-shadow: 0 10px 15px -3px #0000001a,0 4px 6px -4px #0000001a;
+                --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+            }
+
+            .focus\:border-blue-500:focus {
+                --tw-border-opacity: 1;
+                border-color: rgb(59 130 246/var(--tw-border-opacity))
+            }
+
+            .focus\:ring-blue-500:focus {
+                --tw-ring-opacity: 1;
+                --tw-ring-color: rgb(59 130 246/var(--tw-ring-opacity))
+            }
+
+            .disabled\:pointer-events-none:disabled {
+                pointer-events: none
+            }
+
+            .disabled\:cursor-progress:disabled {
+                cursor: progress
+            }
+
+            .group[open] .group-open\:opacity-0 {
+                opacity: 0
+            }
+
+            .group[open] .group-open\:opacity-100 {
+                opacity: 1
+            }
+
+            :is(.dark .dark\:translate-x-9) {
+                --tw-translate-x: 2.25rem;
+                transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+            }
+
+            :is(.dark .dark\:divide-gray-800)>:not([hidden])~:not([hidden]) {
+                --tw-divide-opacity: 1;
+                border-color: rgb(31 41 55/var(--tw-divide-opacity))
+            }
+
+            :is(.dark .dark\:divide-gray-950)>:not([hidden])~:not([hidden]) {
+                --tw-divide-opacity: 1;
+                border-color: rgb(3 7 18/var(--tw-divide-opacity))
+            }
+
+            :is(.dark .dark\:border-gray-800) {
+                --tw-border-opacity: 1;
+                border-color: rgb(31 41 55/var(--tw-border-opacity))
+            }
+
+            :is(.dark .dark\:border-slate-800\/50) {
+                border-color: #1e293b80
+            }
+
+            :is(.dark .dark\:border-stone-950) {
+                --tw-border-opacity: 1;
+                border-color: rgb(12 10 9/var(--tw-border-opacity))
+            }
+
+            :is(.dark .dark\:border-b-slate-700\/50) {
+                border-bottom-color: #33415580
+            }
+
+            :is(.dark .dark\:border-b-slate-800\/50) {
+                border-bottom-color: #1e293b80
+            }
+
+            :is(.dark .dark\:border-t-black\/50) {
+                border-top-color: #00000080
+            }
+
+            :is(.dark .dark\:bg-gray-700) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(55 65 81/var(--tw-bg-opacity))
+            }
+
+            :is(.dark .dark\:bg-gray-800) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(31 41 55/var(--tw-bg-opacity))
+            }
+
+            :is(.dark .dark\:bg-gray-800\/50) {
+                background-color: #1f293780
+            }
+
+            :is(.dark .dark\:bg-gray-900) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(17 24 39/var(--tw-bg-opacity))
+            }
+
+            :is(.dark .dark\:bg-gray-900\/75) {
+                background-color: #111827bf
+            }
+
+            :is(.dark .dark\:bg-gray-950) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(3 7 18/var(--tw-bg-opacity))
+            }
+
+            :is(.dark .dark\:bg-slate-950) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(2 6 23/var(--tw-bg-opacity))
+            }
+
+            :is(.dark .dark\:from-slate-900) {
+                --tw-gradient-from: #0f172a var(--tw-gradient-from-position);
+                --tw-gradient-to: #0f172a00 var(--tw-gradient-to-position);
+                --tw-gradient-stops: var(--tw-gradient-from),var(--tw-gradient-to)
+            }
+
+            :is(.dark .dark\:pl-2) {
+                padding-left: .5rem
+            }
+
+            :is(.dark .dark\:text-left) {
+                text-align: left
+            }
+
+            :is(.dark .dark\:text-blue-200) {
+                --tw-text-opacity: 1;
+                color: rgb(191 219 254/var(--tw-text-opacity))
+            }
+
+            :is(.dark .dark\:text-blue-300) {
+                --tw-text-opacity: 1;
+                color: rgb(147 197 253/var(--tw-text-opacity))
+            }
+
+            :is(.dark .dark\:text-gray-200\/75) {
+                color: #e5e7ebbf
+            }
+
+            :is(.dark .dark\:text-gray-400) {
+                --tw-text-opacity: 1;
+                color: rgb(156 163 175/var(--tw-text-opacity))
+            }
+
+            :is(.dark .dark\:text-gray-50) {
+                --tw-text-opacity: 1;
+                color: rgb(249 250 251/var(--tw-text-opacity))
+            }
+
+            :is(.dark .dark\:text-lime-500) {
+                --tw-text-opacity: 1;
+                color: rgb(132 204 22/var(--tw-text-opacity))
+            }
+
+            :is(.dark .dark\:text-sky-50) {
+                --tw-text-opacity: 1;
+                color: rgb(240 249 255/var(--tw-text-opacity))
+            }
+
+            :is(.dark .dark\:text-slate-300) {
+                --tw-text-opacity: 1;
+                color: rgb(203 213 225/var(--tw-text-opacity))
+            }
+
+            :is(.dark .dark\:text-slate-400) {
+                --tw-text-opacity: 1;
+                color: rgb(148 163 184/var(--tw-text-opacity))
+            }
+
+            :is(.dark .dark\:text-white) {
+                --tw-text-opacity: 1;
+                color: rgb(255 255 255/var(--tw-text-opacity))
+            }
+
+            :is(.dark .dark\:text-yellow-500) {
+                --tw-text-opacity: 1;
+                color: rgb(234 179 8/var(--tw-text-opacity))
+            }
+
+            :is(.dark .dark\:placeholder-gray-400)::-moz-placeholder {
+                --tw-placeholder-opacity: 1;
+                color: rgb(156 163 175/var(--tw-placeholder-opacity))
+            }
+
+            :is(.dark .dark\:placeholder-gray-400)::placeholder {
+                --tw-placeholder-opacity: 1;
+                color: rgb(156 163 175/var(--tw-placeholder-opacity))
+            }
+
+            :is(.dark .dark\:hover\:bg-gray-700:hover) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(55 65 81/var(--tw-bg-opacity))
+            }
+
+            :is(.dark .dark\:hover\:bg-slate-700:hover) {
+                --tw-bg-opacity: 1;
+                background-color: rgb(51 65 85/var(--tw-bg-opacity))
+            }
+
+            :is(.dark .dark\:hover\:text-lime-500:hover) {
+                --tw-text-opacity: 1;
+                color: rgb(132 204 22/var(--tw-text-opacity))
+            }
+
+            :is(.dark .dark\:focus\:border-blue-500:focus) {
+                --tw-border-opacity: 1;
+                border-color: rgb(59 130 246/var(--tw-border-opacity))
+            }
+
+            :is(.dark .dark\:focus\:ring-blue-500:focus) {
+                --tw-ring-opacity: 1;
+                --tw-ring-color: rgb(59 130 246/var(--tw-ring-opacity))
+            }
+
+            @media (min-width: 640px) {
+                .sm\:mb-8 {
+                    margin-bottom:2rem
+                }
+
+                .sm\:block {
+                    display: block
+                }
+
+                .sm\:size-\[210px\] {
+                    width: 210px;
+                    height: 210px
+                }
+
+                .sm\:max-w-\[350px\] {
+                    max-width: 350px
+                }
+
+                .sm\:max-w-\[500px\] {
+                    max-width: 500px
+                }
+
+                .sm\:grid-cols-2 {
+                    grid-template-columns: repeat(2,minmax(0,1fr))
+                }
+
+                .sm\:gap-0 {
+                    gap: 0
+                }
+
+                .sm\:py-16 {
+                    padding-top: 4rem;
+                    padding-bottom: 4rem
+                }
+
+                .sm\:text-3xl {
+                    font-size: 1.875rem;
+                    line-height: 2.25rem
+                }
+            }
+
+            @media (min-width: 768px) {
+                .md\:absolute {
+                    position:absolute
+                }
+
+                .md\:left-0 {
+                    left: 0
+                }
+
+                .md\:order-1 {
+                    order: 1
+                }
+
+                .md\:order-2 {
+                    order: 2
+                }
+
+                .md\:mt-8 {
+                    margin-top: 2rem
+                }
+
+                .md\:flex {
+                    display: flex
+                }
+
+                .md\:hidden {
+                    display: none
+                }
+
+                .md\:w-\[400px\] {
+                    width: 400px
+                }
+
+                .md\:w-full {
+                    width: 100%
+                }
+
+                .md\:max-w-\[500px\] {
+                    max-width: 500px
+                }
+
+                .md\:max-w-\[520px\] {
+                    max-width: 520px
+                }
+
+                .md\:grid-cols-2 {
+                    grid-template-columns: repeat(2,minmax(0,1fr))
+                }
+
+                .md\:grid-cols-4 {
+                    grid-template-columns: repeat(4,minmax(0,1fr))
+                }
+
+                .md\:flex-row {
+                    flex-direction: row
+                }
+
+                .md\:items-center {
+                    align-items: center
+                }
+
+                .md\:gap-10 {
+                    gap: 2.5rem
+                }
+
+                .md\:rounded-md {
+                    border-radius: .375rem
+                }
+
+                .md\:border {
+                    border-width: 1px
+                }
+
+                .md\:bg-white {
+                    --tw-bg-opacity: 1;
+                    background-color: rgb(255 255 255/var(--tw-bg-opacity))
+                }
+
+                .md\:px-2 {
+                    padding-left: .5rem;
+                    padding-right: .5rem
+                }
+
+                .md\:px-4 {
+                    padding-left: 1rem;
+                    padding-right: 1rem
+                }
+
+                .md\:py-0 {
+                    padding-top: 0;
+                    padding-bottom: 0
+                }
+
+                .md\:py-2 {
+                    padding-top: .5rem;
+                    padding-bottom: .5rem
+                }
+
+                .md\:py-5 {
+                    padding-top: 1.25rem;
+                    padding-bottom: 1.25rem
+                }
+
+                .md\:text-center {
+                    text-align: center
+                }
+
+                .md\:text-sm {
+                    font-size: .875rem;
+                    line-height: 1.25rem
+                }
+
+                .md\:text-xl {
+                    font-size: 1.25rem;
+                    line-height: 1.75rem
+                }
+
+                .md\:leading-10 {
+                    line-height: 2.5rem
+                }
+
+                .md\:shadow-lg {
+                    --tw-shadow: 0 10px 15px -3px #0000001a,0 4px 6px -4px #0000001a;
+                    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color);
+                    box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+                }
+
+                :is(.dark .dark\:md\:border-gray-800) {
+                    --tw-border-opacity: 1;
+                    border-color: rgb(31 41 55/var(--tw-border-opacity))
+                }
+
+                :is(.dark .dark\:md\:bg-gray-900) {
+                    --tw-bg-opacity: 1;
+                    background-color: rgb(17 24 39/var(--tw-bg-opacity))
+                }
+            }
+
+            @media (min-width: 1024px) {
+                .lg\:flex {
+                    display:flex
+                }
+
+                .lg\:size-\[210px\] {
+                    width: 210px;
+                    height: 210px
+                }
+
+                .lg\:grid-cols-4 {
+                    grid-template-columns: repeat(4,minmax(0,1fr))
+                }
+
+                .lg\:flex-row {
+                    flex-direction: row
+                }
+            }
+
+            @media (min-width: 1280px) {
+                .xl\:flex {
+                    display:flex
+                }
+
+                .xl\:max-w-\[900px\] {
+                    max-width: 900px
+                }
+            }
+        </style>
+        <meta name="title" content="Free Temp Mail - Disposable Email for OTPs & Sign-Ups">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+        <meta property="og:title" content="Free Temp Mail - Disposable Email for OTPs & Sign-Ups">
+        <meta property="og:description" content="Generate a free temp mail address instantly. Use disposable email for OTPs, sign-ups, and spam protection. No sign-up, 24-hour inbox, token reuse.">
+        <meta property="og:image" content="https://tmailor.com/blog/img/news/cache/w1200/3bcf5655137c9ca99e09afa2a87009a7.jpg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="685">
+        <meta property="og:url" content="https://tmailor.com/">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="TMailor.com">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Free Temp Mail - Disposable Email for OTPs & Sign-Ups">
+        <meta name="twitter:description" content="Generate a free temp mail address instantly. Use disposable email for OTPs, sign-ups, and spam protection. No sign-up, 24-hour inbox, token reuse.">
+        <meta name="twitter:image" content="https://tmailor.com/blog/img/news/cache/w1200/3bcf5655137c9ca99e09afa2a87009a7.jpg">
+        <meta name="twitter:image:alt" content="Free Temp Mail - Disposable Email for OTPs & Sign-Ups">
+        <meta name="description" content="Generate a free temp mail address instantly. Use disposable email for OTPs, sign-ups, and spam protection. No sign-up, 24-hour inbox, token reuse.">
+        <meta name="author" content="TMailor.com">
+        <meta name="google-play-app" content="app-id=mobile.tmailor.com">
+        <meta name="apple-itunes-app" content="app-id=1659587742, app-argument=https://apps.apple.com/us/app/temp-mail-by-tmailor-com/id1659587742">
+        <meta property="al:web:url" content="https://tmailor.com">
+        <meta property="al:ios:url" content="https://apps.apple.com/us/app/temp-mail-by-tmailor-com/id1659587742">
+        <meta property="al:ios:app_store_id" content="1659587742">
+        <meta property="al:ios:app_name" content="Temp Mail by tmailor.com">
+        <meta property="al:android:url" content="https://play.google.com/store/apps/details?id=mobile.tmailor.com">
+        <meta property="al:android:app_name" content="Temp Mail by tmailor.com">
+        <meta property="al:android:package" content="mobile.tmailor.com">
+        <link rel="canonical" href="https://tmailor.com/">
+        <link rel="manifest" href="/manifest.json">
+        <link rel="icon" href="/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <meta name="application-name" content="TMailor.com">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="TMailor.com">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <link rel="alternate" hreflang="x-default" href="https://tmailor.com/">
+        <link rel="alternate" hreflang="af" href="https://tmailor.com/af/">
+        <link rel="alternate" hreflang="sq" href="https://tmailor.com/sq/">
+        <link rel="alternate" hreflang="am" href="https://tmailor.com/am/">
+        <link rel="alternate" hreflang="ar" href="https://tmailor.com/ar/">
+        <link rel="alternate" hreflang="hy" href="https://tmailor.com/hy/">
+        <link rel="alternate" hreflang="as" href="https://tmailor.com/as/">
+        <link rel="alternate" hreflang="az" href="https://tmailor.com/az/">
+        <link rel="alternate" hreflang="bn" href="https://tmailor.com/bn/">
+        <link rel="alternate" hreflang="ba" href="https://tmailor.com/ba/">
+        <link rel="alternate" hreflang="eu" href="https://tmailor.com/eu/">
+        <link rel="alternate" hreflang="bs" href="https://tmailor.com/bs/">
+        <link rel="alternate" hreflang="bg" href="https://tmailor.com/bg/">
+        <link rel="alternate" hreflang="ca" href="https://tmailor.com/ca/">
+        <link rel="alternate" hreflang="zh-Hans" href="https://tmailor.com/zh-Hans/">
+        <link rel="alternate" hreflang="zh-Hant" href="https://tmailor.com/zh-Hant/">
+        <link rel="alternate" hreflang="hr" href="https://tmailor.com/hr/">
+        <link rel="alternate" hreflang="cs" href="https://tmailor.com/cs/">
+        <link rel="alternate" hreflang="da" href="https://tmailor.com/da/">
+        <link rel="alternate" hreflang="dv" href="https://tmailor.com/dv/">
+        <link rel="alternate" hreflang="nl" href="https://tmailor.com/nl/">
+        <link rel="alternate" hreflang="en" href="https://tmailor.com/">
+        <link rel="alternate" hreflang="et" href="https://tmailor.com/et/">
+        <link rel="alternate" hreflang="fo" href="https://tmailor.com/fo/">
+        <link rel="alternate" hreflang="fj" href="https://tmailor.com/fj/">
+        <link rel="alternate" hreflang="fi" href="https://tmailor.com/fi/">
+        <link rel="alternate" hreflang="fr" href="https://tmailor.com/fr/">
+        <link rel="alternate" hreflang="fr-CA" href="https://tmailor.com/fr-CA/">
+        <link rel="alternate" hreflang="gl" href="https://tmailor.com/gl/">
+        <link rel="alternate" hreflang="ka" href="https://tmailor.com/ka/">
+        <link rel="alternate" hreflang="de" href="https://tmailor.com/de/">
+        <link rel="alternate" hreflang="el" href="https://tmailor.com/el/">
+        <link rel="alternate" hreflang="gu" href="https://tmailor.com/gu/">
+        <link rel="alternate" hreflang="ht" href="https://tmailor.com/ht/">
+        <link rel="alternate" hreflang="he" href="https://tmailor.com/he/">
+        <link rel="alternate" hreflang="hi" href="https://tmailor.com/hi/">
+        <link rel="alternate" hreflang="hu" href="https://tmailor.com/hu/">
+        <link rel="alternate" hreflang="is" href="https://tmailor.com/is/">
+        <link rel="alternate" hreflang="id" href="https://tmailor.com/id/">
+        <link rel="alternate" hreflang="iu" href="https://tmailor.com/iu/">
+        <link rel="alternate" hreflang="ga" href="https://tmailor.com/ga/">
+        <link rel="alternate" hreflang="it" href="https://tmailor.com/it/">
+        <link rel="alternate" hreflang="ja" href="https://tmailor.com/ja/">
+        <link rel="alternate" hreflang="kn" href="https://tmailor.com/kn/">
+        <link rel="alternate" hreflang="kk" href="https://tmailor.com/kk/">
+        <link rel="alternate" hreflang="km" href="https://tmailor.com/km/">
+        <link rel="alternate" hreflang="ko" href="https://tmailor.com/ko/">
+        <link rel="alternate" hreflang="ku" href="https://tmailor.com/ku/">
+        <link rel="alternate" hreflang="ky" href="https://tmailor.com/ky/">
+        <link rel="alternate" hreflang="lo" href="https://tmailor.com/lo/">
+        <link rel="alternate" hreflang="lv" href="https://tmailor.com/lv/">
+        <link rel="alternate" hreflang="lt" href="https://tmailor.com/lt/">
+        <link rel="alternate" hreflang="mk" href="https://tmailor.com/mk/">
+        <link rel="alternate" hreflang="mg" href="https://tmailor.com/mg/">
+        <link rel="alternate" hreflang="ms" href="https://tmailor.com/ms/">
+        <link rel="alternate" hreflang="ml" href="https://tmailor.com/ml/">
+        <link rel="alternate" hreflang="mt" href="https://tmailor.com/mt/">
+        <link rel="alternate" hreflang="mr" href="https://tmailor.com/mr/">
+        <link rel="alternate" hreflang="mn" href="https://tmailor.com/mn-Mong/">
+        <link rel="alternate" hreflang="my" href="https://tmailor.com/my/">
+        <link rel="alternate" hreflang="mi" href="https://tmailor.com/mi/">
+        <link rel="alternate" hreflang="ne" href="https://tmailor.com/ne/">
+        <link rel="alternate" hreflang="nb" href="https://tmailor.com/nb/">
+        <link rel="alternate" hreflang="or" href="https://tmailor.com/or/">
+        <link rel="alternate" hreflang="ps" href="https://tmailor.com/ps/">
+        <link rel="alternate" hreflang="fa" href="https://tmailor.com/fa/">
+        <link rel="alternate" hreflang="pl" href="https://tmailor.com/pl/">
+        <link rel="alternate" hreflang="pt" href="https://tmailor.com/pt/">
+        <link rel="alternate" hreflang="pt-PT" href="https://tmailor.com/pt-PT/">
+        <link rel="alternate" hreflang="pa" href="https://tmailor.com/pa/">
+        <link rel="alternate" hreflang="ro" href="https://tmailor.com/ro/">
+        <link rel="alternate" hreflang="ru" href="https://tmailor.com/ru/">
+        <link rel="alternate" hreflang="sm" href="https://tmailor.com/sm/">
+        <link rel="alternate" hreflang="sr" href="https://tmailor.com/sr-Latn/">
+        <link rel="alternate" hreflang="sk" href="https://tmailor.com/sk/">
+        <link rel="alternate" hreflang="sl" href="https://tmailor.com/sl/">
+        <link rel="alternate" hreflang="so" href="https://tmailor.com/so/">
+        <link rel="alternate" hreflang="es" href="https://tmailor.com/es/">
+        <link rel="alternate" hreflang="sw" href="https://tmailor.com/sw/">
+        <link rel="alternate" hreflang="sv" href="https://tmailor.com/sv/">
+        <link rel="alternate" hreflang="ty" href="https://tmailor.com/ty/">
+        <link rel="alternate" hreflang="ta" href="https://tmailor.com/ta/">
+        <link rel="alternate" hreflang="tt" href="https://tmailor.com/tt/">
+        <link rel="alternate" hreflang="te" href="https://tmailor.com/te/">
+        <link rel="alternate" hreflang="th" href="https://tmailor.com/th/">
+        <link rel="alternate" hreflang="bo" href="https://tmailor.com/bo/">
+        <link rel="alternate" hreflang="ti" href="https://tmailor.com/ti/">
+        <link rel="alternate" hreflang="to" href="https://tmailor.com/to/">
+        <link rel="alternate" hreflang="tr" href="https://tmailor.com/tr/">
+        <link rel="alternate" hreflang="tk" href="https://tmailor.com/tk/">
+        <link rel="alternate" hreflang="uk" href="https://tmailor.com/uk/">
+        <link rel="alternate" hreflang="ur" href="https://tmailor.com/ur/">
+        <link rel="alternate" hreflang="ug" href="https://tmailor.com/ug/">
+        <link rel="alternate" hreflang="uz" href="https://tmailor.com/uz/">
+        <link rel="alternate" hreflang="vi" href="https://tmailor.com/vi/">
+        <link rel="alternate" hreflang="cy" href="https://tmailor.com/cy/">
+        <link rel="alternate" hreflang="zu" href="https://tmailor.com/zu/">
+        <script data-cfasync="false">
+            const web_link = "https://tmailor.com";
+            const web_socket = "https://wss.tmailor.com";
+            const web_graph = "https://tmailor.com/api";
+            const web_login_api = "https://console.tmailor.com/en/member/api";
+            const web_member = "https://console.tmailor.com/en/member";
+            const userlanguage = "en";
+            const cloudflare_captcha_sitekey = "0x4AAAAAABDfMA9o5Vo4ueRq";
+            const web_checktoken = "https://tmailor.com/reuse-temp-mail-address";
+            var currentPage = "home-page";
+            const swid = "md5";
+            const langs = {
+                "title_error": "Error",
+                "title_success": "Success",
+                "copied": "Copied",
+                "cancel": "Cancel",
+                "confirm": "Confirm",
+                "view_email": "View Email",
+                "loading": "Loading data, please wait a moment",
+                "login": "Sign in",
+                "default_domain_name": "Use Default Domain",
+                "delema": "Want to delete this mail?",
+                "captcha_error": "Please verify that you are not a robot.",
+                "error_token": "Invalid access token.",
+                "newemail_complete_desc": "Email address created successfully",
+                "backemail_complete_desc": "Welcome back",
+                "firewall_fast": "We detected that you are performing the operation too fast, please confirm you are not a robot.",
+                "invalid_token": "Invalid Token",
+                "exp_token": "Expired token",
+                "wsLostConnect": "Lost connection to server",
+                "wsConnecting": "Connecting to a server",
+                "wsWaitEmail": "Waiting for incoming emails",
+                "newEmailReceived": "You have just received a new email",
+                "serverError": "An error occurred on the server. Please try again later",
+                "notibox_title": "Don't Miss Important Emails",
+                "notibox_msg": "Allow notifications to receive new emails within seconds.",
+                "notibox_allow": "Allow Notifications",
+                "adsblock_title": "Detect blocked ads!",
+                "lang_suggest_title": "Switch language?",
+                "lang_suggest_desc": "Your browser prefers",
+                "lang_suggest_dismiss": "Dismiss",
+                "lang_suggest_no": "No thanks",
+                "lang_suggest_yes": "Switch to"
+            };
+            const mobiedataads = {
+                "h2": "Use the app on your phone to get priority:",
+                "ul": ["Get email addresses with more domains.", "Fewer restrictions on creating email addresses", "LESS need to authenticate robots"]
+            };
+        </script>
+        <script defer src="https://tmailor.com/js/pc/defer/home-page.34370d324e6052ae4c349b9e29eb8b6a.js"></script>
+        <script data-cfasync="false" nonce="08d06801-c68e-49ba-a241-e89c256e09c5">
+            try {
+                (function(w, d) {
+                    !function(bH, bI, bJ, bK) {
+                        if (bH.zaraz)
+                            console.error("zaraz is loaded twice");
+                        else {
+                            bH[bJ] = bH[bJ] || {};
+                            bH[bJ].executed = [];
+                            bH.zaraz = {
+                                deferred: [],
+                                listeners: []
+                            };
+                            bH.zaraz._v = "5876";
+                            bH.zaraz._n = "08d06801-c68e-49ba-a241-e89c256e09c5";
+                            bH.zaraz.q = [];
+                            bH.zaraz._f = function(bL) {
+                                return async function() {
+                                    var bM = Array.prototype.slice.call(arguments);
+                                    bH.zaraz.q.push({
+                                        m: bL,
+                                        a: bM
+                                    })
+                                }
+                            }
+                            ;
+                            for (const bN of ["track", "set", "debug"])
+                                bH.zaraz[bN] = bH.zaraz._f(bN);
+                            bH.zaraz.init = ()=>{
+                                var bO = bI.getElementsByTagName(bK)[0]
+                                  , bP = bI.createElement(bK)
+                                  , bQ = bI.getElementsByTagName("title")[0];
+                                bQ && (bH[bJ].t = bI.getElementsByTagName("title")[0].text);
+                                bH[bJ].x = Math.random();
+                                bH[bJ].w = bH.screen.width;
+                                bH[bJ].h = bH.screen.height;
+                                bH[bJ].j = bH.innerHeight;
+                                bH[bJ].e = bH.innerWidth;
+                                bH[bJ].l = bH.location.href;
+                                bH[bJ].r = bI.referrer;
+                                bH[bJ].k = bH.screen.colorDepth;
+                                bH[bJ].n = bI.characterSet;
+                                bH[bJ].o = (new Date).getTimezoneOffset();
+                                if (bH.dataLayer)
+                                    for (const bR of Object.entries(Object.entries(dataLayer).reduce((bS,bT)=>({
+                                        ...bS[1],
+                                        ...bT[1]
+                                    }), {})))
+                                        zaraz.set(bR[0], bR[1], {
+                                            scope: "page"
+                                        });
+                                bH[bJ].q = [];
+                                for (; bH.zaraz.q.length; ) {
+                                    const bU = bH.zaraz.q.shift();
+                                    bH[bJ].q.push(bU)
+                                }
+                                bP.defer = !0;
+                                for (const bV of [localStorage, sessionStorage])
+                                    Object.keys(bV || {}).filter(bX=>bX.startsWith("_zaraz_")).forEach(bW=>{
+                                        try {
+                                            bH[bJ]["z_" + bW.slice(7)] = JSON.parse(bV.getItem(bW))
+                                        } catch {
+                                            bH[bJ]["z_" + bW.slice(7)] = bV.getItem(bW)
+                                        }
+                                    }
+                                    );
+                                bP.referrerPolicy = "origin";
+                                bP.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(bH[bJ])));
+                                bO.parentNode.insertBefore(bP, bO)
+                            }
+                            ;
+                            ["complete", "interactive"].includes(bI.readyState) ? zaraz.init() : bH.addEventListener("DOMContentLoaded", zaraz.init)
+                        }
+                    }(w, d, "zarazData", "script");
+                    window.zaraz._p = async bc=>new Promise(bd=>{
+                        if (bc) {
+                            bc.e && bc.e.forEach(be=>{
+                                try {
+                                    const bf = d.querySelector("script[nonce]")
+                                      , bg = bf?.nonce || bf?.getAttribute("nonce")
+                                      , bh = d.createElement("script");
+                                    bg && (bh.nonce = bg);
+                                    bh.innerHTML = be;
+                                    bh.onload = ()=>{
+                                        d.head.removeChild(bh)
+                                    }
+                                    ;
+                                    d.head.appendChild(bh)
+                                } catch (bi) {
+                                    console.error(`Error executing script: ${be}\n`, bi)
+                                }
+                            }
+                            );
+                            Promise.allSettled((bc.f || []).map(bj=>fetch(bj[0], bj[1])))
+                        }
+                        bd()
+                    }
+                    );
+                    zaraz._p({
+                        "e": ["(function(w,d){})(window,document)"]
+                    });
+                }
+                )(window, document)
+            } catch (e) {
+                throw fetch("/cdn-cgi/zaraz/t"),
+                e;
+            }
+            ;</script>
+    </head>
+    <body class="text-black bg-gray-50 dark:bg-gray-950 dark:text-white overflow-y-scroll">
+        <header class="dark:bg-gray-900/75 border-b border-b-stone-200 dark:border-b-slate-800/50 py-3">
+            <div class="xl:container mx-auto flex flex-row items-center px-2 md:px-4 h-12 gap-4 justify-between relative">
+                <div class="flex gap-x-4 items-center ">
+                    <button aria-label="Toggle Menu" aria-haspopup="true" aria-expanded="false" type="button" class="tm-btn size-10 group md:hidden " onclick="toggleMenuMobile(this);">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 opacity-100 group-open:opacity-0 absolute inset-y inset-x">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 opacity-0 group-open:opacity-100 absolute inset-y inset-x">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                    <a href="./" class="text-lg flex items-center text-xl uppercase h-10" title="Temp mail - tmailor.com">
+                        <span class="text-blue-600 dark:text-blue-300">Tmailor</span>
+                        <span class="text-sky-950 dark:text-sky-50 ">.com</span>
+                    </a>
+                </div>
+                <nav id="navPC" class="flex-1 hidden md:flex flex-col md:flex-row px-0 md:px-4 w-full gap-2 ">
+                    <ul class="flex flex-col md:flex-row md:w-full md:items-center gap-3">
+                        <li class="relative">
+                            <button aria-label="Features" class="flex items-center gap-2 dark:text-gray-50 hover:text-blue-500 dark:hover:text-lime-500 h-12 px-4" onclick="togglenavbar(this)">
+                                Features
+ 
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" height="15" width="15" class="icon-arrow">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+                                </svg>
+                            </button>
+                            <ul class="hidden md:absolute z-30 w-full md:w-[400px] z-10 md:left-0 origin-top-left px-5 md:py-5 md:bg-white dark:md:bg-gray-900 md:rounded-md md:shadow-lg md:border dark:md:border-gray-800 flex flex-col gap-2 divide-y divide-slate-200 dark:divide-gray-800" aria-expanded="false" role="menu">
+                                <li>
+                                    <a href="./reuse-temp-mail-address" class="menu-link" role="menuitem" title="Reuse temp mail address">Reuse temp mail address</a>
+                                </li>
+                                <li>
+                                    <a href="./10-minute-mail" class="menu-link" role="menuitem" title="10 Minute Mail">10 Minute Mail</a>
+                                </li>
+                                <li>
+                                    <a href="./temp-mail" class="menu-link" role="menuitem" title="Temp Mail">Temp Mail</a>
+                                </li>
+                                <li>
+                                    <a href="./temp-mail-custom-private-domain" class="menu-link" role="menuitem" title="Use a Custom Domain for Private and Disposable Temp Mail">Custom Private Domain</a>
+                                </li>
+                                <li>
+                                    <a href="./temp-mail-on-telegram-bot" class="menu-link" role="menuitem" title="Generate a temp email with our Telegram bot">Create a temp email on Telegram</a>
+                                </li>
+                                <li>
+                                    <a href="./temp-mail-on-mobile-android-and-ios" class="menu-link" role="menuitem" title="Get Temporary Email Instantly on Android or iOS">Mobile Temp Mail Apps</a>
+                                </li>
+                                <li>
+                                    <a href="./faq.html" class="menu-link" role="menuitem" title="Frequently Asked Questions">Frequently Asked Questions</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="./blog" title="Temp Mail Blog - Guides, Tips & Email Privacy Insights" class="flex items-center dark:text-gray-50 hover:text-blue-500 dark:hover:text-lime-500 h-12 px-4">
+                                <span>Blog</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div id="navbarMember" class="text-end">
+                    <template id="lazyhtmlNoLogin">
+                        <a class="no-login gap-2 px-4 h-10 tm-btn" title="Sign in" href="./member/login.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd"/>
+                            </svg>
+                            Sign in
+ 
+                        </a>
+                    </template>
+                    <template id="lazyhtmlLogined">
+                        <a href="https://console.tmailor.com/" title="Dashboard" class="logined rounded-full w-10 h-10 flex items-center overflow-hidden">
+                            <span class="bg-gray-700 block w-full h-full"></span>
+                        </a>
+                    </template>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="bg-gradient-to-b from-sky-50 dark:from-slate-900 to-transparent flex flex-col mx-auto py-16 gap-4 px-4">
+                <h1 class="tm-max-box mx-auto text-2xl leading-8 font-semibold md:leading-10 text-shadow-xl/30 text-center">Free Temp Mail — Instant Disposable Email for OTPs &Sign-Ups
+ </h1>
+                <p class="tm-max-box antialiased font-light leading-relaxed text-inherit md:text-center mx-auto">Create a disposable email address instantly for OTPs, sign-ups, and verification emails without exposing your real inbox. Your temp mail address is ready to use right away, with no sign-up required.</p>
+                <div class="tm-max-box mx-auto mt-2 flex flex-wrap items-center justify-center gap-2 text-xs">
+                    <span class="rounded-full border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800 px-3 py-2 font-semibold text-black dark:text-white shadow-sm">No sign-up</span>
+                    <span class="rounded-full border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800 px-3 py-2 font-semibold text-black dark:text-white shadow-sm">Works for many OTPs</span>
+                    <span class="rounded-full border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800 px-3 py-2 font-semibold text-black dark:text-white shadow-sm">24-hour inbox</span>
+                    <span class="rounded-full border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800 px-3 py-2 font-semibold text-black dark:text-white shadow-sm">Reuse with access token</span>
+                    <span class="rounded-full border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800 px-3 py-2 font-semibold text-black dark:text-white shadow-sm">Receive-only</span>
+                </div>
+            </section>
+            <section id="actionEmailAddressHome" class="tm-max-box mx-auto" aria-label="Your Temp Mail Address">
+                <div id="homeEmail" class="w-full px-4 min-h-[330px] tm-max-box flex flex-col items-center justify-center tm-box gap-y-2">
+                    <div class="text-xl font-medium text-shadow-lg/30 my-2 ">Your Temp Mail Address</div>
+                    <div id="EmailDetail" class="relative w-full max-w-full md:max-w-[520px]">
+                        <input type="email" name="currentEmailAddress" class="text-medium md:text-xl h-16 ps-2 pe-16 w-full tm-input" placeholder="Your Temp Mail Address" aria-label="Your Temp Mail Address" readonly>
+                        <button class="absolute end-1 top-1 tm-btn size-14" type="button" aria-label="Copy current email address" title="Copy current email address" onclick='COPY("email")'>
+                            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9A1.125 1.125 0 0 1 4.5 20.625V7.125C4.5 6.504 5.004 6 5.625 6H9m6.75 11.25h3.375c.621 0 1.125-.504 1.125-1.125v-9A1.125 1.125 0 0 0 19.125 6H15.75m0 11.25H9.375c-.621 0-1.125-.504-1.125-1.125V9.75c0-.621.504-1.125 1.125-1.125h6.375m0 8.625V8.625"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="text-sm md:text-sm opacity-85">Copy this address and use it for OTPs, sign-ups, and verification emails.</p>
+                    <div class="flex flex-wrap gap-4 items-center justify-center mx-auto w-full max-w-full sm:max-w-[500px] mt-2">
+                        <button id="btnNewEmail" class="gap-2 min-h-14 h-auto tm-btn disabled:cursor-progress" type="button" aria-label="Create a new email address" title="Create a new email address" style="width: 150px; white-space: normal; line-height: 1.2; padding: 8px 10px;" onclick="at3qughi(this);">
+                            <svg class="hidden sm:block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/>
+                            </svg>
+                            New Email
+ 
+                        </button>
+                        <a class="gap-2 min-h-14 h-auto tm-btn" title="Reuse Temp Mail Address with your access token" style="width: 150px; white-space: normal; line-height: 1.2; padding: 8px 10px;" href="./reuse-temp-mail-address">
+                            <svg class="hidden sm:block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"/>
+                            </svg>
+                            Reuse Email
+ 
+                        </a>
+                        <button id="btnShareEmailInfo" class="gap-2 min-h-14 h-auto tm-btn" type="button" aria-label="Save access token to reopen this address later" title="Save access token to reopen this address later" style="width: 150px; white-space: normal; line-height: 1.2; padding: 8px 10px;" onclick="atol9gw7(this,'open');">
+                            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <use xlink:href="https://tmailor.com/img/icons.svg#icon-download"></use>
+                            </svg>
+                            Save Access Token
+ 
+                        </button>
+                    </div>
+                    <p class="text-sm md:text-sm opacity-85 mb-2">Save your access token if you want to reopen this address later.</p>
+                    <div id="EmailPermission" class="w-full max-w-full md:max-w-[500px] text-xs boxpermission rounded bg-gray-900 bg-red-600 text-white p-1 text-nowrap text-ellipsis overflow-hidden" style="visibility: hidden;">
+                        <button type="button" class="per1 block w-full text-left" data-toast="note_email_nosave" data-title="Warning" data-message="This email address is not managed by any account. Please log in to automatically save this email address along with the token for future use." data-buttons="login,cancel">This email address is not managed by any account. Please log in to automatically save this email address along with the token for future use.
+ </button>
+                        <button type="button" class="per2 hidden block w-full text-left" data-toast="note_email_nosave" data-title="Warning" data-message="This email address is currently managed by another user. You might lose access if the user changes the access permissions." data-buttons="cancel">This email address is currently managed by another user. You might lose access if the user changes the access permissions.
+ </button>
+                        <button type="button" class="per3 hidden block w-full text-left" data-toast="note_email_nosave" data-title="Warning" data-message="This access token has expired or is invalid." data-buttons="cancel">This access token has expired or is invalid.
+ </button>
+                    </div>
+                </div>
+                <template id="lazyhtmlShareFireWall">
+                    <div id="newEmailFW" class="w-full p-4 min-h-[250px] tm-max-box hidden flex-col tm-box relative mx-auto">
+                        <div class="absolute top-1 end-1 p-1 z-10">
+                            <button class="tm-btn size-8" aria-label="Close" title="Close" type="button" onclick='atgzphm3(this,"close")'>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="size-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="font-medium text-2xl text-shadow-lg/30 mb-2 text-center">Create New Email</div>
+                        <form id="newEmailFirewall" class="flex flex-col gap-3 px-2 py-6 md:py-2" method="post">
+                            <input type="hidden" name="action" value="newemail">
+                            <div class="flex flex-col lg:flex-row gap-3 gap-y-4 mx-auto w-full items-center justify-center">
+                                <div id="selectdomain" class="flex flex-col flex-1 w-full items-center gap-2 justify-center hidden max-w-full sm:max-w-[350px]">
+                                    <label for="domains" class="font-medium text-shadow-lg/30">Choose a domain for your new email address</label>
+                                    <select id="domains" name="choose_domain" class="border-stone-200 bg-gray-100 dark:border-stone-950 dark:bg-gray-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 font-medium text-2xl" onchange="at7n1j8r(this)">
+                                        <option selected="selected">-- Choose Domain Name --</option>
+                                    </select>
+                                </div>
+                                <div id="cf-new-email" class="flex flex-col flex-1 w-full items-center justify-center hidden gap-2">
+                                    <p class="font-medium text-shadow-lg/30">Please verify that you are not a robot.</p>
+                                    <div class="cf-turnstile h-[80px] flex items-center justify-center">
+                                        <div class="html-captcha"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-row gap-3 items-center justify-center mx-auto w-full max-w-full sm:max-w-[350px]">
+                                <button id="btnNewEmailForm" class="flex items-center justify-center gap-2 py-2 px-4 tm-btn group" type="submit" aria-label="Create a new email address" title="Create a new email address" disabled="disabled">
+                                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-blue-50">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/>
+                                    </svg>
+                                    Confirm
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </template>
+                <template id="lazyhtmlShare">
+                    <div id="shareEmail" class="w-full p-4 min-h-[250px] tm-max-box hidden flex-col tm-box relative mx-auto">
+                        <div class="absolute top-1 end-1 p-1 z-10">
+                            <button class="tm-btn size-8" aria-label="Close" title="Close" type="button" onclick='atol9gw7(this,"close")'>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="size-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-3 mx-auto w-full items-center">
+                            <div class="flex items-center justify-center order-2 md:order-1 size-[210px] sm:size-[210px] lg:size-[210px] border border-stone-200 dark:border-stone-950 bg-gray-100 dark:bg-gray-800" id="emailQR"></div>
+                            <div class="flex-1 order-1 md:order-2 w-full flex flex-col items-center justify-center gap-y-4">
+                                <div class="py-6 md:py-0 text-xl font-medium text-shadow-lg/30 mb-2">Save Access Token
+ </div>
+                                <p class="text-sm md:text-sm opacity-85 mb-2">Save this token or secure link to reopen this temp mail address later. Keep it private.</p>
+                                <div class="flex flex-col gap-3 mx-auto w-full">
+                                    <div class="relative w-full">
+                                        <input name="shareToken" class="text-sm h-10 pe-1 w-full tm-input" style="padding-inline-start: 162px;" placeholder="Access Token" aria-label="Access Token" value="Access Token" onclick='COPY("accesstoken")' readonly="readonly">
+                                        <button class="absolute start-1 top-1 rounded tm-btn h-8 text-center js-fit-share-btn" style="width: 150px;" type="button" aria-label="Copy current email address" title="Copy current email address" onclick='COPY("accesstoken")'>Access Token</button>
+                                    </div>
+                                    <div class="relative w-full">
+                                        <input name="shareUrl" class="text-sm h-10 pe-1 w-full tm-input" style="padding-inline-start: 162px;" placeholder="Reuse Link" aria-label="Reuse Link" value="Reuse Link" onclick='COPY("accesstokenURL")' readonly="readonly">
+                                        <button class="absolute start-1 top-1 rounded tm-btn h-8 text-center js-fit-share-btn" style="width: 150px;" type="button" aria-label="Copy current email address" title="Copy current email address" onclick='COPY("accesstokenURL")'>Reuse Link</button>
+                                    </div>
+                                </div>
+                                <button class="gap-2 py-2 px-4 tm-btn" type="button" aria-label="Download" title="Download" onclick='ataumq87("current",this)'>
+                                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <use xlink:href="https://tmailor.com/img/icons.svg#icon-download"></use>
+                                    </svg>
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </section>
+            <div data-id="ato5fw2b" class="athmd3l1 mx-auto shrink-0 hidden md:flex tm-max-box h-[100px] items-center justify-center my-3 overflow-hidden text-center justify-center items-center"></div>
+            <div data-id="atvo7cmj" class="athmd3l1 flex md:hidden w-full min-h-[400px] items-center justify-center my-3 overflow-hidden text-center "></div>
+            <div class="xl:container mx-auto flex flex-col md:flex-row gap-4 justify-center px-0 md:px-2 mt-2">
+                <div data-id="atc7ek8p" class="athmd3l1 shrink-0 hidden lg:flex w-[300px] h-[600px] items-center justify-center"></div>
+                <div class="flex-1">
+                    <div class="tm-max-box tm-box mx-auto rounded-md mb-4">
+                        <div class="rounded-t-md flex items-center font-xl px-4 h-12 bg-stone-200 dark:bg-gray-700 justify-between">
+                            Inbox
+ 
+                            <button id="refresh-inboxs" class="flex items-center justify-center tm-btn h-6 gap-2 px-1" type="button" aria-label="Refresh" title="Refresh" onclick="atiagbrq();">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" height="12" width="12">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
+                                </svg>
+                                Refresh
+ 
+                            </button>
+                        </div>
+                        <div id="inboxsDetail" class="relative">
+                            <template id="lazyhtmlTempBlockFirewall">
+                                <div id="inboxs-block-firewall" class="absolute z-30 inset-0 flex flex-col items-center justify-center w-full h-full bg-[url(/img/bg-robot.webp)]">
+                                    <div class="bg-red-700/75 rounded-lg flex flex-col items-center justify-center px-3 py-5 text-white gap-y-4 border border-red-900 shadow-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-20">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
+                                        </svg>
+                                        <p class="font-medium">Please verify that you are not a robot.</p>
+                                        <a class="px-4 py-2 tm-btn" title="Please verify that you are not a robot." href="https://tmailor.com/firewall?url=https%3A%2F%2Ftmailor.com%2F">Confirm
+ </a>
+                                    </div>
+                                </div>
+                            </template>
+                            <template id="lazyhtmlTemplistinbox">
+                                <li class="template hidden flex flex-col gap-2 p-3 w-full last:rounded-b-md transition-all">
+                                    <p class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                                        <a class="flex-1 text-nowrap overflow-hidden text-black dark:text-white flex gap-2 hover:underline block text-base font-medium temp-sender"></a>
+                                        <span class="temp-time text-sm"></span>
+                                    </p>
+                                    <a href="/" class="text-black dark:text-white line-clamp-2 temp-subject hover:underline text-xs"></a>
+                                </li>
+                            </template>
+                            <ul id="inboxs" class="h-[400px] overflow-y-scroll text-start divide-y divide-slate-200 dark:divide-gray-800">
+                                <li>
+                                    <a href="./#welcomebox" title="temp mail" class="flex flex-col gap-2 p-3 text-black w-full transition-all hover:bg-slate-200 dark:hover:bg-gray-700 opacity-80 hover:opacity-100 transition-opacity">
+                                        <div class="text-black dark:text-white text-base font-medium">Support</div>
+                                        <div class="text-black dark:text-white line-clamp-2 text-xs">Use Free Temp Mail Now</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="wsStatus" class="h-5 block my-1 text-black dark:text-white opacity-70 transition-opacity text-end pe-2 overflow-hidden text-xs "></div>
+                    </div>
+                    <article class="tm-max-box tm-box mx-auto prose dark:prose-invert p-4 mb-8" id="welcomebox">
+                        <h2>Use Free Temp Mail Now</h2>
+                        <p>
+                            Need an email for a sign-up, OTP, or download without exposing your real inbox? The <strong>temp mail</strong>
+                            address above is already live. Copy it, paste it into a form, and receive messages on this page without registration, passwords, or setup.
+                        </p>
+                        <p>
+                            Use this <strong>temporary email</strong>
+                            when you want speed, privacy, and a clean exit. If one site rejects the current domain, create another <strong>disposable email address</strong>
+                            in seconds. If you may need the same inbox again later, save the access token before you leave.
+                        </p>
+                        <h3>Solve The Usual Problems</h3>
+                        <dl>
+                            <dt>
+                                <strong>Need a code fast?</strong>
+                            </dt>
+                            <dd>Use the address above for OTPs, verification emails, and one-time sign-ups.</dd>
+                            <dt>
+                                <strong>Do not want spam later?</strong>
+                            </dt>
+                            <dd>Keep your personal inbox out of trials, promo gates, forum registrations, downloads, and low-value forms.</dd>
+                            <dt>
+                                <strong>One domain does not work?</strong>
+                            </dt>
+                            <dd>
+                                Click <em>New Email</em>
+                                and switch to another address right away.
+                            </dd>
+                            <dt>
+                                <strong>Need the same inbox again?</strong>
+                            </dt>
+                            <dd>
+                                Save the access token now, then use the <a title="Reuse your temp mail address with an access token" href="./reuse-temp-mail-address" target="_blank">reuse guide</a>
+                                to reopen that inbox later on any device.
+                            </dd>
+                        </dl>
+                        <h3>Use It Where It Helps</h3>
+                        <p>
+                            <strong>Free temp mail</strong>
+                            works best for app sign-ups, trial accounts, download pages, promo offers, forum registrations, and many one-time verification flows. It is the practical option when a site asks for email, but you do not want that relationship to follow you afterward.
+                        </p>
+                        <p>It is the wrong tool for banking, government services, healthcare, legal documents, or primary work accounts. For anything important long-term, use an email address you fully control.</p>
+                        <h3>If Delivery Fails</h3>
+                        <dl>
+                            <dt>
+                                <strong>No message appears</strong>
+                            </dt>
+                            <dd>
+                                Refresh the inbox and wait briefly. If nothing arrives, click <em>New Email</em>
+                                and try again with another domain.
+                            </dd>
+                            <dt>
+                                <strong>You only need a short session</strong>
+                            </dt>
+                            <dd>
+                                Try <a title="10 Minute Mail &mdash; instant disposable email that expires fast" href="./10-minute-mail" target="_blank">10-minute mail</a>
+                                for a faster-expiring option.
+                            </dd>
+                            <dt>
+                                <strong>You want inbox access on your phone</strong>
+                            </dt>
+                            <dd>
+                                Use the <a title="Temp mail apps for Android and iOS" href="./temp-mail-on-mobile-android-and-ios" target="_blank">mobile apps</a>
+                                or the <a title="Temp mail Telegram bot" href="./temp-mail-on-telegram-bot" target="_blank">Telegram bot</a>
+                                .
+                            </dd>
+                            <dt>
+                                <strong>You want your own domain</strong>
+                            </dt>
+                            <dd>
+                                Use the <a title="Custom domain temp email &mdash; add your own domain for free" href="./temp-mail-custom-private-domain" target="_blank">custom domain feature</a>
+                                for private temp mail on a domain you control.
+                            </dd>
+                        </dl>
+                        <h3>Know The Limits</h3>
+                        <p>
+                            This inbox is <strong>receive-only</strong>
+                            . You can receive sign-up emails, OTPs, and verification messages, but you cannot send mail from it. Messages stay visible for about 24 hours from arrival, so copy codes, links, and account details as soon as they land.
+                        </p>
+                        <h3>Need More Than A Quick Inbox?</h3>
+                        <ul>
+                            <li>
+                                <a title="What is temp mail &mdash; how temporary email works" href="./temp-mail" target="_blank">Learn how temp mail works</a>
+                            </li>
+                            <li>
+                                <a title="Frequently asked questions about temp mail" href="./faq.html" target="_blank">Read the full FAQ</a>
+                            </li>
+                            <li>
+                                <a title="Reuse your temp mail address" href="./reuse-temp-mail-address" target="_blank">Reuse your address with a token</a>
+                            </li>
+                            <li>
+                                <a title="10 Minute Mail" href="./10-minute-mail" target="_blank">Switch to 10-minute mail</a>
+                            </li>
+                            <li>
+                                <a title="Temp mail mobile apps" href="./temp-mail-on-mobile-android-and-ios" target="_blank">Get mobile access</a>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+                <div data-id="atc7ek8p" class="athmd3l1 shrink-0 hidden xl:flex w-[300px] h-[600px] items-center justify-center"></div>
+            </div>
+            <section id="landingMore" aria-label="Use Free Temp Mail Now">
+                <section class=" border-t border-stone-200 dark:border-slate-800/50 py-8 sm:py-16" aria-label="How to Get a Temp Mail Address">
+                    <h2 class="tm-max-box mx-auto leading-8 text-2xl font-extrabold text-shadow-xl/30 text-center py-2 px-4">How to Get a Temp Mail Address
+ </h2>
+                    <p class="tm-max-box antialiased font-light leading-relaxed text-inherit md:text-center mx-auto px-4 py-2 sm:mb-8 ">Get a working disposable email in seconds — copy it, paste it, and receive verification codes without exposing your real inbox.</p>
+                    <div class="xl:container mx-auto mt-8 grid sm:grid-cols-2 md:grid-cols-4 gap-4 px-4">
+                        <div class="w-full overflow-hidden rounded-lg shadow-lg shadow-sm border border-stone-200 dark:border-slate-800/50 dark:bg-gray-800/50 p-2 tm-box">
+                            <div class="h-max w-full rounded px-3 py-2 ">
+                                <h3 class="text-xl font-bold antialiased text-blue-500 dark:text-blue-300 text-shadow-xl">Step 1: Get your temp mail address</h3>
+                                <p class="my-1 opacity-90 antialiased font-light leading-relaxed text-inherit">Open this page and a fresh disposable email address appears automatically — no sign-up, no forms, no waiting. The address is live and ready to receive mail instantly.</p>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-lg shadow-lg shadow-sm border border-stone-200 dark:border-slate-800/50 dark:bg-gray-800/50 p-2 tm-box">
+                            <div class="h-max w-full rounded px-3 py-2 ">
+                                <h3 class="text-xl font-bold antialiased text-blue-500 dark:text-blue-300 text-shadow-xl">Step 2: Copy and paste it anywhere</h3>
+                                <p class="my-1 opacity-90 antialiased font-light leading-relaxed text-inherit">Click the copy button next to your address and paste it into any sign-up form, download gate, or verification field that asks for an email.</p>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-lg shadow-lg shadow-sm border border-stone-200 dark:border-slate-800/50 dark:bg-gray-800/50 p-2 tm-box">
+                            <div class="h-max w-full rounded px-3 py-2 ">
+                                <h3 class="text-xl font-bold antialiased text-blue-500 dark:text-blue-300 text-shadow-xl">Step 3: Receive your email or OTP</h3>
+                                <p class="my-1 opacity-90 antialiased font-light leading-relaxed text-inherit">Incoming messages appear in the inbox on this page within seconds. Open the email, copy the verification code, or click the activation link to complete your sign-up.</p>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-lg shadow-lg shadow-sm border border-stone-200 dark:border-slate-800/50 dark:bg-gray-800/50 p-2 tm-box">
+                            <div class="h-max w-full rounded px-3 py-2 ">
+                                <h3 class="text-xl font-bold antialiased text-blue-500 dark:text-blue-300 text-shadow-xl">Step 4: Keep it for later — or leave it behind</h3>
+                                <p class="my-1 opacity-90 antialiased font-light leading-relaxed text-inherit">This address stays the same until you tap New email. Save the access token below the inbox to reopen it later on web, mobile, or Telegram. Messages still auto-delete after 24 hours.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="border-t border-stone-200 dark:border-slate-800/50 py-8 sm:py-16 flex flex-col gap-y-4" aria-label="Quick Answers About Temp Mail">
+                    <h2 class="tm-max-box mx-auto leading-8 text-2xl font-extrabold text-shadow-xl/30 text-center px-4">Quick Answers About Temp Mail
+ </h2>
+                    <p class="tm-max-box antialiased font-light leading-relaxed text-inherit md:text-center mx-auto px-4 ">Quick answers about using temp mail on this page.</p>
+                    <div class="mx-auto w-full tm-max-box mt-8 gap-4 divide-y divide-slate-200 dark:divide-gray-950 tm-card">
+                        <div>
+                            <details>
+                                <summary class="p-2 text-xl cursor-pointer">What Is Temp Mail?</summary>
+                                <div>
+                                    <p class="text-medium px-4 ps-6 pb-4 tm-news-link">Temp mail is a disposable email service that lets you receive emails without using your personal inbox. With Tmailor, the inbox is temporary, while the address can be reopened later if you saved your access token.
+ </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary class="p-2 text-xl cursor-pointer">Can Temp Mail Receive OTP and Verification Codes?</summary>
+                                <div>
+                                    <p class="text-medium px-4 ps-6 pb-4 tm-news-link">Yes. Temp mail can receive many OTPs, verification emails, and sign-up messages. However, some websites may block disposable email domains, so delivery is not guaranteed on every service.
+ </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary class="p-2 text-xl cursor-pointer">Can I Reuse a Temp Mail Address?</summary>
+                                <div>
+                                    <p class="text-medium px-4 ps-6 pb-4 tm-news-link">Yes. If you save your access token, you can reopen the same temp mail address later and use it again. Without the token, you may lose access after closing the session or switching devices.
+ </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary class="p-2 text-xl cursor-pointer">How Long Do Emails Stay in the Inbox?</summary>
+                                <div>
+                                    <p class="text-medium px-4 ps-6 pb-4 tm-news-link">Emails stay in the inbox for 24 hours. After that, messages are automatically removed, even if you still have access to the same email address.
+ </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary class="p-2 text-xl cursor-pointer">Can I Recover a Temp Mail Inbox After Closing the Browser?</summary>
+                                <div>
+                                    <p class="text-medium px-4 ps-6 pb-4 tm-news-link">Yes, if you saved your access token. The token lets you reopen the same temp mail address and view any messages that are still within the 24-hour retention period.
+ </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary class="p-2 text-xl cursor-pointer">Does Tmailor Allow Sending Emails?</summary>
+                                <div>
+                                    <p class="text-medium px-4 ps-6 pb-4 tm-news-link">No. Tmailor is a receive-only temp mail service. You can receive incoming emails, but you cannot send outbound messages from a Tmailor address.
+ </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary class="p-2 text-xl cursor-pointer">Are Tmailor Domains Blocked by Websites?</summary>
+                                <div>
+                                    <p class="text-medium px-4 ps-6 pb-4 tm-news-link">Sometimes. Tmailor uses a large pool of domains and Google-backed mail infrastructure to improve delivery, but some websites may still block temporary email domains.
+ </p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="py-8 flex justify-center">
+                        <a href="https://tmailor.com/faq.html" title="See more FAQ" class="rounded-md bg-slate-800 py-2 px-4 tm-btn" aria-label="See more FAQ">See more FAQ
+ </a>
+                    </div>
+                </section>
+                <section class="border-t border-stone-200 dark:border-slate-800/50 py-8 sm:py-16 flex flex-col gap-y-4" aria-label="Why Use Temp Mail?">
+                    <h2 class="tm-max-box mx-auto leading-8 text-2xl font-extrabold text-shadow-xl/30 text-center px-4">Why Use Temp Mail?
+ </h2>
+                    <p class="tm-max-box antialiased font-light leading-relaxed text-inherit md:text-center mx-auto px-4 ">Four quick reasons to use temp mail on this page.</p>
+                    <div class="xl:container mx-auto mt-8 grid md:grid-cols-2 gap-4 px-4">
+                        <div class="w-full overflow-hidden rounded-lg shadow-lg shadow-sm border border-stone-200 dark:border-slate-800/50 dark:bg-gray-800/50 p-2 flex flex-row tm-card">
+                            <div class="hidden md:flex w-[60px] pt-4 justify-center text-blue-500 dark:text-lime-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1 flex flex-col h-max w-full rounded p-3">
+                                <h3 class="text-xl font-bold antialiased">Protect your real inbox</h3>
+                                <p class="my-1 opacity-90 antialiased font-light leading-relaxed text-inherit">Keep your personal email out of sign-up forms, trial gates, and downloads.</p>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-lg shadow-lg shadow-sm border border-stone-200 dark:border-slate-800/50 dark:bg-gray-800/50 p-2 flex flex-row tm-card">
+                            <div class="hidden md:flex w-[60px] pt-4 justify-center text-blue-500 dark:text-lime-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1 flex flex-col h-max w-full rounded p-3">
+                                <h3 class="text-xl font-bold antialiased">Receive OTPs fast</h3>
+                                <p class="my-1 opacity-90 antialiased font-light leading-relaxed text-inherit">Get verification emails and one-time codes without using your real inbox.</p>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-lg shadow-lg shadow-sm border border-stone-200 dark:border-slate-800/50 dark:bg-gray-800/50 p-2 flex flex-row tm-card">
+                            <div class="hidden md:flex w-[60px] pt-4 justify-center text-blue-500 dark:text-lime-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1 flex flex-col h-max w-full rounded p-3">
+                                <h3 class="text-xl font-bold antialiased">Block spam and promos</h3>
+                                <p class="my-1 opacity-90 antialiased font-light leading-relaxed text-inherit">Avoid newsletters, follow-ups, and marketing clutter later.</p>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-lg shadow-lg shadow-sm border border-stone-200 dark:border-slate-800/50 dark:bg-gray-800/50 p-2 flex flex-row tm-card">
+                            <div class="hidden md:flex w-[60px] pt-4 justify-center text-blue-500 dark:text-lime-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1 flex flex-col h-max w-full rounded p-3">
+                                <h3 class="text-xl font-bold antialiased">Walk away after use</h3>
+                                <p class="my-1 opacity-90 antialiased font-light leading-relaxed text-inherit">Use the inbox once, then let it expire automatically after 24 hours.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class=" border-t border-stone-200 dark:border-slate-800/50 py-8 sm:py-16 flex flex-col gap-y-4">
+                    <h2 class="tm-max-box mx-auto leading-8 text-2xl font-extrabold text-shadow-xl/30 text-center px-4 my-4">Temp Mail Tips &Guides
+ </h2>
+                    <div class="max-w-lg mx-auto gap-4 px-4">
+                        <article class="relative tm-card my-2 gap-4 p-4">
+                            <a href="https://tmailor.com/blog/en/article/39454-temp-mail-for-otp-what-works-and-what-fails-in-2026.html" title="Temp Mail for OTP What Works and What Fails in 2026">
+                                <h3 class="text-base leading-6 h-6 overflow-hidden text-blue-700 dark:text-blue-200 text-shadow-xl tracking-tight">Temp Mail for OTP: What Works and What Fails in 2026
+ </h3>
+                            </a>
+                            <div class="mt-2 flex items-start gap-4">
+                                <p class="flex-1 text-sm leading-6 overflow-hidden text-inherit">Can you receive OTP codes with temp mail? Learn when verification emails work, why they fail, and how to fix delivery problems with disposable inboxes.
+ </p>
+                                <a href="https://tmailor.com/blog/en/article/39454-temp-mail-for-otp-what-works-and-what-fails-in-2026.html" title="Temp Mail for OTP What Works and What Fails in 2026" class="shrink-0 w-[100px]">
+                                    <picture>
+                                        <source srcset="https://tmailor.com/blog/img/news/cache/w250/dec3196d4e283cdab94521a02f65f200.webp" type="image/webp">
+                                        <source srcset="https://tmailor.com/blog/img/news/cache/w250/dec3196d4e283cdab94521a02f65f200.jpg" type="image/jpeg">
+                                        <img src="https://tmailor.com/blog/img/news/cache/w300/58efa4faa4834a50d5a7e5ca78074922.jpg" alt="Temp Mail for OTP What Works and What Fails in 2026" loading="lazy" class="w-[100px] h-auto rounded-md" decoding="async" width="900" height="514">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="mt-2 flex justify-between text-gray-500 dark:text-gray-200/75">
+                                <time datetime="2026-02-25T14:37:50-05:00" class="text-sm ">02/26/2026</time>
+                                <span class="text-sm ">Admin</span>
+                            </div>
+                        </article>
+                        <article class="relative tm-card my-2 gap-4 p-4">
+                            <a href="https://tmailor.com/blog/en/article/39562-disposable-email-vs-burner-email-vs-temp-mail.html" title="Disposable Email vs Burner Email vs Temp Mail 2026">
+                                <h3 class="text-base leading-6 h-6 overflow-hidden text-blue-700 dark:text-blue-200 text-shadow-xl tracking-tight">Disposable Email vs Burner Email vs Temp Mail (2026)
+ </h3>
+                            </a>
+                            <div class="mt-2 flex items-start gap-4">
+                                <p class="flex-1 text-sm leading-6 overflow-hidden text-inherit">Disposable email, burner email, and temp mail are not the same thing. Learn the real differences and which privacy tool fits each use case in 2026.
+ </p>
+                                <a href="https://tmailor.com/blog/en/article/39562-disposable-email-vs-burner-email-vs-temp-mail.html" title="Disposable Email vs Burner Email vs Temp Mail 2026" class="shrink-0 w-[100px]">
+                                    <picture>
+                                        <source srcset="https://tmailor.com/blog/img/news/cache/w250/58efa4faa4834a50d5a7e5ca78074922.webp" type="image/webp">
+                                        <source srcset="https://tmailor.com/blog/img/news/cache/w250/58efa4faa4834a50d5a7e5ca78074922.jpg" type="image/jpeg">
+                                        <img src="https://tmailor.com/blog/img/news/cache/w300/58efa4faa4834a50d5a7e5ca78074922.jpg" alt="Disposable Email vs Burner Email vs Temp Mail 2026" loading="lazy" class="w-[100px] h-auto rounded-md" decoding="async" width="900" height="514">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="mt-2 flex justify-between text-gray-500 dark:text-gray-200/75">
+                                <time datetime="2026-02-25T14:48:30-05:00" class="text-sm ">02/26/2026</time>
+                                <span class="text-sm ">Admin</span>
+                            </div>
+                        </article>
+                        <article class="relative tm-card my-2 gap-4 p-4">
+                            <a href="https://tmailor.com/blog/en/article/39131-temp-mail-vs-10-minute-mail-best-choice-for-otp.html" title="Temp Mail vs 10 Minute Mail Best Choice for OTP 2026">
+                                <h3 class="text-base leading-6 h-6 overflow-hidden text-blue-700 dark:text-blue-200 text-shadow-xl tracking-tight">Temp Mail vs 10 Minute Mail: Best Choice for OTP 2026
+ </h3>
+                            </a>
+                            <div class="mt-2 flex items-start gap-4">
+                                <p class="flex-1 text-sm leading-6 overflow-hidden text-inherit">Compare Temp Mail vs 10-minute Mail for OTP and signups. See which works better for verification emails, reuse, and privacy in 2026.
+ </p>
+                                <a href="https://tmailor.com/blog/en/article/39131-temp-mail-vs-10-minute-mail-best-choice-for-otp.html" title="Temp Mail vs 10 Minute Mail Best Choice for OTP 2026" class="shrink-0 w-[100px]">
+                                    <picture>
+                                        <source srcset="https://tmailor.com/blog/img/news/cache/w250/8a982f95ffe286ec2102d830d6f5fe6b.webp" type="image/webp">
+                                        <source srcset="https://tmailor.com/blog/img/news/cache/w250/8a982f95ffe286ec2102d830d6f5fe6b.jpg" type="image/jpeg">
+                                        <img src="https://tmailor.com/blog/img/news/cache/w300/58efa4faa4834a50d5a7e5ca78074922.jpg" alt="Temp Mail vs 10 Minute Mail Best Choice for OTP 2026" loading="lazy" class="w-[100px] h-auto rounded-md" decoding="async" width="900" height="514">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="mt-2 flex justify-between text-gray-500 dark:text-gray-200/75">
+                                <time datetime="2026-02-25T13:37:20-05:00" class="text-sm ">02/26/2026</time>
+                                <span class="text-sm ">Admin</span>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="py-8 flex justify-center">
+                        <a href="/blog/en/" title="Browse all temp mail guides" class="rounded-md bg-slate-800 py-2 px-4 tm-btn" aria-label="Browse all temp mail guides">Browse all temp mail guides
+ </a>
+                    </div>
+                </section>
+            </section>
+        </main>
+        <footer class="dark:bg-slate-950 dark:text-white border-t border-gray-200 dark:border-gray-800 py-16">
+            <div class="xl:container mx-auto grid gap-6 py-8 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="p-4">
+                    <a class="inline-flex items-center space-x-2 font-medium py-2" href="/" title="Get Free Temp Mail Instantly for OTPs and Sign-Ups">
+                        <img src="https://tmailor.com/img/Logo.webp" alt="Tmailor.com icon" width="64" height="64" class="w-16 rounded-full" loading="lazy" decoding="async">
+                        <span class="text-blue-500 space-x-2 text-2xl font-medium">Tmailor.com</span>
+                    </a>
+                    <p class="py-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Protect your real inbox with free temp mail. Create a disposable email address in seconds for sign-ups, OTPs, and spam protection.</p>
+                    <div class="mt-4">
+                        <div class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Use Tmailor on
+ </div>
+                        <div class="mt-3 flex items-center gap-3">
+                            <a class="flex items-center rounded-md bg-transparent p-2 border border-transparent
+ text-center text-white transition-all shadow-sm hover:shadow-lg hover:bg-slate-700
+ dark:hover:bg-slate-700" href="https://play.google.com/store/apps/details?id=mobile.tmailor.com" title="Get Temp Mail on Google Play" target="_blank">
+                                <img src="/img/store-google-play.svg" width="50" height="50" class="h-12 w-12" alt="Google Play icon" loading="lazy" decoding="async">
+                            </a>
+                            <a class="flex items-center rounded-md bg-transparent p-2 border border-transparent text-center text-white transition-all shadow-sm hover:shadow-lg hover:bg-slate-700 dark:hover:bg-slate-700" href="https://apps.apple.com/us/app/temp-mail-by-tmailor-com/id1659587742?platform=iphone" title="Get Temp Mail on the App Store" target="_blank">
+                                <img src="/img/store-app-store.svg" width="50" height="50" class="h-12 w-12" alt="App Store icon" loading="lazy" decoding="async">
+                            </a>
+                            <a class="flex items-center rounded-md bg-transparent p-2 border border-transparent text-center text-white transition-all shadow-sm hover:shadow-lg hover:bg-slate-700 dark:hover:bg-slate-700" href="https://t.me/tmailorcom_bot" title="Get Temp Mail on Telegram" target="_blank">
+                                <img src="/img/store-telegram.svg" width="50" height="50" class="h-12 w-12" alt="Telegram icon" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-y-2 p-4">
+                    <div class="mb-2 text-base font-semibold">Temp Mail Tools</div>
+                    <a href="./temp-mail" class="flex gap-x-2 py-2 items-center" title="Temp Mail">Temp Mail</a>
+                    <a href="./10-minute-mail" class="flex gap-x-2 py-2 items-center" title="10 Minute Mail">10 Minute Mail</a>
+                    <a href="./reuse-temp-mail-address" class="flex gap-x-2 py-2 items-center" title="Reuse Temp Mail Address">Reuse Temp Mail Address</a>
+                    <a href="./temp-mail-custom-private-domain" class="flex gap-x-2 py-2 items-center" title="Custom Domain Temp Mail">Custom Domain Temp Mail</a>
+                    <a href="./temp-mail-on-mobile-android-and-ios" class="flex gap-x-2 py-2 items-center" title="Temp Mail Apps">Temp Mail Apps</a>
+                </div>
+                <div class="flex flex-col gap-y-2 p-4">
+                    <div class="mb-2 text-base font-semibold">Learn</div>
+                    <a href="./faq.html" class="flex gap-x-2 py-2 items-center" title="Frequently Asked Questions">Frequently Asked Questions</a>
+                    <a href="/blog/en/" class="flex gap-x-2 py-2 items-center" title="Blog">Blog</a>
+                </div>
+                <div class="flex flex-col gap-y-2 p-4">
+                    <div class="mb-2 text-base font-semibold">Company</div>
+                    <a href="https://tmailor.com/blog/en/article/325-privacy-policy.html" class="flex gap-x-2 py-2 items-center" title="Privacy policy">Privacy policy</a>
+                    <a href="https://tmailor.com/blog/en/article/326-terms-of-service.html" class="flex gap-x-2 py-2 items-center" title="Terms of service">Terms of service</a>
+                    <a href="./contact-us.html" class="flex gap-x-2 py-2 items-center" title="Contact us">Contact us</a>
+                </div>
+            </div>
+            <div class="container mx-auto flex flex-col mt-6 md:mt-8 border-t border-gray-400/30 py-8 ">
+                <div class="text-md text-center">
+                    © 2022–2026 <a href="https://tmailor.com" title="Temp mail by tmailor.com">Tmailor.com</a>
+                    .
+ Free Temporary Email Service.
+ 
+                </div>
+                <div class="flex mx-auto mt-4 flex-wrap items-start gap-6 md:gap-10">
+                    <div class="flex flex-col gap-2 mx-2">
+                        <script type="non-executable/javascript" id="lazyLangScript">
+                            const listlangs={"af":"Afrikaans","sq":"Shqip","am":"\u12a0\u121b\u122d\u129b","ar":"\u0627\u0644\u0639\u0631\u0628\u064a\u0629","hy":"\u0540\u0561\u0575\u0565\u0580\u0565\u0576","as":"\u0985\u09b8\u09ae\u09c0\u09af\u09bc\u09be","az":"Az\u0259rbaycan","bn":"\u09ac\u09be\u0982\u09b2\u09be","ba":"\u0411\u0430\u0448\u04a1\u043e\u0440\u0442\u0442\u0430\u0440","eu":"Euskaldun","bs":"Bosanski","bg":"\u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438","ca":"Catal\u00e0","zh-Hans":"\u7b80\u4f53\u4e2d\u6587","zh-Hant":"\u7e41\u9ad4\u4e2d\u6587","hr":"Hrvatski","cs":"\u010ce\u0161tina","da":"Dansk","dv":"\u0791\u07a6\u0787\u07a8\u0788\u07b0","nl":"Nederlands","et":"Eesti","fo":"F\u00f8royskt","fj":"Viti","fi":"Suomi","fr":"Fran\u00e7ais","fr-CA":"Fran\u00e7ais (Canada)","gl":"Galego","ka":"\u10e5\u10d0\u10e0\u10d7\u10e3\u10da\u10d8","de":"Deutsch","el":"\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac","gu":"\u0a97\u0ac1\u0a9c\u0ab0\u0abe\u0aa4\u0ac0","ht":"Krey\u00f2l Ayisyen","he":"\u05e2\u05d1\u05e8\u05d9\u05ea","hi":"\u0939\u093f\u0902\u0926\u0940","hu":"Magyar","is":"\u00cdslenska","id":"Indonesia","iu":"\u1403\u14c4\u1483\u144e\u1450\u1466","ga":"Gaeilge","it":"Italiano","ja":"\u65e5\u672c\u8a9e","kn":"\u0c95\u0ca8\u0ccd\u0ca8\u0ca1","kk":"\u049a\u0430\u0437\u0430\u049b\u0448\u0430","km":"\u1781\u17d2\u1798\u17c2\u179a","ko":"\ud55c\uad6d\uc5b4","ku":"\u06a9\u0648\u0631\u062f\u06cc (\u0646\u0627\u0648\u06d5\u0646\u062f)","ky":"\u041a\u044b\u0440\u0433\u044b\u0437\u0447\u0430","lo":"Lao","lv":"Latvie\u0161u","lt":"Lietuvi\u0173","mk":"\u041c\u0430\u043a\u0435\u0434\u043e\u043d\u0441\u043a\u0438","mg":"Malagasy","ms":"Melayu","ml":"\u0d2e\u0d32\u0d2f\u0d3e\u0d33\u0d02","mt":"Malti","mr":"\u092e\u0930\u093e\u0920\u0940","mn-Mong":"\u182e\u1823\u1829\u182d\u1824\u182f \u182c\u1821\u182f\u1821 (\u1826\u1837\u1821\u1835\u1822\u182f)","my":"\u1019\u103c\u1014\u103a\u1019\u102c (\u1017\u1019\u102c)","mi":"M\u0101ori","ne":"\u0928\u0947\u092a\u093e\u0932\u0940","nb":"Norsk","or":"\u0b13\u0b21\u0b3c\u0b3f\u0b06","ps":"\u067e\u069a\u062a\u0648","fa":"\u0641\u0627\u0631\u0633\u06cc","pl":"Polski","pt":"Portugu\u00eas (Brasil)","pt-PT":"Portugu\u00eas (Portugal)","pa":"\u0a2a\u0a70\u0a1c\u0a3e\u0a2c\u0a40","ro":"Rom\u00e2n\u0103","ru":"\u0420\u0443\u0441\u0441\u043a\u0438\u0439","sm":"Samoa","sr-Latn":"srpski (latinica)","sk":"Sloven\u010dina","sl":"Sloven\u0161\u010dina","so":"Soomaalida","es":"Espa\u00f1ol","sw":"Kiswahili","sv":"Svenska","ty":"Tahiti","ta":"\u0ba4\u0bae\u0bbf\u0bb4\u0bcd","tt":"\u0422\u0430\u0442\u0430\u0440","te":"\u0c24\u0c46\u0c32\u0c41\u0c17\u0c41","th":"\u0e44\u0e17\u0e22","bo":"\u0f56\u0f7c\u0f51\u0f0b\u0f61\u0f72\u0f42","ti":"\u1272\u130d\u122a\u1295\u12eb","to":"Faka-Tonga","tr":"T\u00fcrk\u00e7e","tk":"T\u00fcrkmen\u00e7e","uk":"\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430","ur":"\u0627\u0631\u062f\u0648","ug":"\u0626\u06c7\u064a\u063a\u06c7\u0631\u062a\u0649\u0644\u0649","uz":"O\u02bbzbekcha (lotincha)","vi":"Ti\u1ebfng Vi\u1ec7t","cy":"Cymreig","zu":"IsiZulu"};
+                        </script>
+                        <div class="flex flex-col w-[150px] gap-y-2">
+                            <label for="localeSelector" class="block mb-1">Change language
+ </label>
+                            <div class="relative">
+                                <select id="localeSelector" name="locales" onclick="changelanguages('start',this);" onchange="changelanguages('change',this)" data-page="" data-domain="https://tmailor.com" class="text-medium tm-select">
+                                    <option value="en" selected="selected">English</option>
+                                </select>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" class="h-5 w-5 ml-1 absolute top-2.5 right-2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-start gap-2 mx-2">
+                        <div class="flex items-center gap-3">
+                            <span class="text-sm">Dark mode</span>
+                            <input type="checkbox" id="theme-toggle" class="hidden">
+                            <label for="theme-toggle" class="select-none relative inline-flex h-8 w-16 items-center rounded-full transition-colors duration-300 cursor-pointer
+ bg-gray-200 dark:bg-gray-900 border-gray-400/30">
+                                <span id="toggleText" class="absolute w-full text-xs font-semibold transition-all duration-300
+ text-right pr-1.5 text-black dark:text-white dark:text-left dark:pl-2">OFF
+ </span>
+                                <span id="toggleBall" class="inline-block w-[19px] h-[19px] transform rounded-full bg-white shadow-md
+ transition-transform duration-300 translate-x-1 dark:translate-x-9"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <template id="svgPath-IconLoading">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
+            </svg>
+        </template>
+        <script async src="https://tmailor.com/js/pc/async/home-page.34ff48ba96742939517294a77f594707.js"></script>
+        <script type="application/ld+json">
+            {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://tmailor.com/#website","name":"TMailor.com","url":"https://tmailor.com/","description":"Generate a free temp mail address instantly. Use disposable email for OTPs, sign-ups, and spam protection. No sign-up, 24-hour inbox, token reuse.","inLanguage":"en","publisher":{"@id":"https://tmailor.com/#org"}},{"@type":"Organization","@id":"https://tmailor.com/#org","name":"TMailor.com","url":"https://tmailor.com/","foundingDate":"2022","logo":{"@type":"ImageObject","@id":"https://tmailor.com/#logo","url":"https://tmailor.com/img/Logo_512x512.png","width":512,"height":512},"contactPoint":{"@type":"ContactPoint","areaServed":"Worldwide","email":"tmailor.com@gmail.com","contactType":"Customer Support","url":"https://tmailor.com/contact-us.html"},"sameAs":["https://play.google.com/store/apps/details?id=mobile.tmailor.com","https://apps.apple.com/us/app/temp-mail-by-tmailor-com/id1659587742","https://t.me/tmailorcom_bot"]},{"@type":"Service","@id":"https://tmailor.com/#service","name":"Temporary email service","serviceType":"Temporary email service","provider":{"@id":"https://tmailor.com/#org"},"description":"Generate a free temp mail address instantly. Use disposable email for OTPs, sign-ups, and spam protection. No sign-up, 24-hour inbox, token reuse.","url":"https://tmailor.com/","areaServed":"Worldwide","category":"Email service","inLanguage":"en","offers":{"@type":"Offer","price":0,"priceCurrency":"USD"}},{"@type":"WebApplication","applicationSubCategory":"Email","@id":"https://tmailor.com/#webapp","name":"Free Temp Mail - Disposable Email for OTPs & Sign-Ups","alternateName":["Temp Mail","Temporary Email","10 Minute Mail"],"url":"https://tmailor.com/","mainEntityOfPage":"https://tmailor.com/","description":"Generate a free temp mail address instantly. Use disposable email for OTPs, sign-ups, and spam protection. No sign-up, 24-hour inbox, token reuse.","applicationCategory":["CommunicationApplication","SoftwareApplication"],"operatingSystem":["Web"],"inLanguage":"en","isAccessibleForFree":true,"browserRequirements":"Requires JavaScript and a modern browser with HTML5 support","termsOfService":"https://tmailor.com/blog/article/326-terms-of-service.html","privacyPolicy":"https://tmailor.com/blog/article/325-privacy-policy.html","image":{"@id":"https://tmailor.com/#logo"},"screenshot":{"@type":"ImageObject","url":"https://tmailor.com/blog/img/news/cache/w1920/8cef18b45482d3f2458947e717d8c0d7.jpg","width":1920,"height":1005},"offers":{"@type":"Offer","price":0,"priceCurrency":"USD"},"additionalProperty":[{"@type":"PropertyValue","name":"Feature","value":"Instant temp mail address"},{"@type":"PropertyValue","name":"Feature","value":"10 minute mail mode"},{"@type":"PropertyValue","name":"Feature","value":"Access token to restore inbox"},{"@type":"PropertyValue","name":"Feature","value":"Mobile and desktop support"}],"publisher":{"@id":"https://tmailor.com/#org"},"author":{"@id":"https://tmailor.com/#org"},"creator":{"@id":"https://tmailor.com/#org"},"hasPart":[{"@type":"WebPage","@id":"https://tmailor.com/10-minute-mail","url":"https://tmailor.com/10-minute-mail","name":"10 Minute Mail - Quick, Private, and Secure"},{"@type":"WebPage","@id":"https://tmailor.com/reuse-temp-mail-address","url":"https://tmailor.com/reuse-temp-mail-address","name":"Reuse Your Temp Mail Address"}],"potentialAction":{"@type":"UseAction","name":"Create Temp Mail","target":{"@type":"EntryPoint","urlTemplate":"https://tmailor.com/","inLanguage":"en","actionPlatform":["http://schema.org/DesktopWebPlatform","http://schema.org/MobileWebPlatform"]}}},{"applicationSubCategory":"Email","applicationCategory":["CommunicationApplication","SoftwareApplication"],"inLanguage":"en","publisher":{"@id":"https://tmailor.com/#org"},"isRelatedTo":{"@id":"https://tmailor.com/#webapp"},"@type":"MobileApplication","@id":"https://tmailor.com/#mobileapp-android","name":"Temp Mail by TMailor.com","alternateName":["Temp Mail","Temporary Email","10 Minute Mail","Temp Mail - Tmailor","Temp Mail by Tmailor.com","Tmailor Android","Tmailor Temp Mail Android"],"url":"https://play.google.com/store/apps/details?id=mobile.tmailor.com","mainEntityOfPage":"https://play.google.com/store/apps/details?id=mobile.tmailor.com","operatingSystem":"Android","downloadUrl":"https://play.google.com/store/apps/details?id=mobile.tmailor.com","installUrl":"https://play.google.com/store/apps/details?id=mobile.tmailor.com","potentialAction":{"@type":"InstallAction","target":{"@type":"EntryPoint","urlTemplate":"https://play.google.com/store/apps/details?id=mobile.tmailor.com","actionPlatform":["http://schema.org/AndroidPlatform","http://schema.org/MobileWebPlatform"],"inLanguage":"en"}}},{"applicationSubCategory":"Email","applicationCategory":["CommunicationApplication","SoftwareApplication"],"inLanguage":"en","publisher":{"@id":"https://tmailor.com/#org"},"isRelatedTo":{"@id":"https://tmailor.com/#webapp"},"@type":"MobileApplication","@id":"https://tmailor.com/#mobileapp-ios","name":"Temp Mail - TMailor","alternateName":["Temp Mail","Temporary Email","10 Minute Mail","Temp Mail - Tmailor","Temp Mail by Tmailor.com","Tmailor iPhone","Tmailor Temp Mail iOS"],"url":"https://apps.apple.com/us/app/temp-mail-by-tmailor-com/id1659587742","mainEntityOfPage":"https://apps.apple.com/us/app/temp-mail-by-tmailor-com/id1659587742","operatingSystem":"iOS","downloadUrl":"https://apps.apple.com/us/app/temp-mail-by-tmailor-com/id1659587742","installUrl":"https://apps.apple.com/us/app/temp-mail-by-tmailor-com/id1659587742","potentialAction":{"@type":"InstallAction","target":{"@type":"EntryPoint","urlTemplate":"https://apps.apple.com/us/app/temp-mail-by-tmailor-com/id1659587742","actionPlatform":["http://schema.org/IOSPlatform","http://schema.org/MobileWebPlatform"],"inLanguage":"en"}}},{"@type":"WebPage","@id":"https://tmailor.com/#webpage","url":"https://tmailor.com/","name":"Free Temp Mail - Disposable Email for OTPs & Sign-Ups","inLanguage":"en","description":"Generate a free temp mail address instantly. Use disposable email for OTPs, sign-ups, and spam protection. No sign-up, 24-hour inbox, token reuse.","isPartOf":{"@id":"https://tmailor.com/#website"},"mainEntity":{"@id":"https://tmailor.com/#webapp"},"about":{"@id":"https://tmailor.com/#webapp"},"primaryImageOfPage":{"@id":"https://tmailor.com/#logo"},"publisher":{"@id":"https://tmailor.com/#org"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home page","item":"https://tmailor.com/"}]}},{"@type":"HowTo","name":"How to Get a Temp Mail Address","mainEntityOfPage":"https://tmailor.com/","@id":"https://tmailor.com/#howto","inLanguage":"en","description":"Get a working disposable email in seconds — copy it, paste it, and receive verification codes without exposing your real inbox.","tool":{"@id":"https://tmailor.com/#webapp"},"publisher":{"@id":"https://tmailor.com/#org"},"about":{"@id":"https://tmailor.com/#webapp"},"estimatedCost":{"@type":"MonetaryAmount","currency":"USD","value":0},"image":"https://tmailor.com/blog/img/news/cache/w1200/731ffec5ea3b7380b9e2e03d1aefb735.jpg","step":[{"@type":"HowToStep","position":1,"name":"Get your temp mail address","text":"Open this page and a fresh disposable email address appears automatically — no sign-up, no forms, no waiting. The address is live and ready to receive mail instantly.","image":"https://tmailor.com/blog/img/news/cache/w1200/731ffec5ea3b7380b9e2e03d1aefb735.jpg"},{"@type":"HowToStep","position":2,"name":"Copy and paste it anywhere","text":"Click the copy button next to your address and paste it into any sign-up form, download gate, or verification field that asks for an email.","image":"https://tmailor.com/blog/img/news/cache/w1200/08a063f6e0ca9d5c8197f048b7eaae19.jpg"},{"@type":"HowToStep","position":3,"name":"Receive your email or OTP","text":"Incoming messages appear in the inbox on this page within seconds. Open the email, copy the verification code, or click the activation link to complete your sign-up.","image":"https://tmailor.com/blog/img/news/cache/w1200/8669ee01eea84451888f746a639b1f15.jpg"},{"@type":"HowToStep","position":4,"name":"Keep it for later — or leave it behind","text":"This address stays the same until you tap New email. Save the access token below the inbox to reopen it later on web, mobile, or Telegram. Messages still auto-delete after 24 hours.","image":"https://tmailor.com/blog/img/news/cache/w1200/abcf33e48cdbecc823eda408f705559f.jpg"}]},{"@type":"ItemList","@id":"https://tmailor.com/#recent-guides","name":"Recent Temp Mail Guides","itemListOrder":"https://schema.org/ItemListUnordered","numberOfItems":3,"itemListElement":[{"@type":"ListItem","position":1,"name":"Temp Mail for OTP: What Works and What Fails in 2026","item":"https://tmailor.com/blog/en/article/39454-temp-mail-for-otp-what-works-and-what-fails-in-2026.html"},{"@type":"ListItem","position":2,"name":"Disposable Email vs Burner Email vs Temp Mail (2026)","item":"https://tmailor.com/blog/en/article/39562-disposable-email-vs-burner-email-vs-temp-mail.html"},{"@type":"ListItem","position":3,"name":"Temp Mail vs 10 Minute Mail: Best Choice for OTP 2026","item":"https://tmailor.com/blog/en/article/39131-temp-mail-vs-10-minute-mail-best-choice-for-otp.html"}]},{"@type":"FAQPage","@id":"https://tmailor.com/#faq","inLanguage":"en","mainEntity":[{"@type":"Question","name":"What Is Temp Mail?","acceptedAnswer":{"@type":"Answer","text":"Temp mail is a disposable email service that lets you receive emails without using your personal inbox. With Tmailor, the inbox is temporary, while the address can be reopened later if you saved your access token."}},{"@type":"Question","name":"Can Temp Mail Receive OTP and Verification Codes?","acceptedAnswer":{"@type":"Answer","text":"Yes. Temp mail can receive many OTPs, verification emails, and sign-up messages. However, some websites may block disposable email domains, so delivery is not guaranteed on every service."}},{"@type":"Question","name":"Can I Reuse a Temp Mail Address?","acceptedAnswer":{"@type":"Answer","text":"Yes. If you save your access token, you can reopen the same temp mail address later and use it again. Without the token, you may lose access after closing the session or switching devices."}},{"@type":"Question","name":"How Long Do Emails Stay in the Inbox?","acceptedAnswer":{"@type":"Answer","text":"Emails stay in the inbox for 24 hours. After that, messages are automatically removed, even if you still have access to the same email address."}},{"@type":"Question","name":"Can I Recover a Temp Mail Inbox After Closing the Browser?","acceptedAnswer":{"@type":"Answer","text":"Yes, if you saved your access token. The token lets you reopen the same temp mail address and view any messages that are still within the 24-hour retention period."}},{"@type":"Question","name":"Does Tmailor Allow Sending Emails?","acceptedAnswer":{"@type":"Answer","text":"No. Tmailor is a receive-only temp mail service. You can receive incoming emails, but you cannot send outbound messages from a Tmailor address."}},{"@type":"Question","name":"Are Tmailor Domains Blocked by Websites?","acceptedAnswer":{"@type":"Answer","text":"Sometimes. Tmailor uses a large pool of domains and Google-backed mail infrastructure to improve delivery, but some websites may still block temporary email domains."}}]}]}
+        </script>
+        <script data-cfasync="false">
+            (function() {
+                if (!('serviceWorker'in navigator)) {
+                    return;
+                }
+
+                const LEGACY_SW_PATH = '/ServiceWorker.js';
+
+                const clearLegacyCookie = ()=>{
+                    const expired = 'Thu, 01 Jan 1970 00:00:00 GMT';
+                    document.cookie = "wk=; path=/; expires=" + expired + "; SameSite=Lax";
+                    document.cookie = "wk=; path=/; expires=" + expired + "; SameSite=Lax; Secure";
+                }
+                ;
+
+                const isLegacyServiceWorker = (registration)=>{
+                    const workers = [registration.active, registration.waiting, registration.installing].filter(Boolean);
+                    return workers.some((worker)=>{
+                        try {
+                            return new URL(worker.scriptURL,window.location.origin).pathname === LEGACY_SW_PATH;
+                        } catch (e) {
+                            return typeof worker.scriptURL === 'string' && worker.scriptURL.indexOf(LEGACY_SW_PATH) !== -1;
+                        }
+                    }
+                    );
+                }
+                ;
+
+                async function unregisterLegacyServiceWorker() {
+                    try {
+                        const registrations = await navigator.serviceWorker.getRegistrations();
+                        await Promise.all(registrations.filter(isLegacyServiceWorker).map((registration)=>registration.unregister()));
+                    } catch (e) {}
+
+                    try {
+                        const registration = await navigator.serviceWorker.getRegistration(LEGACY_SW_PATH);
+                        if (registration) {
+                            await registration.unregister();
+                        }
+                    } catch (e) {}
+
+                    if ('caches'in window) {
+                        try {
+                            const cacheNames = await caches.keys();
+                            await Promise.all(cacheNames.filter((cacheName)=>cacheName.indexOf('tempmail-files-') === 0).map((cacheName)=>caches.delete(cacheName)));
+                        } catch (e) {}
+                    }
+
+                    clearLegacyCookie();
+                }
+
+                window.addEventListener('load', unregisterLegacyServiceWorker);
+            }
+            )();
+        </script>
+        <script type="module" data-cfasync="false">
+            
+
+    const triggerEvents = ['scroll', 'mousemove', 'touchstart', 'keydown'];
+
+    const runOnce = () => {
+      import('/js/pc/source/firebase.js');
+      triggerEvents.forEach(e => window.removeEventListener(e, runOnce, true));
+    };
+
+    triggerEvents.forEach(e =>
+      window.addEventListener(e, runOnce, { once: true, passive: true, capture: true })
+    );
+
+  
+        </script>
+        <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v67327c56f0bb4ef8b305cae61679db8f1769101564043" integrity="sha512-rdcWY47ByXd76cbCFzznIcEaCN71jqkWBBqlwhF1SY7KubdLKZiEGeP7AyieKZlGP9hbY/MhGrwXzJC/HulNyg==" data-cf-beacon='{"version":"2024.11.0","token":"5f4e1a7763504933ac47499230fc94dc","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+    </body>
 </html>
