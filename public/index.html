@@ -17,31 +17,31 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--bg); color: #fff; overflow-x: hidden; padding-bottom: 50px; }
+        body { background-color: var(--bg); color: #fff; overflow-x: hidden; padding-bottom: 30px; }
 
         .hero { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
         .cover-area {
-            width: 100%; height: 160px; 
+            width: 100%; height: 130px; 
             background: linear-gradient(to bottom, transparent, var(--bg)), url('https://i.gifer.com/94k3.gif');
             background-size: cover; background-position: center;
             border-bottom: 2px solid var(--accent);
         }
-        .profile-container { margin-top: -50px; text-align: center; z-index: 10; margin-bottom: 30px; }
+        .profile-container { margin-top: -45px; text-align: center; z-index: 10; margin-bottom: 15px; }
         .profile-hex {
-            width: 100px; height: 100px; padding: 3px; background: var(--bg);
+            width: 85px; height: 85px; padding: 3px; background: var(--bg);
             border-radius: 50%; display: inline-block;
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.3); border: 2px solid var(--gold);
         }
         .profile-hex img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
         
         .name-wrapper { 
-            margin-top: 10px; color: var(--gold); display: flex;
-            align-items: center; justify-content: center; gap: 10px;
+            margin-top: 5px; color: var(--gold); display: flex;
+            align-items: center; justify-content: center; gap: 8px;
         }
 
         .wave-text { 
             display: flex; font-family: 'Syncopate', sans-serif; 
-            font-weight: 700; font-size: 1.3rem; letter-spacing: 4px;
+            font-weight: 700; font-size: 1rem; letter-spacing: 2px;
         }
 
         .wave-text span {
@@ -52,73 +52,79 @@
 
         @keyframes waveAnim {
             0%, 40%, 100% { transform: translateY(0); }
-            20% { transform: translateY(-10px); color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+            20% { transform: translateY(-8px); color: var(--accent); text-shadow: 0 0 10px var(--accent); }
         }
 
-        .verified-badge { color: var(--blue); font-size: 1.1rem; filter: drop-shadow(0 0 5px rgba(0, 149, 246, 0.5)); }
+        .verified-badge { color: var(--blue); font-size: 0.9rem; }
 
-        section { padding: 0 5%; max-width: 700px; margin: 0 auto; width: 100%; }
+        section { padding: 0 4%; max-width: 450px; margin: 0 auto; width: 100%; }
         
         .section-header {
-            font-family: 'Syncopate', sans-serif; font-size: 0.7rem; font-weight: 700;
-            color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
-            text-transform: uppercase; margin-top: 20px;
+            font-family: 'Syncopate', sans-serif; font-size: 0.6rem; font-weight: 700;
+            color: var(--gold); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+            text-transform: uppercase; margin-top: 10px;
         }
         .section-header::after { content: ""; height: 1px; flex-grow: 1; background: linear-gradient(to right, var(--gold), transparent); opacity: 0.2; }
 
         .card {
             background: var(--glass); border: 1px solid var(--glass-border);
-            border-radius: 12px; padding: 25px; margin-bottom: 20px;
+            border-radius: 10px; padding: 12px; margin-bottom: 12px;
         }
 
-        .mode-selector { display: flex; gap: 10px; margin-bottom: 20px; }
+        .mode-selector { display: flex; gap: 6px; margin-bottom: 12px; }
         .mode-btn { 
-            flex: 1; padding: 10px; text-align: center; cursor: pointer; border-radius: 8px; 
-            font-size: 0.65rem; font-family: 'Syncopate'; font-weight: 700; 
+            flex: 1; padding: 8px; text-align: center; cursor: pointer; border-radius: 6px; 
+            font-size: 0.55rem; font-family: 'Syncopate'; font-weight: 700; 
             border: 1px solid rgba(255,255,255,0.1); color: #888; transition: 0.3s;
         }
         .mode-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 0, 0, 0.05); }
 
-        .input-container { display: flex; gap: 10px; }
+        .input-container { display: flex; gap: 6px; width: 100%; align-items: center; }
         .form-input {
             flex: 1; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.05);
-            padding: 12px; border-radius: 8px; color: var(--gold); font-size: 0.85rem; outline: none;
+            padding: 10px; border-radius: 6px; color: var(--gold); font-size: 0.7rem; outline: none;
+            min-width: 0;
         }
 
         .btn-execute {
-            padding: 12px 20px; border-radius: 8px; border: 1px solid var(--gold);
+            padding: 10px 10px; border-radius: 6px; border: 1px solid var(--gold);
             background: transparent; color: var(--gold); font-family: 'Syncopate', sans-serif;
-            font-size: 0.6rem; font-weight: 700; cursor: pointer; text-transform: uppercase;
+            font-size: 0.45rem; font-weight: 700; cursor: pointer; text-transform: uppercase;
+            white-space: nowrap;
         }
 
         .msg-item {
             background: rgba(255, 0, 0, 0.03); border: 1px solid rgba(255, 0, 0, 0.1);
-            padding: 18px; border-radius: 12px; margin-top: 15px; border-left: 4px solid var(--accent);
+            padding: 12px; border-radius: 8px; margin-top: 8px; border-left: 3px solid var(--accent);
         }
-        .msg-header { display: flex; justify-content: space-between; font-size: 0.6rem; font-family: 'Syncopate'; color: #888; margin-bottom: 10px; }
+        .msg-header { display: flex; justify-content: space-between; font-size: 0.5rem; font-family: 'Syncopate'; color: #888; margin-bottom: 6px; }
         .code-box {
             background: rgba(0,0,0,0.5); border: 1px dashed var(--accent);
-            padding: 15px; border-radius: 8px; text-align: center;
-            font-size: 1.2rem; font-weight: 700; color: var(--accent);
+            padding: 10px; border-radius: 6px; text-align: center;
+            font-size: 0.9rem; font-weight: 700; color: var(--accent);
             display: flex; justify-content: space-between; align-items: center;
         }
 
         .history-item {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 8px; border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .history-actions { display: flex; gap: 15px; align-items: center; }
+        .history-actions { display: flex; gap: 10px; align-items: center; }
 
         #toast {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            background: var(--accent); color: #fff; padding: 10px 20px;
-            border-radius: 5px; font-family: 'Syncopate'; font-size: 0.6rem; z-index: 1000; display: none;
+            background: var(--accent); color: #fff; padding: 10px 15px;
+            border-radius: 4px; font-family: 'Syncopate'; font-size: 0.5rem; z-index: 1000; display: none;
         }
-        .spinner { border: 2px solid rgba(255,255,255,0.1); border-top: 2px solid var(--gold); border-radius: 50%; width: 14px; height: 14px; animation: spin 0.8s linear infinite; display: inline-block; margin-left: 5px; }
+        .spinner { border: 2px solid rgba(255,255,255,0.1); border-top: 2px solid var(--gold); border-radius: 50%; width: 10px; height: 10px; animation: spin 0.8s linear infinite; display: inline-block; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
 </head>
-<body>
+<body onclick="playMusic()">
+
+    <audio id="bgMusic" loop>
+        <source src="kurapika.mp3" type="audio/mpeg">
+    </audio>
 
     <header class="hero">
         <div class="cover-area"></div>
@@ -130,16 +136,16 @@
                 </div>
                 <i class="fas fa-check-circle verified-badge"></i>
             </div>
-            <p style="font-size: 0.6rem; color: var(--accent); letter-spacing: 2px; margin-top: 5px; font-family: 'Syncopate'; font-weight: 700;">GØDZ-MØDZ - UGK</p>
+            <p style="font-size: 0.45rem; color: var(--accent); letter-spacing: 2px; margin-top: 4px; font-family: 'Syncopate'; font-weight: 700;">GØDZ-MØDZ - UGK</p>
         </div>
     </header>
 
     <section>
-        <div class="section-header">MAIL_GENERATOR ✅</div>
+        <div class="section-header">MAIL_GENERATOR</div>
         <div class="card">
             <div class="mode-selector">
-                <div class="mode-btn active" id="randomMode" onclick="setMode('random')">RANDOM_GEN</div>
-                <div class="mode-btn" id="customMode" onclick="setMode('custom')">CUSTOM_NAME</div>
+                <div class="mode-btn active" id="randomMode" onclick="setMode('random')">RANDOM</div>
+                <div class="mode-btn" id="customMode" onclick="setMode('custom')">CUSTOM</div>
             </div>
 
             <div class="input-container">
@@ -147,30 +153,37 @@
                 <button class="btn-execute" id="actionBtn" onclick="handleAction()">GENERATE</button>
             </div>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
-                <button class="btn-execute" style="font-size: 0.5rem;" onclick="copyEmail()">COPY_MAIL</button>
-                <button class="btn-execute" style="font-size: 0.5rem;" id="checkBtn" onclick="loadInbox()">CHECK_INBOX</button>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px;">
+                <button class="btn-execute" onclick="copyEmail()">COPY</button>
+                <button class="btn-execute" id="checkBtn" onclick="loadInbox()">CHECK</button>
             </div>
         </div>
 
-        <div class="section-header">INBOX_MONITOR (AUTO-SYNC)</div>
+        <div class="section-header">INBOX</div>
         <div id="inbox">
-            <p style="text-align: center; font-size: 0.6rem; color: #444; font-family: 'Syncopate';">WAITING_FOR_DATA...</p>
+            <p style="text-align: center; font-size: 0.5rem; color: #444; font-family: 'Syncopate';">WAITING...</p>
         </div>
 
-        <div class="section-header">SESSION_HISTORY</div>
-        <div id="historyList" class="card" style="padding: 10px; font-size: 0.75rem;"></div>
+        <div class="section-header">HISTORY</div>
+        <div id="historyList" class="card" style="padding: 10px; font-size: 0.6rem;"></div>
     </section>
 
     <div id="toast">SYSTEM_READY</div>
 
     <script>
-        // Full API URL mula sa lumang site mo
         const DOMAIN = "@timpmeyl.indevs.in";
         const API_URL = "https://temporary-emaill.netlify.app/api/messages?address="; 
         
         let currentMode = 'random';
-        let autoRefreshInterval;
+        let isMusicPlaying = false;
+
+        function playMusic() {
+            const music = document.getElementById('bgMusic');
+            if(!isMusicPlaying) {
+                music.play().catch(() => {});
+                isMusicPlaying = true;
+            }
+        }
 
         function setMode(mode) {
             currentMode = mode;
@@ -180,17 +193,17 @@
             input.value = "";
             input.readOnly = (mode === 'random');
             document.getElementById('actionBtn').innerText = (mode === 'random' ? "GENERATE" : "CREATE");
+            if(mode === 'custom') input.focus();
         }
 
         function handleAction() {
             const input = document.getElementById('emailInput');
             const btn = document.getElementById('actionBtn');
             let val = input.value.trim().toLowerCase();
-            
             if(currentMode === 'custom' && !val) { showToast("NAME_REQUIRED"); return; }
 
             btn.disabled = true;
-            btn.innerHTML = `WAITING... <div class="spinner"></div>`;
+            btn.innerHTML = `<div class="spinner"></div>`;
 
             setTimeout(() => {
                 let fullMail = (currentMode === 'random') 
@@ -203,60 +216,38 @@
                 btn.disabled = false;
                 btn.innerText = (currentMode === 'random' ? "GENERATE" : "CREATE");
                 loadInbox();
-                startAutoRefresh();
             }, 500);
         }
 
-        function startAutoRefresh() {
-            if (autoRefreshInterval) clearInterval(autoRefreshInterval);
-            autoRefreshInterval = setInterval(() => {
-                const email = document.getElementById("emailInput").value.trim();
-                if (email) loadInbox(true);
-            }, 10000); 
-        }
-
-        async function loadInbox(isAuto = false) {
+        async function loadInbox() {
             const email = document.getElementById('emailInput').value;
             if(!email) return;
             const container = document.getElementById('inbox');
-            const checkBtn = document.getElementById('checkBtn');
-
-            if(!isAuto) {
-                container.innerHTML = '<p style="text-align:center; font-size:0.6rem; color:var(--gold); font-family:\'Syncopate\'">SYNCING... <div class="spinner"></div></p>';
-                checkBtn.innerText = "CHECKING...";
-            }
+            container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:var(--gold);">SYNCING...</p>';
 
             try {
                 const res = await fetch(API_URL + email + "&nocache=" + Date.now());
                 const data = await res.json();
                 if(!data || data.length === 0) {
-                    if(!isAuto) container.innerHTML = '<p style="text-align:center; font-size:0.6rem; color:#444;">EMPTY_INBOX</p>';
+                    container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:#444;">EMPTY</p>';
                 } else {
                     container.innerHTML = data.map(msg => {
                         const code = (msg.subject || "").match(/\b\d{5,8}\b/);
-                        const sender = msg.from.split('<')[0].replace(/"/g, '').trim() || "SENDER";
                         return `
                             <div class="msg-item">
-                                <div class="msg-header"><span>${sender}</span><span>${new Date(msg.date).toLocaleTimeString()}</span></div>
-                                <div class="code-box">
-                                    <span>${code ? code[0] : 'VIEW_MSG'}</span>
-                                    <i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i>
-                                </div>
+                                <div class="msg-header"><span>${msg.from.split('<')[0].replace(/"/g, '')}</span><span>${new Date(msg.date).toLocaleTimeString()}</span></div>
+                                <div class="code-box"><span>${code ? code[0] : 'VIEW'}</span><i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i></div>
                             </div>`;
                     }).join('');
                 }
-            } catch (e) { 
-                if(!isAuto) container.innerHTML = '<p style="color:red; text-align:center; font-size:0.6rem;">API_ERROR</p>'; 
-            } finally {
-                checkBtn.innerText = "CHECK_INBOX";
-            }
+            } catch (e) { container.innerHTML = '<p style="color:red; text-align:center; font-size:0.5rem;">ERROR</p>'; }
         }
 
         function saveHistory(email) {
             let history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
             if(!history.includes(email)) {
                 history.unshift(email);
-                localStorage.setItem('tempMailKurapika', JSON.stringify(history.slice(0, 10)));
+                localStorage.setItem('tempMailKurapika', JSON.stringify(history.slice(0, 5)));
             }
             renderHistory();
         }
@@ -264,20 +255,20 @@
         function renderHistory() {
             const history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
             const list = document.getElementById('historyList');
-            if(!history.length) { list.innerHTML = '<p style="text-align:center; color:#444;">NO_HISTORY</p>'; return; }
+            if(!history.length) { list.innerHTML = '<p style="text-align:center; color:#444;">EMPTY</p>'; return; }
             list.innerHTML = history.map((h, i) => `
                 <div class="history-item">
-                    <span style="color:var(--gold); font-size:0.6rem; overflow:hidden; text-overflow:ellipsis;">${h}</span>
+                    <span style="color:var(--gold); font-size:0.5rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:70%;">${h}</span>
                     <div class="history-actions">
-                        <i class="fas fa-sync" style="color:var(--blue); cursor:pointer;" onclick="useHistory('${h}')"></i>
-                        <i class="fas fa-trash" style="color:var(--accent); cursor:pointer;" onclick="deleteHistory(${i})"></i>
+                        <i class="fas fa-sync" style="color:var(--blue);" onclick="useHistory('${h}')"></i>
+                        <i class="fas fa-trash" style="color:var(--accent);" onclick="deleteHistory(${i})"></i>
                     </div>
                 </div>`).join('');
         }
 
         function deleteHistory(index) {
             let history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
-            history.splice(index, 1); // Individual delete
+            history.splice(index, 1);
             localStorage.setItem('tempMailKurapika', JSON.stringify(history));
             renderHistory();
             showToast("DELETED");
@@ -286,14 +277,12 @@
         function useHistory(email) {
             document.getElementById('emailInput').value = email;
             loadInbox();
-            startAutoRefresh();
             showToast("RESTORED");
         }
 
         function copyEmail() { const m = document.getElementById('emailInput').value; if(m) copyToClipboard(m); }
         function copyToClipboard(t) { navigator.clipboard.writeText(t); showToast("COPIED"); }
         function showToast(m) { const t = document.getElementById('toast'); t.innerText = m; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2000); }
-        
         window.onload = renderHistory;
     </script>
 </body>
