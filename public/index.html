@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>𝙺𝚄𝚁𝙰𝙿𝙸𝙺𝙰 | 𝚃𝙴𝙼𝙿 𝙼𝙰𝙸𝙻</title>
+    <title></title>𝙺𝚄𝚁𝙰𝙿𝙸𝙺𝙰 | 𝚃𝙴𝙼𝙿 𝙼𝙰𝙸𝙻</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
@@ -85,11 +85,9 @@
             padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem;
         }
 
-        .btn-clear {
-            width: 100%; margin-top: 10px; background: transparent; border: none;
-            color: var(--accent); font-family: 'Syncopate'; font-size: 0.5rem;
-            font-weight: 700; cursor: pointer; text-decoration: underline;
-        }
+        .history-actions { display: flex; gap: 15px; }
+        .btn-del { color: #555; cursor: pointer; transition: 0.3s; }
+        .btn-del:hover { color: var(--accent); }
     </style>
 </head>
 <body>
@@ -103,12 +101,12 @@
             <div class="wave-text">
                 <span style="--i:1">K</span><span style="--i:2">U</span><span style="--i:3">R</span><span style="--i:4">A</span><span style="--i:5">P</span><span style="--i:6">I</span><span style="--i:7">K</span><span style="--i:8">A</span>
             </div>
-            <p style="font-size: 0.5rem; color: var(--accent); letter-spacing: 2px; margin-top: 4px; font-family: 'Syncopate'; font-weight: 700;">GØDZ-MØDZ - UGK</p>
+            <p style="font-size: 0.5rem; color: var(--accent); letter-spacing: 2px; margin-top: 4px; font-family: 'Syncopate'; font-weight: 700;">✅ GØDZ-MØDZ - UGK</p>
         </div>
     </header>
 
     <section>
-        <div class="section-header">GENERATOR (1SECMAIL)</div>
+        <div class="section-header">GENERATOR (1SECMAIL) ✅</div>
         <div class="card">
             <input type="text" id="emailInput" class="form-input" placeholder="WAITING..." readonly>
             <button class="btn-execute" id="actionBtn" onclick="generateMail()">GENERATE_MAIL</button>
@@ -125,7 +123,6 @@
 
         <div class="section-header">PRIVATE_HISTORY</div>
         <div id="historyList" class="card" style="padding: 10px;"></div>
-        <button class="btn-clear" onclick="clearHistory()">CLEAR_HISTORY</button>
     </section>
 
     <script>
@@ -148,28 +145,33 @@
             if(!email) return;
             const [user, domain] = email.split('@');
             const container = document.getElementById('inbox');
+            
             if(!isAuto) container.innerHTML = '<p style="text-align:center; font-size:0.55rem; color:var(--gold); font-family:\'Syncopate\';">FETCHING...</p>';
+            
             try {
                 const res = await fetch(`${API}?action=getMessages&login=${user}&domain=${domain}`);
+                if (!res.ok) throw new Error('Network response was not ok');
                 const messages = await res.json();
+                
                 if(messages.length === 0) {
                     if(!isAuto) container.innerHTML = '<p style="text-align:center; font-size:0.55rem; color:#333; font-family:\'Syncopate\';">INBOX_EMPTY</p>';
                 } else {
                     container.innerHTML = messages.slice(0, 5).map(msg => {
-                        const code = msg.subject.match(/\b\d{4,6}\b/);
+                        const code = msg.subject.match(/\b\d{4,8}\b/);
                         return `
                             <div class="msg-item">
                                 <div class="msg-header">FROM: ${msg.from}</div>
                                 <div class="msg-header">SUBJ: ${msg.subject}</div>
                                 <div class="code-box">
-                                    <span>${code ? code[0] : 'CHECK'}</span>
+                                    <span>${code ? code[0] : 'VIEW_MAIL'}</span>
                                     <i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i>
                                 </div>
                             </div>`;
                     }).join('');
                 }
             } catch (e) {
-                if(!isAuto) container.innerHTML = '<p style="color:var(--accent); text-align:center; font-size:0.55rem;">ERROR_SYNC</p>';
+                console.error(e);
+                if(!isAuto) container.innerHTML = '<p style="color:var(--accent); text-align:center; font-size:0.55rem;">ERROR_SYNC - RETRYING</p>';
             }
         }
 
@@ -182,7 +184,7 @@
             let history = JSON.parse(localStorage.getItem('kurapika_history') || '[]');
             if(!history.includes(email)) {
                 history.unshift(email);
-                localStorage.setItem('kurapika_history', JSON.stringify(history.slice(0, 5)));
+                localStorage.setItem('kurapika_history', JSON.stringify(history.slice(0, 10)));
             }
             renderHistory();
         }
@@ -191,20 +193,25 @@
             const history = JSON.parse(localStorage.getItem('kurapika_history') || '[]');
             const list = document.getElementById('historyList');
             if(history.length === 0) {
-                list.innerHTML = '<p style="color:#222; text-align:center; font-size:0.5rem;">EMPTY</p>';
+                list.innerHTML = '<p style="color:#222; text-align:center; font-size:0.5rem; padding:10px;">EMPTY</p>';
                 return;
             }
-            list.innerHTML = history.map(h => `
+            list.innerHTML = history.map((h, index) => `
                 <div class="history-item">
                     <span style="color:var(--gold); font-size:0.6rem;">${h}</span>
-                    <i class="fas fa-redo-alt" style="color:var(--accent)" onclick="restoreMail('${h}')"></i>
+                    <div class="history-actions">
+                        <i class="fas fa-redo-alt" style="color:var(--gold)" onclick="restoreMail('${h}')"></i>
+                        <i class="fas fa-trash-alt btn-del" onclick="deleteHistoryItem(${index})"></i>
+                    </div>
                 </div>`).join('');
         }
 
-        function clearHistory() {
-            localStorage.removeItem('kurapika_history');
+        function deleteHistoryItem(index) {
+            let history = JSON.parse(localStorage.getItem('kurapika_history') || '[]');
+            history.splice(index, 1);
+            localStorage.setItem('kurapika_history', JSON.stringify(history));
             renderHistory();
-            showToast("HISTORY_CLEARED");
+            showToast("ITEM_DELETED");
         }
 
         function restoreMail(email) {
