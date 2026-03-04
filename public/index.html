@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>𝙺𝚄𝚁𝙰𝙿𝙸𝙺𝙰 | 𝚃𝙴𝙼𝙿 𝙼𝙰𝙸𝙻</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -114,6 +114,8 @@
             background: var(--accent); color: #fff; padding: 10px 20px;
             border-radius: 5px; font-family: 'Syncopate'; font-size: 0.6rem; z-index: 1000; display: none;
         }
+        .spinner { border: 2px solid rgba(255,255,255,0.1); border-top: 2px solid var(--gold); border-radius: 50%; width: 14px; height: 14px; animation: spin 0.8s linear infinite; display: inline-block; margin-left: 5px; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -133,7 +135,7 @@
     </header>
 
     <section>
-        <div class="section-header">MAIL_GENERATOR</div>
+        <div class="section-header">MAIL_GENERATOR ✅</div>
         <div class="card">
             <div class="mode-selector">
                 <div class="mode-btn active" id="randomMode" onclick="setMode('random')">RANDOM_GEN</div>
@@ -151,7 +153,7 @@
             </div>
         </div>
 
-        <div class="section-header">INBOX_MONITOR</div>
+        <div class="section-header">INBOX_MONITOR (AUTO-SYNC)</div>
         <div id="inbox">
             <p style="text-align: center; font-size: 0.6rem; color: #444; font-family: 'Syncopate';">WAITING_FOR_DATA...</p>
         </div>
@@ -163,9 +165,12 @@
     <div id="toast">SYSTEM_READY</div>
 
     <script>
+        // Full API URL mula sa lumang site mo
         const DOMAIN = "@timpmeyl.indevs.in";
-        const API_URL = "/api/messages?address=";
+        const API_URL = "https://temporary-emaill.netlify.app/api/messages?address="; 
+        
         let currentMode = 'random';
+        let autoRefreshInterval;
 
         function setMode(mode) {
             currentMode = mode;
@@ -179,43 +184,72 @@
 
         function handleAction() {
             const input = document.getElementById('emailInput');
+            const btn = document.getElementById('actionBtn');
             let val = input.value.trim().toLowerCase();
+            
             if(currentMode === 'custom' && !val) { showToast("NAME_REQUIRED"); return; }
 
-            let fullMail = (currentMode === 'random') 
-                ? Math.random().toString(36).substring(2, 10) + DOMAIN 
-                : (val.includes('@') ? val.split('@')[0] : val) + DOMAIN;
+            btn.disabled = true;
+            btn.innerHTML = `WAITING... <div class="spinner"></div>`;
 
-            input.value = fullMail;
-            saveHistory(fullMail);
-            showToast("MAIL_READY");
-            loadInbox();
+            setTimeout(() => {
+                let fullMail = (currentMode === 'random') 
+                    ? Math.random().toString(36).substring(2, 10) + DOMAIN 
+                    : (val.includes('@') ? val.split('@')[0] : val) + DOMAIN;
+
+                input.value = fullMail;
+                saveHistory(fullMail);
+                showToast("MAIL_READY");
+                btn.disabled = false;
+                btn.innerText = (currentMode === 'random' ? "GENERATE" : "CREATE");
+                loadInbox();
+                startAutoRefresh();
+            }, 500);
         }
 
-        async function loadInbox() {
+        function startAutoRefresh() {
+            if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+            autoRefreshInterval = setInterval(() => {
+                const email = document.getElementById("emailInput").value.trim();
+                if (email) loadInbox(true);
+            }, 10000); 
+        }
+
+        async function loadInbox(isAuto = false) {
             const email = document.getElementById('emailInput').value;
             if(!email) return;
             const container = document.getElementById('inbox');
-            container.innerHTML = '<p style="text-align:center; font-size:0.6rem; color:var(--gold); font-family:\'Syncopate\'">FETCHING...</p>';
+            const checkBtn = document.getElementById('checkBtn');
+
+            if(!isAuto) {
+                container.innerHTML = '<p style="text-align:center; font-size:0.6rem; color:var(--gold); font-family:\'Syncopate\'">SYNCING... <div class="spinner"></div></p>';
+                checkBtn.innerText = "CHECKING...";
+            }
 
             try {
                 const res = await fetch(API_URL + email + "&nocache=" + Date.now());
                 const data = await res.json();
                 if(!data || data.length === 0) {
-                    container.innerHTML = '<p style="text-align:center; font-size:0.6rem; color:#444;">EMPTY_INBOX</p>';
+                    if(!isAuto) container.innerHTML = '<p style="text-align:center; font-size:0.6rem; color:#444;">EMPTY_INBOX</p>';
                 } else {
                     container.innerHTML = data.map(msg => {
-                        // Extracting 5-6 digit codes for confirmation
                         const code = (msg.subject || "").match(/\b\d{5,8}\b/);
                         const sender = msg.from.split('<')[0].replace(/"/g, '').trim() || "SENDER";
                         return `
                             <div class="msg-item">
                                 <div class="msg-header"><span>${sender}</span><span>${new Date(msg.date).toLocaleTimeString()}</span></div>
-                                <div class="code-box"><span>${code ? code[0] : 'VIEW_MAIL'}</span><i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i></div>
+                                <div class="code-box">
+                                    <span>${code ? code[0] : 'VIEW_MSG'}</span>
+                                    <i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i>
+                                </div>
                             </div>`;
                     }).join('');
                 }
-            } catch (e) { container.innerHTML = '<p style="color:red; text-align:center;">API_ERROR</p>'; }
+            } catch (e) { 
+                if(!isAuto) container.innerHTML = '<p style="color:red; text-align:center; font-size:0.6rem;">API_ERROR</p>'; 
+            } finally {
+                checkBtn.innerText = "CHECK_INBOX";
+            }
         }
 
         function saveHistory(email) {
@@ -233,7 +267,7 @@
             if(!history.length) { list.innerHTML = '<p style="text-align:center; color:#444;">NO_HISTORY</p>'; return; }
             list.innerHTML = history.map((h, i) => `
                 <div class="history-item">
-                    <span style="color:var(--gold); font-size:0.6rem;">${h}</span>
+                    <span style="color:var(--gold); font-size:0.6rem; overflow:hidden; text-overflow:ellipsis;">${h}</span>
                     <div class="history-actions">
                         <i class="fas fa-sync" style="color:var(--blue); cursor:pointer;" onclick="useHistory('${h}')"></i>
                         <i class="fas fa-trash" style="color:var(--accent); cursor:pointer;" onclick="deleteHistory(${i})"></i>
@@ -243,22 +277,24 @@
 
         function deleteHistory(index) {
             let history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
-            history.splice(index, 1); // Eto yung magde-delete ng isa-isa
+            history.splice(index, 1); // Individual delete
             localStorage.setItem('tempMailKurapika', JSON.stringify(history));
             renderHistory();
-            showToast("ITEM_DELETED");
+            showToast("DELETED");
         }
 
         function useHistory(email) {
             document.getElementById('emailInput').value = email;
             loadInbox();
+            startAutoRefresh();
             showToast("RESTORED");
         }
 
         function copyEmail() { const m = document.getElementById('emailInput').value; if(m) copyToClipboard(m); }
         function copyToClipboard(t) { navigator.clipboard.writeText(t); showToast("COPIED"); }
         function showToast(m) { const t = document.getElementById('toast'); t.innerText = m; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2000); }
+        
         window.onload = renderHistory;
     </script>
 </body>
-    </html>
+</html>
