@@ -17,7 +17,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg); color: #fff; overflow-x: hidden; padding-bottom: 30px; line-height: 1.4; }
+        body { background-color: var(--bg); color: #fff; overflow-x: hidden; padding-bottom: 30px; }
 
         .hero { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
         .cover-area {
@@ -43,8 +43,6 @@
             20% { transform: translateY(-8px); color: var(--accent); text-shadow: 0 0 8px var(--accent); }
         }
 
-        .verified-badge { color: var(--blue); font-size: 0.9rem; }
-
         section { padding: 0 15px; width: 100%; }
         .section-header {
             font-family: 'Syncopate', sans-serif; font-size: 0.65rem; font-weight: 700;
@@ -55,19 +53,9 @@
 
         .card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; padding: 20px; margin-bottom: 15px; }
 
-        .mode-selector { display: flex; gap: 8px; margin-bottom: 15px; }
-        .mode-btn { 
-            flex: 1; padding: 12px; text-align: center; cursor: pointer; border-radius: 8px; 
-            font-size: 0.6rem; font-family: 'Syncopate'; font-weight: 700; 
-            border: 1px solid rgba(255,255,255,0.1); color: #666; transition: 0.3s;
-        }
-        .mode-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 0, 0, 0.05); }
-
-        .form-label { font-family: 'Syncopate', sans-serif; font-size: 0.5rem; font-weight: 700; color: #888; display: block; margin-bottom: 8px; }
-        .input-container { display: flex; flex-direction: column; gap: 10px; }
         .form-input {
             width: 100%; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.05);
-            padding: 14px; border-radius: 8px; color: var(--gold); font-size: 0.9rem; outline: none; text-align: center;
+            padding: 14px; border-radius: 8px; color: var(--gold); font-size: 0.9rem; outline: none; text-align: center; margin-bottom: 10px;
         }
 
         .btn-execute {
@@ -77,13 +65,11 @@
         }
         .btn-secondary {
             background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff; padding: 12px; border-radius: 8px; font-size: 0.6rem; font-family: 'Syncopate';
-            flex: 1;
+            color: #fff; padding: 12px; border-radius: 8px; font-size: 0.6rem; font-family: 'Syncopate'; flex: 1;
         }
 
         .msg-item { background: rgba(255, 0, 0, 0.03); border: 1px solid rgba(255, 0, 0, 0.1); padding: 15px; border-radius: 12px; margin-top: 10px; border-left: 3px solid var(--accent); }
         .msg-header { display: flex; justify-content: space-between; font-size: 0.55rem; font-family: 'Syncopate'; color: #666; margin-bottom: 8px; }
-        .msg-title { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
         .code-box {
             background: rgba(0,0,0,0.5); border: 1px dashed var(--accent); padding: 12px; border-radius: 8px; 
             font-size: 1.1rem; font-weight: 700; color: var(--accent); display: flex; justify-content: space-between; align-items: center;
@@ -93,7 +79,7 @@
             position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
             background: var(--accent); color: #fff; padding: 8px 16px;
             border-radius: 20px; font-family: 'Syncopate'; font-size: 0.55rem;
-            z-index: 9999; display: none; box-shadow: 0 5px 15px rgba(255,0,0,0.3);
+            z-index: 9999; display: none;
         }
 
         .history-item {
@@ -114,7 +100,6 @@
                 <div class="wave-text">
                     <span style="--i:1">K</span><span style="--i:2">U</span><span style="--i:3">R</span><span style="--i:4">A</span><span style="--i:5">P</span><span style="--i:6">I</span><span style="--i:7">K</span><span style="--i:8">A</span>
                 </div>
-                <i class="fas fa-check-circle verified-badge"></i>
             </div>
             <p style="font-size: 0.5rem; color: var(--accent); letter-spacing: 2px; margin-top: 4px; font-family: 'Syncopate'; font-weight: 700;">GØDZ-MØDZ - UGK</p>
         </div>
@@ -123,25 +108,17 @@
     <section>
         <div class="section-header">MAIL_GENERATOR</div>
         <div class="card">
-            <div class="mode-selector">
-                <div class="mode-btn active" id="randomMode" onclick="setMode('random')">RANDOM</div>
-                <div class="mode-btn" id="customMode" onclick="setMode('custom')">CUSTOM</div>
-            </div>
-
-            <div class="input-container">
-                <input type="text" id="emailInput" class="form-input" placeholder="TAP GENERATE..." readonly>
-                <button class="btn-execute" id="actionBtn" onclick="handleAction()">GENERATE_MAIL</button>
-            </div>
-            
+            <input type="text" id="emailInput" class="form-input" placeholder="TAP GENERATE..." readonly>
+            <button class="btn-execute" id="actionBtn" onclick="handleGenerate()">GENERATE_MAIL</button>
             <div style="display: flex; gap: 8px; margin-top: 10px;">
                 <button class="btn-secondary" onclick="copyEmail()">COPY</button>
                 <button class="btn-secondary" id="checkBtn" onclick="loadInbox()">CHECK</button>
             </div>
         </div>
 
-        <div class="section-header">INBOX_MONITOR</div>
+        <div class="section-header">INBOX_MONITOR (AUTO-SYNC)</div>
         <div id="inbox">
-            <p style="text-align: center; font-size: 0.55rem; color: #333; font-family: 'Syncopate'; padding: 20px;">NO_ACTIVE_TRANSMISSION</p>
+            <p style="text-align: center; font-size: 0.55rem; color: #333; font-family: 'Syncopate'; padding: 20px;">WAITING_FOR_EMAIL</p>
         </div>
 
         <div class="section-header">PRIVATE_HISTORY</div>
@@ -149,32 +126,70 @@
     </section>
 
     <script>
-        const DOMAIN = "@timpmeyl.indevs.in";
-        const API_URL = "/api/messages?address=";
-        let currentMode = 'random';
+        const API_GEN = "https://dev.oculux.xyz/api/tmail1-gen";
+        const API_INBOX = "https://dev.oculux.xyz/api/tmail1-inbox?email=";
+        let refreshInterval = null;
 
-        function setMode(mode) {
-            currentMode = mode;
-            document.getElementById('randomMode').classList.toggle('active', mode === 'random');
-            document.getElementById('customMode').classList.toggle('active', mode === 'custom');
+        async function handleGenerate() {
             const input = document.getElementById('emailInput');
-            input.value = "";
-            input.readOnly = (mode === 'random');
-            input.placeholder = (mode === 'random') ? "TAP GENERATE..." : "TYPE NAME...";
+            const btn = document.getElementById('actionBtn');
+            btn.disabled = true;
+            btn.innerText = "GENERATING...";
+
+            try {
+                const res = await fetch(API_GEN);
+                const data = await res.json();
+                const email = data.email;
+
+                if(email) {
+                    input.value = email;
+                    saveToLocal(email);
+                    showToast("MAIL_CREATED");
+                    startAutoRefresh();
+                }
+            } catch (e) {
+                showToast("GEN_FAILED");
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "GENERATE_MAIL";
+            }
         }
 
-        function handleAction() {
-            const input = document.getElementById('emailInput');
-            let val = input.value.trim().toLowerCase();
-            if(currentMode === 'custom' && !val) { showToast("INPUT_REQUIRED"); return; }
+        async function loadInbox(isAuto = false) {
+            const email = document.getElementById('emailInput').value;
+            if(!email) return;
+            const container = document.getElementById('inbox');
 
-            let fullMail = (currentMode === 'random') 
-                ? Math.random().toString(36).substring(2, 10) + DOMAIN 
-                : (val.includes('@') ? val.split('@')[0] : val) + DOMAIN;
+            if(!isAuto) container.innerHTML = '<p style="text-align:center; font-size:0.55rem; color:var(--gold); font-family:\'Syncopate\';">SYNCING...</p>';
 
-            input.value = fullMail;
-            saveToLocal(fullMail);
-            showToast("MAIL_CREATED");
+            try {
+                const res = await fetch(API_INBOX + email);
+                const data = await res.json();
+
+                if(!data || data.length === 0 || (data.status === false)) {
+                    if(!isAuto) container.innerHTML = '<p style="text-align:center; font-size:0.55rem; color:#333; font-family:\'Syncopate\';">INBOX_EMPTY</p>';
+                } else {
+                    container.innerHTML = data.map(msg => {
+                        const code = (msg.subject || "").match(/\b\d{5,6}\b/);
+                        return `
+                            <div class="msg-item">
+                                <div class="msg-header"><span>${msg.from}</span></div>
+                                <div class="msg-header"><span>Subject: ${msg.subject}</span></div>
+                                <div class="code-box">
+                                    <span>${code ? code[0] : 'SEE_FULL'}</span>
+                                    <i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i>
+                                </div>
+                            </div>`;
+                    }).join('');
+                }
+            } catch (e) {
+                if(!isAuto) container.innerHTML = '<p style="color:var(--accent); text-align:center; font-size:0.55rem;">ERR_CONNECTION</p>';
+            }
+        }
+
+        function startAutoRefresh() {
+            if(refreshInterval) clearInterval(refreshInterval);
+            refreshInterval = setInterval(() => loadInbox(true), 10000);
         }
 
         function saveToLocal(email) {
@@ -190,49 +205,21 @@
             const history = JSON.parse(localStorage.getItem('kurapika_history') || '[]');
             const list = document.getElementById('historyList');
             if(history.length === 0) {
-                list.innerHTML = '<p style="color:#222; text-align:center; font-size:0.5rem; font-family:\'Syncopate\'">HISTORY_EMPTY</p>';
+                list.innerHTML = '<p style="color:#222; text-align:center; font-size:0.55rem;">NO_HISTORY</p>';
                 return;
             }
             list.innerHTML = history.map(h => `
                 <div class="history-item">
-                    <span style="color:var(--gold); overflow:hidden; text-overflow:ellipsis;">${h}</span>
-                    <i class="fas fa-chevron-right" style="color:var(--accent)" onclick="restoreMail('${h}')"></i>
-                </div>
-            `).join('');
+                    <span style="color:var(--gold); font-size:0.6rem;">${h}</span>
+                    <i class="fas fa-redo-alt" style="color:var(--accent)" onclick="restoreMail('${h}')"></i>
+                </div>`).join('');
         }
 
         function restoreMail(email) {
             document.getElementById('emailInput').value = email;
             showToast("RESTORED");
             loadInbox();
-        }
-
-        async function loadInbox() {
-            const email = document.getElementById('emailInput').value;
-            if(!email) { showToast("NO_MAIL"); return; }
-            const container = document.getElementById('inbox');
-            container.innerHTML = '<p style="text-align: center; font-size: 0.55rem; color: var(--gold); font-family: \'Syncopate\';">SYNCING...</p>';
-
-            try {
-                const res = await fetch(API_URL + email + "&nocache=" + Date.now());
-                const data = await res.json();
-                if(!data || data.length === 0) {
-                    container.innerHTML = '<p style="text-align: center; font-size: 0.55rem; color: #333; font-family: \'Syncopate\';">INBOX_EMPTY</p>';
-                } else {
-                    container.innerHTML = data.map(msg => {
-                        const code = (msg.subject || "").match(/\b\d{5,6}\b/);
-                        return `
-                            <div class="msg-item">
-                                <div class="msg-header"><span>${msg.from.split('<')[0]}</span><span>${new Date(msg.date).toLocaleTimeString()}</span></div>
-                                <div class="msg-title">${code ? 'VERIFICATION_CODE' : 'MESSAGE'}</div>
-                                <div class="code-box">
-                                    <span>${code ? code[0] : (msg.subject || 'N/A')}</span>
-                                    <i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i>
-                                </div>
-                            </div>`;
-                    }).join('');
-                }
-            } catch (e) { container.innerHTML = '<p style="color:var(--accent); text-align:center; font-size:0.55rem;">ERR_CONNECTION</p>'; }
+            startAutoRefresh();
         }
 
         function copyEmail() {
@@ -242,7 +229,7 @@
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text);
-            showToast("COPIED_TO_CLIPBOARD");
+            showToast("COPIED");
         }
 
         function showToast(msg) {
