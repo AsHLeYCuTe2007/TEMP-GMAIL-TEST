@@ -10,7 +10,6 @@
         :root {
             --accent: #ff0000;
             --gold: #ffcc00;
-            --blue: #0095f6;
             --bg: #05070a; 
             --glass: rgba(255, 255, 255, 0.02);
             --glass-border: rgba(255, 204, 0, 0.15);
@@ -34,8 +33,7 @@
         }
         .profile-hex img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
         
-        .name-wrapper { margin-top: 8px; color: var(--gold); display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .wave-text { display: flex; font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 3px; }
+        .wave-text { display: flex; font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 3px; justify-content: center; color: var(--gold); margin-top: 10px; }
         .wave-text span { display: inline-block; animation: waveAnim 2s infinite ease-in-out; animation-delay: calc(0.1s * var(--i)); }
 
         @keyframes waveAnim {
@@ -55,7 +53,7 @@
 
         .form-input {
             width: 100%; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.05);
-            padding: 14px; border-radius: 8px; color: var(--gold); font-size: 0.9rem; outline: none; text-align: center; margin-bottom: 10px;
+            padding: 14px; border-radius: 8px; color: var(--gold); font-size: 0.85rem; outline: none; text-align: center; margin-bottom: 10px;
         }
 
         .btn-execute {
@@ -69,10 +67,10 @@
         }
 
         .msg-item { background: rgba(255, 0, 0, 0.03); border: 1px solid rgba(255, 0, 0, 0.1); padding: 15px; border-radius: 12px; margin-top: 10px; border-left: 3px solid var(--accent); }
-        .msg-header { display: flex; justify-content: space-between; font-size: 0.55rem; font-family: 'Syncopate'; color: #666; margin-bottom: 8px; }
+        .msg-header { font-size: 0.55rem; font-family: 'Syncopate'; color: #888; margin-bottom: 5px; }
         .code-box {
             background: rgba(0,0,0,0.5); border: 1px dashed var(--accent); padding: 12px; border-radius: 8px; 
-            font-size: 1.1rem; font-weight: 700; color: var(--accent); display: flex; justify-content: space-between; align-items: center;
+            font-size: 1.1rem; font-weight: 700; color: var(--accent); display: flex; justify-content: space-between; align-items: center; margin-top: 5px;
         }
 
         #toast {
@@ -86,6 +84,12 @@
             display: flex; justify-content: space-between; align-items: center;
             padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem;
         }
+
+        .btn-clear {
+            width: 100%; margin-top: 10px; background: transparent; border: none;
+            color: var(--accent); font-family: 'Syncopate'; font-size: 0.5rem;
+            font-weight: 700; cursor: pointer; text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -96,107 +100,89 @@
         <div class="cover-area"></div>
         <div class="profile-container">
             <div class="profile-hex"><img src="https://i.gifer.com/94k1.gif" alt="Kurapika"></div>
-            <div class="name-wrapper">
-                <div class="wave-text">
-                    <span style="--i:1">K</span><span style="--i:2">U</span><span style="--i:3">R</span><span style="--i:4">A</span><span style="--i:5">P</span><span style="--i:6">I</span><span style="--i:7">K</span><span style="--i:8">A</span>
-                </div>
+            <div class="wave-text">
+                <span style="--i:1">K</span><span style="--i:2">U</span><span style="--i:3">R</span><span style="--i:4">A</span><span style="--i:5">P</span><span style="--i:6">I</span><span style="--i:7">K</span><span style="--i:8">A</span>
             </div>
             <p style="font-size: 0.5rem; color: var(--accent); letter-spacing: 2px; margin-top: 4px; font-family: 'Syncopate'; font-weight: 700;">GØDZ-MØDZ - UGK</p>
         </div>
     </header>
 
     <section>
-        <div class="section-header">MAIL_GENERATOR</div>
+        <div class="section-header">GENERATOR (1SECMAIL)</div>
         <div class="card">
-            <input type="text" id="emailInput" class="form-input" placeholder="TAP GENERATE..." readonly>
-            <button class="btn-execute" id="actionBtn" onclick="handleGenerate()">GENERATE_MAIL</button>
+            <input type="text" id="emailInput" class="form-input" placeholder="WAITING..." readonly>
+            <button class="btn-execute" id="actionBtn" onclick="generateMail()">GENERATE_MAIL</button>
             <div style="display: flex; gap: 8px; margin-top: 10px;">
                 <button class="btn-secondary" onclick="copyEmail()">COPY</button>
-                <button class="btn-secondary" id="checkBtn" onclick="loadInbox()">CHECK</button>
+                <button class="btn-secondary" id="checkBtn" onclick="checkInbox()">CHECK</button>
             </div>
         </div>
 
-        <div class="section-header">INBOX_MONITOR (AUTO-SYNC)</div>
+        <div class="section-header">INBOX (AUTO-SYNC)</div>
         <div id="inbox">
-            <p style="text-align: center; font-size: 0.55rem; color: #333; font-family: 'Syncopate'; padding: 20px;">WAITING_FOR_EMAIL</p>
+            <p style="text-align: center; font-size: 0.55rem; color: #333; font-family: 'Syncopate'; padding: 20px;">NO_DATA</p>
         </div>
 
         <div class="section-header">PRIVATE_HISTORY</div>
         <div id="historyList" class="card" style="padding: 10px;"></div>
+        <button class="btn-clear" onclick="clearHistory()">CLEAR_HISTORY</button>
     </section>
 
     <script>
-        const API_GEN = "https://dev.oculux.xyz/api/tmail1-gen";
-        const API_INBOX = "https://dev.oculux.xyz/api/tmail1-inbox?email=";
+        const API = "https://www.1secmail.com/api/v1/";
         let refreshInterval = null;
 
-        async function handleGenerate() {
-            const input = document.getElementById('emailInput');
-            const btn = document.getElementById('actionBtn');
-            btn.disabled = true;
-            btn.innerText = "GENERATING...";
-
-            try {
-                const res = await fetch(API_GEN);
-                const data = await res.json();
-                const email = data.email;
-
-                if(email) {
-                    input.value = email;
-                    saveToLocal(email);
-                    showToast("MAIL_CREATED");
-                    startAutoRefresh();
-                }
-            } catch (e) {
-                showToast("GEN_FAILED");
-            } finally {
-                btn.disabled = false;
-                btn.innerText = "GENERATE_MAIL";
-            }
+        function generateMail() {
+            const login = Math.random().toString(36).substring(2, 10);
+            const domain = "1secmail.com";
+            const email = login + "@" + domain;
+            document.getElementById('emailInput').value = email;
+            saveToLocal(email);
+            showToast("MAIL_READY");
+            checkInbox();
+            startAutoRefresh();
         }
 
-        async function loadInbox(isAuto = false) {
+        async function checkInbox(isAuto = false) {
             const email = document.getElementById('emailInput').value;
             if(!email) return;
+            const [user, domain] = email.split('@');
             const container = document.getElementById('inbox');
-
-            if(!isAuto) container.innerHTML = '<p style="text-align:center; font-size:0.55rem; color:var(--gold); font-family:\'Syncopate\';">SYNCING...</p>';
-
+            if(!isAuto) container.innerHTML = '<p style="text-align:center; font-size:0.55rem; color:var(--gold); font-family:\'Syncopate\';">FETCHING...</p>';
             try {
-                const res = await fetch(API_INBOX + email);
-                const data = await res.json();
-
-                if(!data || data.length === 0 || (data.status === false)) {
+                const res = await fetch(`${API}?action=getMessages&login=${user}&domain=${domain}`);
+                const messages = await res.json();
+                if(messages.length === 0) {
                     if(!isAuto) container.innerHTML = '<p style="text-align:center; font-size:0.55rem; color:#333; font-family:\'Syncopate\';">INBOX_EMPTY</p>';
                 } else {
-                    container.innerHTML = data.map(msg => {
-                        const code = (msg.subject || "").match(/\b\d{5,6}\b/);
+                    container.innerHTML = messages.slice(0, 5).map(msg => {
+                        const code = msg.subject.match(/\b\d{4,6}\b/);
                         return `
                             <div class="msg-item">
-                                <div class="msg-header"><span>${msg.from}</span></div>
-                                <div class="msg-header"><span>Subject: ${msg.subject}</span></div>
+                                <div class="msg-header">FROM: ${msg.from}</div>
+                                <div class="msg-header">SUBJ: ${msg.subject}</div>
                                 <div class="code-box">
-                                    <span>${code ? code[0] : 'SEE_FULL'}</span>
+                                    <span>${code ? code[0] : 'CHECK'}</span>
                                     <i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i>
                                 </div>
                             </div>`;
                     }).join('');
                 }
             } catch (e) {
-                if(!isAuto) container.innerHTML = '<p style="color:var(--accent); text-align:center; font-size:0.55rem;">ERR_CONNECTION</p>';
+                if(!isAuto) container.innerHTML = '<p style="color:var(--accent); text-align:center; font-size:0.55rem;">ERROR_SYNC</p>';
             }
         }
 
         function startAutoRefresh() {
             if(refreshInterval) clearInterval(refreshInterval);
-            refreshInterval = setInterval(() => loadInbox(true), 10000);
+            refreshInterval = setInterval(() => checkInbox(true), 10000);
         }
 
         function saveToLocal(email) {
             let history = JSON.parse(localStorage.getItem('kurapika_history') || '[]');
             if(!history.includes(email)) {
                 history.unshift(email);
-                localStorage.setItem('kurapika_history', JSON.stringify(history.slice(0, 8)));
+                localStorage.setItem('kurapika_history', JSON.stringify(history.slice(0, 5)));
             }
             renderHistory();
         }
@@ -205,7 +191,7 @@
             const history = JSON.parse(localStorage.getItem('kurapika_history') || '[]');
             const list = document.getElementById('historyList');
             if(history.length === 0) {
-                list.innerHTML = '<p style="color:#222; text-align:center; font-size:0.55rem;">NO_HISTORY</p>';
+                list.innerHTML = '<p style="color:#222; text-align:center; font-size:0.5rem;">EMPTY</p>';
                 return;
             }
             list.innerHTML = history.map(h => `
@@ -215,10 +201,16 @@
                 </div>`).join('');
         }
 
+        function clearHistory() {
+            localStorage.removeItem('kurapika_history');
+            renderHistory();
+            showToast("HISTORY_CLEARED");
+        }
+
         function restoreMail(email) {
             document.getElementById('emailInput').value = email;
             showToast("RESTORED");
-            loadInbox();
+            checkInbox();
             startAutoRefresh();
         }
 
