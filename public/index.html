@@ -1,1 +1,340 @@
-temp.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝙺𝚄𝚁𝙰𝙿𝙸𝙺𝙰 | 𝚃𝙴𝙼𝙿 𝙼𝙰𝙸𝙻</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #ff0000;
+            --gold: #ffcc00;
+            --blue: #0095f6;
+            --bg: #05070a; 
+            --glass: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 204, 0, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg); color: #fff; overflow-x: hidden; padding-bottom: 50px; }
+
+        .hero { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .cover-area {
+            width: 100%; height: 160px; 
+            background: linear-gradient(to bottom, transparent, var(--bg)), url('https://i.gifer.com/94k3.gif');
+            background-size: cover; background-position: center;
+            border-bottom: 2px solid var(--accent);
+        }
+        .profile-container { margin-top: -50px; text-align: center; z-index: 10; margin-bottom: 30px; }
+        .profile-hex {
+            width: 100px; height: 100px; padding: 3px; background: var(--bg);
+            border-radius: 50%; display: inline-block;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3); border: 2px solid var(--gold);
+        }
+        .profile-hex img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        
+        .name-wrapper { 
+            margin-top: 10px; 
+            color: var(--gold); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .wave-text { 
+            display: flex; 
+            font-family: 'Syncopate', sans-serif; 
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 4px;
+        }
+
+        .wave-text span {
+            display: inline-block;
+            animation: waveAnim 2s infinite ease-in-out;
+            animation-delay: calc(0.1s * var(--i));
+        }
+
+        @keyframes waveAnim {
+            0%, 40%, 100% { transform: translateY(0); }
+            20% { transform: translateY(-10px); color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+        }
+
+        .verified-badge { color: var(--blue); font-size: 1.1rem; filter: drop-shadow(0 0 5px rgba(0, 149, 246, 0.5)); }
+
+        section { padding: 0 5%; max-width: 700px; margin: 0 auto; width: 100%; }
+        
+        .section-header {
+            font-family: 'Syncopate', sans-serif; font-size: 0.7rem; font-weight: 700;
+            color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+            text-transform: uppercase; margin-top: 20px;
+        }
+        .section-header::after { content: ""; height: 1px; flex-grow: 1; background: linear-gradient(to right, var(--gold), transparent); opacity: 0.2; }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .mode-selector { display: flex; gap: 10px; margin-bottom: 20px; }
+        .mode-btn { 
+            flex: 1; padding: 10px; text-align: center; cursor: pointer; border-radius: 8px; 
+            font-size: 0.65rem; font-family: 'Syncopate'; font-weight: 700; 
+            border: 1px solid rgba(255,255,255,0.1); color: #888; transition: 0.3s;
+        }
+        .mode-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 0, 0, 0.05); }
+
+        .form-group { margin-bottom: 15px; }
+        .form-label { font-family: 'Syncopate', sans-serif; font-size: 0.55rem; font-weight: 700; color: #888; display: block; margin-bottom: 8px; }
+        
+        .input-container { display: flex; gap: 10px; }
+        .form-input {
+            flex: 1; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.05);
+            padding: 12px; border-radius: 8px; color: var(--gold); font-size: 0.85rem; outline: none;
+            transition: 0.3s;
+        }
+        .form-input:focus { border-color: var(--accent); }
+
+        .btn-execute {
+            padding: 12px 20px; border-radius: 8px; border: 1px solid var(--gold);
+            background: transparent; color: var(--gold); font-family: 'Syncopate', sans-serif;
+            font-size: 0.6rem; font-weight: 700; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase;
+        }
+        .btn-execute:hover:not(:disabled) { background: var(--gold); color: #000; box-shadow: 0 0 15px rgba(255, 204, 0, 0.3); }
+        .btn-secondary {
+            width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff; padding: 12px; border-radius: 8px; font-size: 0.6rem; font-family: 'Syncopate';
+            cursor: pointer; margin-top: 10px; transition: 0.3s;
+        }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); }
+
+        .msg-item {
+            background: rgba(255, 0, 0, 0.03);
+            border: 1px solid rgba(255, 0, 0, 0.1);
+            padding: 18px; border-radius: 12px; margin-top: 15px;
+            border-left: 4px solid var(--accent);
+        }
+        .msg-header { display: flex; justify-content: space-between; font-size: 0.6rem; font-family: 'Syncopate'; color: #888; margin-bottom: 10px; }
+        .msg-sender { color: var(--gold); }
+        .msg-title { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .code-box {
+            background: rgba(0,0,0,0.5); border: 1px dashed var(--accent);
+            padding: 15px; border-radius: 8px; text-align: center;
+            font-size: 1.2rem; font-weight: 700; letter-spacing: 5px; color: var(--accent);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        #toast {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: var(--accent); color: #fff; padding: 10px 20px;
+            border-radius: 5px; font-family: 'Syncopate'; font-size: 0.6rem;
+            z-index: 1000; display: none;
+        }
+
+        .history-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="cover-area"></div>
+        <div class="profile-container">
+            <div class="profile-hex"><img src="https://i.gifer.com/94k1.gif" alt="Kurapika"></div>
+            <div class="name-wrapper">
+                <div class="wave-text">
+                    <span style="--i:1">K</span>
+                    <span style="--i:2">U</span>
+                    <span style="--i:3">R</span>
+                    <span style="--i:4">A</span>
+                    <span style="--i:5">P</span>
+                    <span style="--i:6">I</span>
+                    <span style="--i:7">K</span>
+                    <span style="--i:8">A</span>
+                </div>
+                <i class="fas fa-check-circle verified-badge"></i>
+            </div>
+            <p style="font-size: 0.6rem; color: var(--accent); letter-spacing: 2px; margin-top: 5px; font-family: 'Syncopate'; font-weight: 700;">GØDZ-MØDZ - UGK</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="section-header">MAIL_GENERATOR</div>
+        <div class="card">
+            <div class="mode-selector">
+                <div class="mode-btn active" id="randomMode" onclick="setMode('random')">RANDOM_GEN</div>
+                <div class="mode-btn" id="customMode" onclick="setMode('custom')">CUSTOM_NAME</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">EMAIL_ADDRESS</label>
+                <div class="input-container">
+                    <input type="text" id="emailInput" class="form-input" placeholder="Click GENERATE..." readonly>
+                    <button class="btn-execute" id="actionBtn" onclick="handleAction()">GENERATE</button>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <button class="btn-secondary" onclick="copyEmail()">COPY_MAIL</button>
+                <button class="btn-secondary" id="checkBtn" onclick="loadInbox()">CHECK_INBOX</button>
+            </div>
+        </div>
+
+        <div class="section-header">INBOX_MONITOR</div>
+        <div id="inbox">
+            <p style="text-align: center; font-size: 0.6rem; color: #444; font-family: 'Syncopate';">WAITING_FOR_DATA...</p>
+        </div>
+
+        <div class="section-header">SESSION_HISTORY</div>
+        <div id="historyList" class="card" style="padding: 10px; font-size: 0.75rem;">
+        </div>
+    </section>
+
+    <div id="toast">SYSTEM_MESSAGE_COPIED</div>
+
+    <script>
+        const DOMAIN = "@timpmeyl.indevs.in";
+        const API_URL = "/api/messages?address=";
+        let currentMode = 'random';
+
+        function setMode(mode) {
+            currentMode = mode;
+            document.getElementById('randomMode').classList.toggle('active', mode === 'random');
+            document.getElementById('customMode').classList.toggle('active', mode === 'custom');
+            const input = document.getElementById('emailInput');
+            const btn = document.getElementById('actionBtn');
+            input.value = "";
+            if(mode === 'random') {
+                input.placeholder = "Click GENERATE...";
+                input.readOnly = true;
+                btn.innerText = "GENERATE";
+            } else {
+                input.placeholder = "Enter custom name...";
+                input.readOnly = false;
+                btn.innerText = "CREATE";
+            }
+        }
+
+        function handleAction() {
+            const input = document.getElementById('emailInput');
+            let val = input.value.trim().toLowerCase();
+            
+            if(currentMode === 'custom' && !val) {
+                showToast("NAME_REQUIRED");
+                return;
+            }
+
+            let fullMail;
+            if(currentMode === 'random') {
+                fullMail = Math.random().toString(36).substring(2, 10) + DOMAIN;
+            } else {
+                let prefix = val.includes('@') ? val.split('@')[0] : val;
+                fullMail = prefix + DOMAIN;
+            }
+
+            input.value = fullMail;
+            saveHistory(fullMail);
+            showToast("MAIL_READY");
+        }
+
+        async function loadInbox() {
+            const email = document.getElementById('emailInput').value;
+            if(!email) { showToast("GET_MAIL_FIRST"); return; }
+
+            const container = document.getElementById('inbox');
+            const btn = document.getElementById('checkBtn');
+            
+            btn.innerText = "FETCHING...";
+            container.innerHTML = '<p style="text-align: center; font-size: 0.6rem; color: var(--gold); font-family: \'Syncopate\';">ACCESSING_NODE...</p>';
+
+            try {
+                const res = await fetch(API_URL + email + "&nocache=" + Date.now());
+                const data = await res.json();
+
+                if(!data || data.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; font-size: 0.6rem; color: #444; font-family: \'Syncopate\';">EMPTY_INBOX</p>';
+                } else {
+                    container.innerHTML = data.map(msg => {
+                        const codeMatch = (msg.subject || "").match(/\b\d{5,6}\b/);
+                        const content = codeMatch ? codeMatch[0] : (msg.subject || "NO_SUBJECT");
+                        return `
+                            <div class="msg-item">
+                                <div class="msg-header">
+                                    <span class="msg-sender">${msg.from.split('<')[0]}</span>
+                                    <span>${new Date(msg.date).toLocaleTimeString()}</span>
+                                </div>
+                                <div class="msg-title">${codeMatch ? 'VERIFICATION_CODE' : 'INCOMING_MESSAGE'}</div>
+                                <div class="code-box">
+                                    <span>${content}</span>
+                                    <i class="fas fa-copy" style="cursor:pointer; font-size:0.8rem;" onclick="copyToClipboard('${content}')"></i>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            } catch (e) {
+                container.innerHTML = '<p style="text-align: center; font-size: 0.6rem; color: var(--accent); font-family: \'Syncopate\';">CONNECTION_ERROR</p>';
+            } finally {
+                btn.innerText = "CHECK_INBOX";
+            }
+        }
+
+        function saveHistory(email) {
+            let history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
+            if(!history.includes(email)) {
+                history.unshift(email);
+                localStorage.setItem('tempMailKurapika', JSON.stringify(history.slice(0, 5)));
+            }
+            renderHistory();
+        }
+
+        function renderHistory() {
+            const history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
+            const list = document.getElementById('historyList');
+            if(history.length === 0) {
+                list.innerHTML = '<p style="color:#444; text-align:center; font-size:0.6rem; font-family:\'Syncopate\'">NO_HISTORY</p>';
+                return;
+            }
+            list.innerHTML = history.map(h => `
+                <div class="history-item">
+                    <span style="color:var(--gold)">${h}</span>
+                    <i class="fas fa-external-link-alt" style="cursor:pointer; color:var(--accent)" onclick="useHistory('${h}')"></i>
+                </div>
+            `).join('');
+        }
+
+        function useHistory(email) {
+            document.getElementById('emailInput').value = email;
+            showToast("SESSION_RESTORED");
+            loadInbox();
+        }
+
+        function copyEmail() {
+            const mail = document.getElementById('emailInput').value;
+            if(mail) copyToClipboard(mail);
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text);
+            showToast("DATA_COPIED");
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.style.display = 'block';
+            setTimeout(() => t.style.display = 'none', 2000);
+        }
+
+        window.onload = renderHistory;
+    </script>
+</body>
+</html>
