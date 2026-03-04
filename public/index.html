@@ -2,242 +2,263 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title></title>𝙺𝚄𝚁𝙰𝙿𝙸𝙺𝙰 | 𝚃𝙴𝙼𝙿 𝙼𝙰𝙸𝙻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝙺𝚄𝚁𝙰𝙿𝙸𝙺𝙰 | 𝚃𝙴𝙼𝙿 𝙼𝙰𝙸𝙻</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
             --accent: #ff0000;
             --gold: #ffcc00;
+            --blue: #0095f6;
             --bg: #05070a; 
             --glass: rgba(255, 255, 255, 0.02);
             --glass-border: rgba(255, 204, 0, 0.15);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg); color: #fff; overflow-x: hidden; padding-bottom: 30px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg); color: #fff; overflow-x: hidden; padding-bottom: 50px; }
 
         .hero { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
         .cover-area {
-            width: 100%; height: 140px; 
+            width: 100%; height: 160px; 
             background: linear-gradient(to bottom, transparent, var(--bg)), url('https://i.gifer.com/94k3.gif');
             background-size: cover; background-position: center;
             border-bottom: 2px solid var(--accent);
         }
-        .profile-container { margin-top: -45px; text-align: center; z-index: 10; margin-bottom: 20px; }
+        .profile-container { margin-top: -50px; text-align: center; z-index: 10; margin-bottom: 30px; }
         .profile-hex {
-            width: 90px; height: 90px; padding: 3px; background: var(--bg);
+            width: 100px; height: 100px; padding: 3px; background: var(--bg);
             border-radius: 50%; display: inline-block;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); border: 2px solid var(--gold);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3); border: 2px solid var(--gold);
         }
         .profile-hex img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
         
-        .wave-text { display: flex; font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 3px; justify-content: center; color: var(--gold); margin-top: 10px; }
-        .wave-text span { display: inline-block; animation: waveAnim 2s infinite ease-in-out; animation-delay: calc(0.1s * var(--i)); }
+        .name-wrapper { 
+            margin-top: 10px; color: var(--gold); display: flex;
+            align-items: center; justify-content: center; gap: 10px;
+        }
+
+        .wave-text { 
+            display: flex; font-family: 'Syncopate', sans-serif; 
+            font-weight: 700; font-size: 1.3rem; letter-spacing: 4px;
+        }
+
+        .wave-text span {
+            display: inline-block;
+            animation: waveAnim 2s infinite ease-in-out;
+            animation-delay: calc(0.1s * var(--i));
+        }
 
         @keyframes waveAnim {
             0%, 40%, 100% { transform: translateY(0); }
-            20% { transform: translateY(-8px); color: var(--accent); text-shadow: 0 0 8px var(--accent); }
+            20% { transform: translateY(-10px); color: var(--accent); text-shadow: 0 0 10px var(--accent); }
         }
 
-        section { padding: 0 15px; width: 100%; }
+        .verified-badge { color: var(--blue); font-size: 1.1rem; filter: drop-shadow(0 0 5px rgba(0, 149, 246, 0.5)); }
+
+        section { padding: 0 5%; max-width: 700px; margin: 0 auto; width: 100%; }
+        
         .section-header {
-            font-family: 'Syncopate', sans-serif; font-size: 0.65rem; font-weight: 700;
-            color: var(--gold); margin-bottom: 15px; display: flex; align-items: center; gap: 8px;
-            text-transform: uppercase; margin-top: 15px;
+            font-family: 'Syncopate', sans-serif; font-size: 0.7rem; font-weight: 700;
+            color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+            text-transform: uppercase; margin-top: 20px;
         }
         .section-header::after { content: ""; height: 1px; flex-grow: 1; background: linear-gradient(to right, var(--gold), transparent); opacity: 0.2; }
 
-        .card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; padding: 20px; margin-bottom: 15px; }
+        .card {
+            background: var(--glass); border: 1px solid var(--glass-border);
+            border-radius: 12px; padding: 25px; margin-bottom: 20px;
+        }
 
+        .mode-selector { display: flex; gap: 10px; margin-bottom: 20px; }
+        .mode-btn { 
+            flex: 1; padding: 10px; text-align: center; cursor: pointer; border-radius: 8px; 
+            font-size: 0.65rem; font-family: 'Syncopate'; font-weight: 700; 
+            border: 1px solid rgba(255,255,255,0.1); color: #888; transition: 0.3s;
+        }
+        .mode-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 0, 0, 0.05); }
+
+        .input-container { display: flex; gap: 10px; }
         .form-input {
-            width: 100%; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.05);
-            padding: 14px; border-radius: 8px; color: var(--gold); font-size: 0.85rem; outline: none; text-align: center; margin-bottom: 10px;
+            flex: 1; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.05);
+            padding: 12px; border-radius: 8px; color: var(--gold); font-size: 0.85rem; outline: none;
         }
 
         .btn-execute {
-            width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--gold);
+            padding: 12px 20px; border-radius: 8px; border: 1px solid var(--gold);
             background: transparent; color: var(--gold); font-family: 'Syncopate', sans-serif;
-            font-size: 0.7rem; font-weight: 700; cursor: pointer; text-transform: uppercase;
-        }
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff; padding: 12px; border-radius: 8px; font-size: 0.6rem; font-family: 'Syncopate'; flex: 1;
+            font-size: 0.6rem; font-weight: 700; cursor: pointer; text-transform: uppercase;
         }
 
-        .msg-item { background: rgba(255, 0, 0, 0.03); border: 1px solid rgba(255, 0, 0, 0.1); padding: 15px; border-radius: 12px; margin-top: 10px; border-left: 3px solid var(--accent); }
-        .msg-header { font-size: 0.55rem; font-family: 'Syncopate'; color: #888; margin-bottom: 5px; }
+        .msg-item {
+            background: rgba(255, 0, 0, 0.03); border: 1px solid rgba(255, 0, 0, 0.1);
+            padding: 18px; border-radius: 12px; margin-top: 15px; border-left: 4px solid var(--accent);
+        }
+        .msg-header { display: flex; justify-content: space-between; font-size: 0.6rem; font-family: 'Syncopate'; color: #888; margin-bottom: 10px; }
         .code-box {
-            background: rgba(0,0,0,0.5); border: 1px dashed var(--accent); padding: 12px; border-radius: 8px; 
-            font-size: 1.1rem; font-weight: 700; color: var(--accent); display: flex; justify-content: space-between; align-items: center; margin-top: 5px;
-        }
-
-        #toast {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            background: var(--accent); color: #fff; padding: 8px 16px;
-            border-radius: 20px; font-family: 'Syncopate'; font-size: 0.55rem;
-            z-index: 9999; display: none;
+            background: rgba(0,0,0,0.5); border: 1px dashed var(--accent);
+            padding: 15px; border-radius: 8px; text-align: center;
+            font-size: 1.2rem; font-weight: 700; color: var(--accent);
+            display: flex; justify-content: space-between; align-items: center;
         }
 
         .history-item {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem;
+            padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);
         }
+        .history-actions { display: flex; gap: 15px; align-items: center; }
 
-        .history-actions { display: flex; gap: 15px; }
-        .btn-del { color: #555; cursor: pointer; transition: 0.3s; }
-        .btn-del:hover { color: var(--accent); }
+        #toast {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: var(--accent); color: #fff; padding: 10px 20px;
+            border-radius: 5px; font-family: 'Syncopate'; font-size: 0.6rem; z-index: 1000; display: none;
+        }
     </style>
 </head>
 <body>
-
-    <div id="toast">SYSTEM_READY</div>
 
     <header class="hero">
         <div class="cover-area"></div>
         <div class="profile-container">
             <div class="profile-hex"><img src="https://i.gifer.com/94k1.gif" alt="Kurapika"></div>
-            <div class="wave-text">
-                <span style="--i:1">K</span><span style="--i:2">U</span><span style="--i:3">R</span><span style="--i:4">A</span><span style="--i:5">P</span><span style="--i:6">I</span><span style="--i:7">K</span><span style="--i:8">A</span>
+            <div class="name-wrapper">
+                <div class="wave-text">
+                    <span style="--i:1">K</span><span style="--i:2">U</span><span style="--i:3">R</span><span style="--i:4">A</span><span style="--i:5">P</span><span style="--i:6">I</span><span style="--i:7">K</span><span style="--i:8">A</span>
+                </div>
+                <i class="fas fa-check-circle verified-badge"></i>
             </div>
-            <p style="font-size: 0.5rem; color: var(--accent); letter-spacing: 2px; margin-top: 4px; font-family: 'Syncopate'; font-weight: 700;">✅ GØDZ-MØDZ - UGK</p>
+            <p style="font-size: 0.6rem; color: var(--accent); letter-spacing: 2px; margin-top: 5px; font-family: 'Syncopate'; font-weight: 700;">GØDZ-MØDZ - UGK</p>
         </div>
     </header>
 
     <section>
-        <div class="section-header">GENERATOR (1SECMAIL) ✅</div>
+        <div class="section-header">MAIL_GENERATOR</div>
         <div class="card">
-            <input type="text" id="emailInput" class="form-input" placeholder="WAITING..." readonly>
-            <button class="btn-execute" id="actionBtn" onclick="generateMail()">GENERATE_MAIL</button>
-            <div style="display: flex; gap: 8px; margin-top: 10px;">
-                <button class="btn-secondary" onclick="copyEmail()">COPY</button>
-                <button class="btn-secondary" id="checkBtn" onclick="checkInbox()">CHECK</button>
+            <div class="mode-selector">
+                <div class="mode-btn active" id="randomMode" onclick="setMode('random')">RANDOM_GEN</div>
+                <div class="mode-btn" id="customMode" onclick="setMode('custom')">CUSTOM_NAME</div>
+            </div>
+
+            <div class="input-container">
+                <input type="text" id="emailInput" class="form-input" placeholder="Click GENERATE..." readonly>
+                <button class="btn-execute" id="actionBtn" onclick="handleAction()">GENERATE</button>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+                <button class="btn-execute" style="font-size: 0.5rem;" onclick="copyEmail()">COPY_MAIL</button>
+                <button class="btn-execute" style="font-size: 0.5rem;" id="checkBtn" onclick="loadInbox()">CHECK_INBOX</button>
             </div>
         </div>
 
-        <div class="section-header">INBOX (AUTO-SYNC)</div>
+        <div class="section-header">INBOX_MONITOR</div>
         <div id="inbox">
-            <p style="text-align: center; font-size: 0.55rem; color: #333; font-family: 'Syncopate'; padding: 20px;">NO_DATA</p>
+            <p style="text-align: center; font-size: 0.6rem; color: #444; font-family: 'Syncopate';">WAITING_FOR_DATA...</p>
         </div>
 
-        <div class="section-header">PRIVATE_HISTORY</div>
-        <div id="historyList" class="card" style="padding: 10px;"></div>
+        <div class="section-header">SESSION_HISTORY</div>
+        <div id="historyList" class="card" style="padding: 10px; font-size: 0.75rem;"></div>
     </section>
 
-    <script>
-        const API = "https://www.1secmail.com/api/v1/";
-        let refreshInterval = null;
+    <div id="toast">SYSTEM_READY</div>
 
-        function generateMail() {
-            const login = Math.random().toString(36).substring(2, 10);
-            const domain = "1secmail.com";
-            const email = login + "@" + domain;
-            document.getElementById('emailInput').value = email;
-            saveToLocal(email);
-            showToast("MAIL_READY");
-            checkInbox();
-            startAutoRefresh();
+    <script>
+        const DOMAIN = "@timpmeyl.indevs.in";
+        const API_URL = "/api/messages?address=";
+        let currentMode = 'random';
+
+        function setMode(mode) {
+            currentMode = mode;
+            document.getElementById('randomMode').classList.toggle('active', mode === 'random');
+            document.getElementById('customMode').classList.toggle('active', mode === 'custom');
+            const input = document.getElementById('emailInput');
+            input.value = "";
+            input.readOnly = (mode === 'random');
+            document.getElementById('actionBtn').innerText = (mode === 'random' ? "GENERATE" : "CREATE");
         }
 
-        async function checkInbox(isAuto = false) {
+        function handleAction() {
+            const input = document.getElementById('emailInput');
+            let val = input.value.trim().toLowerCase();
+            if(currentMode === 'custom' && !val) { showToast("NAME_REQUIRED"); return; }
+
+            let fullMail = (currentMode === 'random') 
+                ? Math.random().toString(36).substring(2, 10) + DOMAIN 
+                : (val.includes('@') ? val.split('@')[0] : val) + DOMAIN;
+
+            input.value = fullMail;
+            saveHistory(fullMail);
+            showToast("MAIL_READY");
+            loadInbox();
+        }
+
+        async function loadInbox() {
             const email = document.getElementById('emailInput').value;
             if(!email) return;
-            const [user, domain] = email.split('@');
             const container = document.getElementById('inbox');
-            
-            if(!isAuto) container.innerHTML = '<p style="text-align:center; font-size:0.55rem; color:var(--gold); font-family:\'Syncopate\';">FETCHING...</p>';
-            
+            container.innerHTML = '<p style="text-align:center; font-size:0.6rem; color:var(--gold); font-family:\'Syncopate\'">FETCHING...</p>';
+
             try {
-                const res = await fetch(`${API}?action=getMessages&login=${user}&domain=${domain}`);
-                if (!res.ok) throw new Error('Network response was not ok');
-                const messages = await res.json();
-                
-                if(messages.length === 0) {
-                    if(!isAuto) container.innerHTML = '<p style="text-align:center; font-size:0.55rem; color:#333; font-family:\'Syncopate\';">INBOX_EMPTY</p>';
+                const res = await fetch(API_URL + email + "&nocache=" + Date.now());
+                const data = await res.json();
+                if(!data || data.length === 0) {
+                    container.innerHTML = '<p style="text-align:center; font-size:0.6rem; color:#444;">EMPTY_INBOX</p>';
                 } else {
-                    container.innerHTML = messages.slice(0, 5).map(msg => {
-                        const code = msg.subject.match(/\b\d{4,8}\b/);
+                    container.innerHTML = data.map(msg => {
+                        // Extracting 5-6 digit codes for confirmation
+                        const code = (msg.subject || "").match(/\b\d{5,8}\b/);
+                        const sender = msg.from.split('<')[0].replace(/"/g, '').trim() || "SENDER";
                         return `
                             <div class="msg-item">
-                                <div class="msg-header">FROM: ${msg.from}</div>
-                                <div class="msg-header">SUBJ: ${msg.subject}</div>
-                                <div class="code-box">
-                                    <span>${code ? code[0] : 'VIEW_MAIL'}</span>
-                                    <i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i>
-                                </div>
+                                <div class="msg-header"><span>${sender}</span><span>${new Date(msg.date).toLocaleTimeString()}</span></div>
+                                <div class="code-box"><span>${code ? code[0] : 'VIEW_MAIL'}</span><i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i></div>
                             </div>`;
                     }).join('');
                 }
-            } catch (e) {
-                console.error(e);
-                if(!isAuto) container.innerHTML = '<p style="color:var(--accent); text-align:center; font-size:0.55rem;">ERROR_SYNC - RETRYING</p>';
-            }
+            } catch (e) { container.innerHTML = '<p style="color:red; text-align:center;">API_ERROR</p>'; }
         }
 
-        function startAutoRefresh() {
-            if(refreshInterval) clearInterval(refreshInterval);
-            refreshInterval = setInterval(() => checkInbox(true), 10000);
-        }
-
-        function saveToLocal(email) {
-            let history = JSON.parse(localStorage.getItem('kurapika_history') || '[]');
+        function saveHistory(email) {
+            let history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
             if(!history.includes(email)) {
                 history.unshift(email);
-                localStorage.setItem('kurapika_history', JSON.stringify(history.slice(0, 10)));
+                localStorage.setItem('tempMailKurapika', JSON.stringify(history.slice(0, 10)));
             }
             renderHistory();
         }
 
         function renderHistory() {
-            const history = JSON.parse(localStorage.getItem('kurapika_history') || '[]');
+            const history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
             const list = document.getElementById('historyList');
-            if(history.length === 0) {
-                list.innerHTML = '<p style="color:#222; text-align:center; font-size:0.5rem; padding:10px;">EMPTY</p>';
-                return;
-            }
-            list.innerHTML = history.map((h, index) => `
+            if(!history.length) { list.innerHTML = '<p style="text-align:center; color:#444;">NO_HISTORY</p>'; return; }
+            list.innerHTML = history.map((h, i) => `
                 <div class="history-item">
                     <span style="color:var(--gold); font-size:0.6rem;">${h}</span>
                     <div class="history-actions">
-                        <i class="fas fa-redo-alt" style="color:var(--gold)" onclick="restoreMail('${h}')"></i>
-                        <i class="fas fa-trash-alt btn-del" onclick="deleteHistoryItem(${index})"></i>
+                        <i class="fas fa-sync" style="color:var(--blue); cursor:pointer;" onclick="useHistory('${h}')"></i>
+                        <i class="fas fa-trash" style="color:var(--accent); cursor:pointer;" onclick="deleteHistory(${i})"></i>
                     </div>
                 </div>`).join('');
         }
 
-        function deleteHistoryItem(index) {
-            let history = JSON.parse(localStorage.getItem('kurapika_history') || '[]');
-            history.splice(index, 1);
-            localStorage.setItem('kurapika_history', JSON.stringify(history));
+        function deleteHistory(index) {
+            let history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
+            history.splice(index, 1); // Eto yung magde-delete ng isa-isa
+            localStorage.setItem('tempMailKurapika', JSON.stringify(history));
             renderHistory();
             showToast("ITEM_DELETED");
         }
 
-        function restoreMail(email) {
+        function useHistory(email) {
             document.getElementById('emailInput').value = email;
+            loadInbox();
             showToast("RESTORED");
-            checkInbox();
-            startAutoRefresh();
         }
 
-        function copyEmail() {
-            const val = document.getElementById('emailInput').value;
-            if(val) copyToClipboard(val);
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text);
-            showToast("COPIED");
-        }
-
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.innerText = msg; t.style.display = 'block';
-            setTimeout(() => t.style.display = 'none', 2000);
-        }
-
+        function copyEmail() { const m = document.getElementById('emailInput').value; if(m) copyToClipboard(m); }
+        function copyToClipboard(t) { navigator.clipboard.writeText(t); showToast("COPIED"); }
+        function showToast(m) { const t = document.getElementById('toast'); t.innerText = m; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2000); }
         window.onload = renderHistory;
     </script>
 </body>
-</html>
+    </html>
