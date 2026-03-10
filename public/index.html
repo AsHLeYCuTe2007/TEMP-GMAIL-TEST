@@ -156,7 +156,7 @@
             </div>
         </div>
 
-        <div class="section-header">INBOX (NULLSTO.EDU.PL)</div>
+        <div class="section-header">INBOX (SECURE_SYNC)</div>
         <div id="inbox">
             <p style="text-align: center; font-size: 0.5rem; color: #444; font-family: 'Syncopate';">WAITING...</p>
         </div>
@@ -168,10 +168,9 @@
     <div id="toast">SYSTEM_READY</div>
 
     <script>
-        // Updated Domain for Nullsto
         const DOMAIN = "@nullsto.edu.pl";
-        // API pointing to Nullsto's message system
-        const API_URL = "https://timpmeyl.indevs.in/api/messages?address="; 
+        const API_BASE = "https://timpmeyl.indevs.in/api/messages?address="; 
+        const PROXY_URL = "https://api.allorigins.win/get?url=";
         
         let currentMode = 'random';
         let isMusicPlaying = false;
@@ -222,16 +221,19 @@
             const email = document.getElementById('emailInput').value;
             if(!email) return;
             const container = document.getElementById('inbox');
-            container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:var(--gold);">SYNCING_NULLSTO...</p>';
+            container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:var(--gold);">BYPASSING_CORS...</p>';
 
             try {
-                const res = await fetch(API_URL + email + "&nocache=" + Date.now());
-                const data = await res.json();
+                // Gamit ang Proxy para ma-fix ang Connection Error
+                const finalUrl = API_BASE + email + "&nocache=" + Date.now();
+                const response = await fetch(PROXY_URL + encodeURIComponent(finalUrl));
+                const json = await response.json();
+                const data = JSON.parse(json.contents);
+
                 if(!data || data.length === 0) {
                     container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:#444;">INBOX_EMPTY</p>';
                 } else {
                     container.innerHTML = data.map(msg => {
-                        // Extracting 4-8 digit codes common in verification emails
                         const code = (msg.subject || "").match(/\b\d{4,8}\b/);
                         return `
                             <div class="msg-item">
@@ -240,7 +242,9 @@
                             </div>`;
                     }).join('');
                 }
-            } catch (e) { container.innerHTML = '<p style="color:red; text-align:center; font-size:0.5rem;">CONNECTION_ERROR</p>'; }
+            } catch (e) { 
+                container.innerHTML = '<p style="color:red; text-align:center; font-size:0.5rem;">API_OFFLINE_TRY_AGAIN</p>'; 
+            }
         }
 
         function saveHistory(email) {
