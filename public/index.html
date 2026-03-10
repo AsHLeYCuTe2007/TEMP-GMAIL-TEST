@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>𝙺𝚄𝚁𝙰𝙿𝙸𝙺𝙰 | 𝚃𝙴𝙼𝙿 𝙼𝙰𝙸𝙻</title>
+    <title>𝙺𝚄𝚁𝙰𝙿𝙸𝙺𝙰 | 𝚃𝙴𝙼𝙿𝙼𝙰𝙸𝙻𝙶 𝙴𝙳𝙸𝚃𝙸𝙾𝙽</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
             --accent: #ff0000;
             --gold: #ffcc00;
-            --blue: #0095f6;
             --bg: #05070a; 
             --glass: rgba(255, 255, 255, 0.02);
             --glass-border: rgba(255, 204, 0, 0.15);
@@ -19,6 +18,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--bg); color: #fff; overflow-x: hidden; padding-bottom: 30px; }
 
+        /* Header Section */
         .hero { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
         .cover-area {
             width: 100%; height: 130px; 
@@ -38,12 +38,7 @@
             display: flex; font-family: 'Syncopate', sans-serif; 
             font-weight: 700; font-size: 1rem; letter-spacing: 2px; justify-content: center; color: var(--gold);
         }
-
-        .wave-text span {
-            display: inline-block;
-            animation: waveAnim 2s infinite ease-in-out;
-            animation-delay: calc(0.1s * var(--i));
-        }
+        .wave-text span { display: inline-block; animation: waveAnim 2s infinite ease-in-out; animation-delay: calc(0.1s * var(--i)); }
 
         @keyframes waveAnim {
             0%, 40%, 100% { transform: translateY(0); }
@@ -59,40 +54,33 @@
         }
         .section-header::after { content: ""; height: 1px; flex-grow: 1; background: linear-gradient(to right, var(--gold), transparent); opacity: 0.2; }
 
-        .card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+        .card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 10px; padding: 15px; margin-bottom: 12px; }
 
-        .input-container { display: flex; gap: 6px; width: 100%; align-items: center; }
+        /* Input & Buttons */
         .form-input {
-            flex: 1; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.05);
-            padding: 10px; border-radius: 6px; color: var(--gold); font-size: 0.7rem; outline: none; text-align: center;
+            width: 100%; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.05);
+            padding: 12px; border-radius: 8px; color: var(--gold); font-size: 0.8rem; outline: none; text-align: center; margin-bottom: 10px;
         }
 
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .btn-execute {
-            padding: 10px; border-radius: 6px; border: 1px solid var(--gold);
+            padding: 12px; border-radius: 8px; border: 1px solid var(--gold);
             background: transparent; color: var(--gold); font-family: 'Syncopate', sans-serif;
-            font-size: 0.45rem; font-weight: 700; cursor: pointer; text-transform: uppercase;
+            font-size: 0.5rem; font-weight: 700; cursor: pointer; text-transform: uppercase;
         }
+        .btn-full { width: 100%; margin-top: 8px; border-color: #0095f6; color: #0095f6; }
 
-        .btn-web {
-            width: 100%; margin-top: 8px; border: 1px solid var(--blue); color: var(--blue);
-            background: rgba(0, 149, 246, 0.05);
-        }
-
-        .msg-item {
-            background: rgba(255, 0, 0, 0.03); border: 1px solid rgba(255, 0, 0, 0.1);
-            padding: 12px; border-radius: 8px; margin-top: 8px; border-left: 3px solid var(--accent);
-        }
+        /* Inbox Style */
+        .msg-item { background: rgba(255, 0, 0, 0.03); border: 1px solid rgba(255, 0, 0, 0.1); padding: 12px; border-radius: 8px; margin-top: 8px; border-left: 3px solid var(--accent); }
         .code-box {
             background: rgba(0,0,0,0.5); border: 1px dashed var(--accent);
             padding: 10px; border-radius: 6px; text-align: center;
-            font-size: 0.9rem; font-weight: 700; color: var(--accent);
+            font-size: 1rem; font-weight: 700; color: var(--accent);
             display: flex; justify-content: space-between; align-items: center;
         }
 
-        .history-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 8px; border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
+        /* History Style */
+        .history-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
         #toast {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
@@ -110,25 +98,24 @@
             <div class="wave-text">
                 <span style="--i:1">K</span><span style="--i:2">U</span><span style="--i:3">R</span><span style="--i:4">A</span><span style="--i:5">P</span><span style="--i:6">I</span><span style="--i:7">K</span><span style="--i:8">A</span>
             </div>
-            <p style="font-size: 0.45rem; color: var(--accent); letter-spacing: 2px; margin-top: 4px; font-family: 'Syncopate'; font-weight: 700;">GØDZ-MØDZ - NULLSTO</p>
+            <p style="font-size: 0.45rem; color: var(--accent); letter-spacing: 2px; margin-top: 4px; font-family: 'Syncopate'; font-weight: 700;">GØDZ-MØDZ - TEMPMAILG</p>
         </div>
     </header>
 
     <section>
-        <div class="section-header">NULLSTO_GENERATOR</div>
+        <div class="section-header">MAIL_GENERATOR</div>
         <div class="card">
-            <input type="text" id="emailInput" class="form-input" placeholder="TAP GENERATE..." readonly style="margin-bottom: 10px; width: 100%;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+            <input type="text" id="emailInput" class="form-input" placeholder="WAITING_FOR_ACTION..." readonly>
+            <div class="btn-grid">
                 <button class="btn-execute" onclick="generateMail()">GENERATE</button>
                 <button class="btn-execute" onclick="copyEmail()">COPY</button>
             </div>
-            <button class="btn-execute btn-web" onclick="openNullsto()">OPEN OFFICIAL INBOX</button>
-            <p style="font-size: 0.45rem; color: #555; margin-top: 8px; text-align: center;">*Use OPEN if API is offline.</p>
+            <button class="btn-execute btn-full" onclick="loadInbox()">REFRESH_INBOX</button>
         </div>
 
         <div class="section-header">INBOX (AUTO_SYNC)</div>
         <div id="inbox">
-            <p style="text-align: center; font-size: 0.5rem; color: #444; font-family: 'Syncopate';">WAITING_FOR_MAIL...</p>
+            <p style="text-align: center; font-size: 0.5rem; color: #444; font-family: 'Syncopate'; padding: 10px;">NO_DATA_AVAILABLE</p>
         </div>
 
         <div class="section-header">PRIVATE_HISTORY</div>
@@ -138,27 +125,32 @@
     <div id="toast">SYSTEM_READY</div>
 
     <script>
-        const DOMAIN = "@nullsto.edu.pl";
+        // Domains based on TempMailg style
+        const DOMAINS = ["@speedlooking.fun", "@tmail.ws", "@menton.it"];
         const PROXY = "https://api.allorigins.win/get?url=";
-        const API_URL = "https://timpmeyl.indevs.in/api/messages?address=";
+        const API_URL = "https://temporary-emaill.netlify.app/api/messages?address=";
 
         function generateMail() {
-            const user = Math.random().toString(36).substring(2, 10);
-            const email = user + DOMAIN;
+            const randomUser = Math.random().toString(36).substring(2, 10);
+            const randomDomain = DOMAINS[Math.floor(Math.random() * DOMAINS.length)];
+            const email = randomUser + randomDomain;
+            
             document.getElementById('emailInput').value = email;
             saveHistory(email);
-            showToast("MAIL_READY");
+            showToast("MAIL_GENERATED");
             loadInbox();
         }
 
         async function loadInbox() {
             const email = document.getElementById('emailInput').value;
             if(!email) return;
+
             const container = document.getElementById('inbox');
-            container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:var(--gold);">FETCHING...</p>';
+            container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:var(--gold);">SYNCING...</p>';
 
             try {
-                const res = await fetch(PROXY + encodeURIComponent(API_URL + email + "&t=" + Date.now()));
+                const target = API_URL + email + "&nocache=" + Date.now();
+                const res = await fetch(PROXY + encodeURIComponent(target));
                 const json = await res.json();
                 const data = JSON.parse(json.contents);
 
@@ -170,50 +162,58 @@
                         return `
                             <div class="msg-item">
                                 <div style="font-size:0.5rem; color:#888; margin-bottom:5px;">FROM: ${msg.from.split('<')[0]}</div>
-                                <div class="code-box"><span>${code ? code[0] : 'CODE'}</span><i class="fas fa-copy" onclick="copyText('${code ? code[0] : msg.subject}')"></i></div>
+                                <div class="code-box">
+                                    <span>${code ? code[0] : 'VIEW'}</span>
+                                    <i class="fas fa-copy" style="cursor:pointer;" onclick="copyText('${code ? code[0] : msg.subject}')"></i>
+                                </div>
                             </div>`;
                     }).join('');
+                    showToast("SYNC_COMPLETE");
                 }
             } catch (e) {
-                container.innerHTML = '<p style="color:red; text-align:center; font-size:0.45rem;">API_OFFLINE - USE "OPEN" BUTTON ABOVE</p>';
+                container.innerHTML = '<p style="color:red; text-align:center; font-size:0.45rem;">ERROR_SYNC_FAILED</p>';
             }
         }
 
-        function openNullsto() {
-            const email = document.getElementById('emailInput').value;
-            if(!email) { showToast("GENERATE_FIRST"); return; }
-            // Direkta sa mailbox ng Nullsto
-            window.open(`https://nullsto.edu.pl/mailbox?email=${email}`, '_blank');
-        }
-
         function saveHistory(email) {
-            let hist = JSON.parse(localStorage.getItem('null_hist') || '[]');
-            if(!hist.includes(email)) { hist.unshift(email); localStorage.setItem('null_hist', JSON.stringify(hist.slice(0, 5))); }
+            let history = JSON.parse(localStorage.getItem('kurapika_v2_hist') || '[]');
+            if(!history.includes(email)) {
+                history.unshift(email);
+                localStorage.setItem('kurapika_v2_hist', JSON.stringify(history.slice(0, 10)));
+            }
             renderHistory();
         }
 
         function renderHistory() {
-            const hist = JSON.parse(localStorage.getItem('null_hist') || '[]');
+            const history = JSON.parse(localStorage.getItem('kurapika_v2_hist') || '[]');
             const list = document.getElementById('historyList');
-            if(!hist.length) { list.innerHTML = '<p style="text-align:center; color:#222;">EMPTY</p>'; return; }
-            list.innerHTML = hist.map((h, i) => `
+            if(history.length === 0) { list.innerHTML = '<p style="text-align:center; color:#222;">EMPTY</p>'; return; }
+            
+            list.innerHTML = history.map((h, i) => `
                 <div class="history-item">
                     <span style="color:var(--gold); font-size:0.5rem; cursor:pointer;" onclick="restoreMail('${h}')">${h}</span>
-                    <i class="fas fa-times" style="color:var(--accent); cursor:pointer;" onclick="deleteHist(${i})"></i>
+                    <i class="fas fa-times" style="color:var(--accent); font-size:0.7rem; cursor:pointer;" onclick="deleteHistoryItem(${i})"></i>
                 </div>`).join('');
         }
 
-        function deleteHist(i) {
-            let hist = JSON.parse(localStorage.getItem('null_hist') || '[]');
-            hist.splice(i, 1);
-            localStorage.setItem('null_hist', JSON.stringify(hist));
+        function deleteHistoryItem(index) {
+            let history = JSON.parse(localStorage.getItem('kurapika_v2_hist') || '[]');
+            history.splice(index, 1);
+            localStorage.setItem('kurapika_v2_hist', JSON.stringify(history));
             renderHistory();
+            showToast("DELETED");
         }
 
-        function restoreMail(h) { document.getElementById('emailInput').value = h; loadInbox(); }
+        function restoreMail(email) {
+            document.getElementById('emailInput').value = email;
+            loadInbox();
+            showToast("RESTORED");
+        }
+
         function copyEmail() { copyText(document.getElementById('emailInput').value); }
         function copyText(t) { if(!t) return; navigator.clipboard.writeText(t); showToast("COPIED"); }
         function showToast(m) { const t = document.getElementById('toast'); t.innerText = m; t.style.display = 'block'; setTimeout(() => t.style.display='none', 2000); }
+        
         window.onload = renderHistory;
     </script>
 </body>
