@@ -55,8 +55,6 @@
             20% { transform: translateY(-8px); color: var(--accent); text-shadow: 0 0 10px var(--accent); }
         }
 
-        .verified-badge { color: var(--blue); font-size: 0.9rem; }
-
         section { padding: 0 4%; max-width: 450px; margin: 0 auto; width: 100%; }
         
         .section-header {
@@ -134,14 +132,13 @@
                 <div class="wave-text">
                     <span style="--i:1">K</span><span style="--i:2">U</span><span style="--i:3">R</span><span style="--i:4">A</span><span style="--i:5">P</span><span style="--i:6">I</span><span style="--i:7">K</span><span style="--i:8">A</span>
                 </div>
-                <i class="fas fa-check-circle verified-badge"></i>
             </div>
-            <p style="font-size: 0.45rem; color: var(--accent); letter-spacing: 2px; margin-top: 4px; font-family: 'Syncopate'; font-weight: 700;">GØDZ-MØDZ - UGK</p>
+            <p style="font-size: 0.45rem; color: var(--accent); letter-spacing: 2px; margin-top: 4px; font-family: 'Syncopate'; font-weight: 700;">GØDZ-MØDZ - NULLSTO</p>
         </div>
     </header>
 
     <section>
-        <div class="section-header">MAIL_GENERATOR</div>
+        <div class="section-header">NULLSTO_GENERATOR</div>
         <div class="card">
             <div class="mode-selector">
                 <div class="mode-btn active" id="randomMode" onclick="setMode('random')">RANDOM</div>
@@ -159,20 +156,22 @@
             </div>
         </div>
 
-        <div class="section-header">INBOX</div>
+        <div class="section-header">INBOX (NULLSTO.EDU.PL)</div>
         <div id="inbox">
             <p style="text-align: center; font-size: 0.5rem; color: #444; font-family: 'Syncopate';">WAITING...</p>
         </div>
 
-        <div class="section-header">HISTORY</div>
+        <div class="section-header">PRIVATE_HISTORY</div>
         <div id="historyList" class="card" style="padding: 10px; font-size: 0.6rem;"></div>
     </section>
 
     <div id="toast">SYSTEM_READY</div>
 
     <script>
-        const DOMAIN = "@timpmeyl.indevs.in";
-        const API_URL = "https://temporary-emaill.netlify.app/api/messages?address="; 
+        // Updated Domain for Nullsto
+        const DOMAIN = "@nullsto.edu.pl";
+        // API pointing to Nullsto's message system
+        const API_URL = "https://timpmeyl.indevs.in/api/messages?address="; 
         
         let currentMode = 'random';
         let isMusicPlaying = false;
@@ -223,31 +222,32 @@
             const email = document.getElementById('emailInput').value;
             if(!email) return;
             const container = document.getElementById('inbox');
-            container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:var(--gold);">SYNCING...</p>';
+            container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:var(--gold);">SYNCING_NULLSTO...</p>';
 
             try {
                 const res = await fetch(API_URL + email + "&nocache=" + Date.now());
                 const data = await res.json();
                 if(!data || data.length === 0) {
-                    container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:#444;">EMPTY</p>';
+                    container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:#444;">INBOX_EMPTY</p>';
                 } else {
                     container.innerHTML = data.map(msg => {
-                        const code = (msg.subject || "").match(/\b\d{5,8}\b/);
+                        // Extracting 4-8 digit codes common in verification emails
+                        const code = (msg.subject || "").match(/\b\d{4,8}\b/);
                         return `
                             <div class="msg-item">
                                 <div class="msg-header"><span>${msg.from.split('<')[0].replace(/"/g, '')}</span><span>${new Date(msg.date).toLocaleTimeString()}</span></div>
-                                <div class="code-box"><span>${code ? code[0] : 'VIEW'}</span><i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i></div>
+                                <div class="code-box"><span>${code ? code[0] : 'CODE'}</span><i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i></div>
                             </div>`;
                     }).join('');
                 }
-            } catch (e) { container.innerHTML = '<p style="color:red; text-align:center; font-size:0.5rem;">ERROR</p>'; }
+            } catch (e) { container.innerHTML = '<p style="color:red; text-align:center; font-size:0.5rem;">CONNECTION_ERROR</p>'; }
         }
 
         function saveHistory(email) {
             let history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
             if(!history.includes(email)) {
                 history.unshift(email);
-                localStorage.setItem('tempMailKurapika', JSON.stringify(history.slice(0, 5)));
+                localStorage.setItem('tempMailKurapika', JSON.stringify(history.slice(0, 10)));
             }
             renderHistory();
         }
@@ -260,8 +260,8 @@
                 <div class="history-item">
                     <span style="color:var(--gold); font-size:0.5rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:70%;">${h}</span>
                     <div class="history-actions">
-                        <i class="fas fa-sync" style="color:var(--blue);" onclick="useHistory('${h}')"></i>
-                        <i class="fas fa-trash" style="color:var(--accent);" onclick="deleteHistory(${i})"></i>
+                        <i class="fas fa-redo" style="color:var(--blue); font-size:0.6rem;" onclick="useHistory('${h}')"></i>
+                        <i class="fas fa-times" style="color:var(--accent); font-size:0.75rem; cursor:pointer;" onclick="deleteHistory(${i})"></i>
                     </div>
                 </div>`).join('');
         }
