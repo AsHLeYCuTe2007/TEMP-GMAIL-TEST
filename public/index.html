@@ -105,12 +105,6 @@
             display: flex; justify-content: space-between; align-items: center;
         }
 
-        .history-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 8px; border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .history-actions { display: flex; gap: 10px; align-items: center; }
-
         #toast {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             background: var(--accent); color: #fff; padding: 10px 15px;
@@ -141,7 +135,7 @@
     </header>
 
     <section>
-        <div class="section-header">MAIL_GENERATOR</div>
+        <div class="section-header">MAIL_GENERATOR ✅</div>
         <div class="card">
             <div class="mode-selector">
                 <div class="mode-btn active" id="randomMode" onclick="setMode('random')">RANDOM</div>
@@ -223,18 +217,22 @@
 
             try {
                 const res = await fetch(`${API_BASE}/emails/${email}/messages`, {
-                    headers: { 'Authorization': `Bearer ${API_KEY}` }
+                    headers: { 'Authorization': `Bearer ${API_KEY}`, 'Accept': 'application/json' }
                 });
                 const data = await res.json();
+                
                 if(!data || data.length === 0) {
                     container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:#444;">EMPTY</p>';
                 } else {
                     container.innerHTML = data.map(msg => {
-                        const code = (msg.subject || "").match(/\b\d{5,8}\b/);
+                        const code = (msg.subject || "").match(/\b\d{4,8}\b/);
                         return `
                             <div class="msg-item">
                                 <div class="msg-header"><span>${(msg.from_name || msg.from || "SENDER").substring(0,15)}</span><span>${new Date(msg.created_at || Date.now()).toLocaleTimeString()}</span></div>
-                                <div class="code-box"><span>${code ? code[0] : 'VIEW'}</span><i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i></div>
+                                <div class="code-box">
+                                    <span>${code ? code[0] : 'MESSAGE'}</span>
+                                    <i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i>
+                                </div>
                             </div>`;
                     }).join('');
                 }
