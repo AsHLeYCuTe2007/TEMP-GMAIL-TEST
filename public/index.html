@@ -171,8 +171,8 @@
     <div id="toast">SYSTEM_READY</div>
 
     <script>
-        const DOMAIN = "@timpmeyl.indevs.in";
-        const API_URL = "https://temporary-emaill.netlify.app/api/messages?address="; 
+        const DOMAIN = "1secmail.com";
+        const API_BASE = "https://www.1secmail.com/api/v1/";
         
         let currentMode = 'random';
         let isMusicPlaying = false;
@@ -200,16 +200,18 @@
             const input = document.getElementById('emailInput');
             const btn = document.getElementById('actionBtn');
             let val = input.value.trim().toLowerCase();
+            
             if(currentMode === 'custom' && !val) { showToast("NAME_REQUIRED"); return; }
 
             btn.disabled = true;
             btn.innerHTML = `<div class="spinner"></div>`;
 
             setTimeout(() => {
-                let fullMail = (currentMode === 'random') 
-                    ? Math.random().toString(36).substring(2, 10) + DOMAIN 
-                    : (val.includes('@') ? val.split('@')[0] : val) + DOMAIN;
+                let username = (currentMode === 'random') 
+                    ? Math.random().toString(36).substring(2, 10) 
+                    : (val.includes('@') ? val.split('@')[0] : val);
 
+                let fullMail = username + "@" + DOMAIN;
                 input.value = fullMail;
                 saveHistory(fullMail);
                 showToast("MAIL_READY");
@@ -222,25 +224,34 @@
         async function loadInbox() {
             const email = document.getElementById('emailInput').value;
             if(!email) return;
+            
+            const [user, domain] = email.split('@');
             const container = document.getElementById('inbox');
             container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:var(--gold);">SYNCING...</p>';
 
             try {
-                const res = await fetch(API_URL + email + "&nocache=" + Date.now());
+                const res = await fetch(`${API_BASE}?action=getMessages&login=${user}&domain=${domain}`);
                 const data = await res.json();
+                
                 if(!data || data.length === 0) {
                     container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:#444;">EMPTY</p>';
                 } else {
                     container.innerHTML = data.map(msg => {
-                        const code = (msg.subject || "").match(/\b\d{5,8}\b/);
+                        const code = (msg.subject || "").match(/\b\d{4,8}\b/);
                         return `
                             <div class="msg-item">
-                                <div class="msg-header"><span>${msg.from.split('<')[0].replace(/"/g, '')}</span><span>${new Date(msg.date).toLocaleTimeString()}</span></div>
-                                <div class="code-box"><span>${code ? code[0] : 'VIEW'}</span><i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i></div>
+                                <div class="msg-header"><span>${msg.from}</span><span>ID: ${msg.id}</span></div>
+                                <div class="code-box">
+                                    <span style="font-size:0.6rem; overflow:hidden;">${msg.subject}</span>
+                                    <i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i>
+                                </div>
+                                ${code ? `<p style="color:var(--gold); font-size:0.4rem; margin-top:4px; text-align:center;">DETECTED CODE: ${code[0]}</p>` : ''}
                             </div>`;
                     }).join('');
                 }
-            } catch (e) { container.innerHTML = '<p style="color:red; text-align:center; font-size:0.5rem;">ERROR</p>'; }
+            } catch (e) { 
+                container.innerHTML = '<p style="color:red; text-align:center; font-size:0.5rem;">ERROR CONNECTING TO API</p>'; 
+            }
         }
 
         function saveHistory(email) {
@@ -280,9 +291,23 @@
             showToast("RESTORED");
         }
 
-        function copyEmail() { const m = document.getElementById('emailInput').value; if(m) copyToClipboard(m); }
-        function copyToClipboard(t) { navigator.clipboard.writeText(t); showToast("COPIED"); }
-        function showToast(m) { const t = document.getElementById('toast'); t.innerText = m; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2000); }
+        function copyEmail() { 
+            const m = document.getElementById('emailInput').value; 
+            if(m) copyToClipboard(m); 
+        }
+
+        function copyToClipboard(t) { 
+            navigator.clipboard.writeText(t); 
+            showToast("COPIED"); 
+        }
+
+        function showToast(m) { 
+            const t = document.getElementById('toast'); 
+            t.innerText = m; 
+            t.style.display = 'block'; 
+            setTimeout(() => t.style.display = 'none', 2000); 
+        }
+
         window.onload = renderHistory;
     </script>
 </body>
