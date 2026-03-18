@@ -15,10 +15,8 @@
             --glass: rgba(255, 255, 255, 0.02);
             --glass-border: rgba(255, 204, 0, 0.15);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--bg); color: #fff; overflow-x: hidden; padding-bottom: 30px; }
-
         .hero { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
         .cover-area {
             width: 100%; height: 130px; 
@@ -33,99 +31,33 @@
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.3); border: 2px solid var(--gold);
         }
         .profile-hex img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-        
-        .name-wrapper { 
-            margin-top: 5px; color: var(--gold); display: flex;
-            align-items: center; justify-content: center; gap: 8px;
-        }
-
-        .wave-text { 
-            display: flex; font-family: 'Syncopate', sans-serif; 
-            font-weight: 700; font-size: 1rem; letter-spacing: 2px;
-        }
-
-        .wave-text span {
-            display: inline-block;
-            animation: waveAnim 2s infinite ease-in-out;
-            animation-delay: calc(0.1s * var(--i));
-        }
-
-        @keyframes waveAnim {
-            0%, 40%, 100% { transform: translateY(0); }
-            20% { transform: translateY(-8px); color: var(--accent); text-shadow: 0 0 10px var(--accent); }
-        }
-
+        .name-wrapper { margin-top: 5px; color: var(--gold); display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .wave-text { display: flex; font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 2px; }
+        .wave-text span { display: inline-block; animation: waveAnim 2s infinite ease-in-out; animation-delay: calc(0.1s * var(--i)); }
+        @keyframes waveAnim { 0%, 40%, 100% { transform: translateY(0); } 20% { transform: translateY(-8px); color: var(--accent); text-shadow: 0 0 10px var(--accent); } }
         .verified-badge { color: var(--blue); font-size: 0.9rem; }
-
         section { padding: 0 4%; max-width: 450px; margin: 0 auto; width: 100%; }
-        
-        .section-header {
-            font-family: 'Syncopate', sans-serif; font-size: 0.6rem; font-weight: 700;
-            color: var(--gold); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
-            text-transform: uppercase; margin-top: 10px;
-        }
+        .section-header { font-family: 'Syncopate', sans-serif; font-size: 0.6rem; font-weight: 700; color: var(--gold); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; text-transform: uppercase; margin-top: 10px; }
         .section-header::after { content: ""; height: 1px; flex-grow: 1; background: linear-gradient(to right, var(--gold), transparent); opacity: 0.2; }
-
-        .card {
-            background: var(--glass); border: 1px solid var(--glass-border);
-            border-radius: 10px; padding: 12px; margin-bottom: 12px;
-        }
-
+        .card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
         .mode-selector { display: flex; gap: 6px; margin-bottom: 12px; }
-        .mode-btn { 
-            flex: 1; padding: 8px; text-align: center; cursor: pointer; border-radius: 6px; 
-            font-size: 0.55rem; font-family: 'Syncopate'; font-weight: 700; 
-            border: 1px solid rgba(255,255,255,0.1); color: #888; transition: 0.3s;
-        }
+        .mode-btn { flex: 1; padding: 8px; text-align: center; cursor: pointer; border-radius: 6px; font-size: 0.55rem; font-family: 'Syncopate'; font-weight: 700; border: 1px solid rgba(255,255,255,0.1); color: #888; transition: 0.3s; }
         .mode-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 0, 0, 0.05); }
-
         .input-container { display: flex; gap: 6px; width: 100%; align-items: center; }
-        .form-input {
-            flex: 1; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.05);
-            padding: 10px; border-radius: 6px; color: var(--gold); font-size: 0.7rem; outline: none;
-            min-width: 0;
-        }
-
-        .btn-execute {
-            padding: 10px 10px; border-radius: 6px; border: 1px solid var(--gold);
-            background: transparent; color: var(--gold); font-family: 'Syncopate', sans-serif;
-            font-size: 0.45rem; font-weight: 700; cursor: pointer; text-transform: uppercase;
-            white-space: nowrap;
-        }
-
-        .msg-item {
-            background: rgba(255, 0, 0, 0.03); border: 1px solid rgba(255, 0, 0, 0.1);
-            padding: 12px; border-radius: 8px; margin-top: 8px; border-left: 3px solid var(--accent);
-        }
+        .form-input { flex: 1; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.05); padding: 10px; border-radius: 6px; color: var(--gold); font-size: 0.7rem; outline: none; min-width: 0; }
+        .btn-execute { padding: 10px 10px; border-radius: 6px; border: 1px solid var(--gold); background: transparent; color: var(--gold); font-family: 'Syncopate', sans-serif; font-size: 0.45rem; font-weight: 700; cursor: pointer; text-transform: uppercase; white-space: nowrap; }
+        .msg-item { background: rgba(255, 0, 0, 0.03); border: 1px solid rgba(255, 0, 0, 0.1); padding: 12px; border-radius: 8px; margin-top: 8px; border-left: 3px solid var(--accent); }
         .msg-header { display: flex; justify-content: space-between; font-size: 0.5rem; font-family: 'Syncopate'; color: #888; margin-bottom: 6px; }
-        .code-box {
-            background: rgba(0,0,0,0.5); border: 1px dashed var(--accent);
-            padding: 10px; border-radius: 6px; text-align: center;
-            font-size: 0.9rem; font-weight: 700; color: var(--accent);
-            display: flex; justify-content: space-between; align-items: center;
-        }
-
-        .history-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 8px; border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
+        .code-box { background: rgba(0,0,0,0.5); border: 1px dashed var(--accent); padding: 10px; border-radius: 6px; text-align: center; font-size: 0.9rem; font-weight: 700; color: var(--accent); display: flex; justify-content: space-between; align-items: center; }
+        .history-item { display: flex; justify-content: space-between; align-items: center; padding: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .history-actions { display: flex; gap: 10px; align-items: center; }
-
-        #toast {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            background: var(--accent); color: #fff; padding: 10px 15px;
-            border-radius: 4px; font-family: 'Syncopate'; font-size: 0.5rem; z-index: 1000; display: none;
-        }
+        #toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; padding: 10px 15px; border-radius: 4px; font-family: 'Syncopate'; font-size: 0.5rem; z-index: 1000; display: none; }
         .spinner { border: 2px solid rgba(255,255,255,0.1); border-top: 2px solid var(--gold); border-radius: 50%; width: 10px; height: 10px; animation: spin 0.8s linear infinite; display: inline-block; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body onclick="playMusic()">
-
-    <audio id="bgMusic" loop>
-        <source src="kurapika.mp3" type="audio/mpeg">
-    </audio>
-
+    <audio id="bgMusic" loop><source src="kurapika.mp3" type="audio/mpeg"></audio>
     <header class="hero">
         <div class="cover-area"></div>
         <div class="profile-container">
@@ -139,7 +71,6 @@
             <p style="font-size: 0.45rem; color: var(--accent); letter-spacing: 2px; margin-top: 4px; font-family: 'Syncopate'; font-weight: 700;">GØDZ-MØDZ - UGK</p>
         </div>
     </header>
-
     <section>
         <div class="section-header">MAIL_GENERATOR</div>
         <div class="card">
@@ -147,44 +78,29 @@
                 <div class="mode-btn active" id="randomMode" onclick="setMode('random')">RANDOM</div>
                 <div class="mode-btn" id="customMode" onclick="setMode('custom')">CUSTOM</div>
             </div>
-
             <div class="input-container">
                 <input type="text" id="emailInput" class="form-input" placeholder="Click GENERATE..." readonly>
                 <button class="btn-execute" id="actionBtn" onclick="handleAction()">GENERATE</button>
             </div>
-            
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px;">
                 <button class="btn-execute" onclick="copyEmail()">COPY</button>
                 <button class="btn-execute" id="checkBtn" onclick="loadInbox()">CHECK</button>
             </div>
         </div>
-
         <div class="section-header">INBOX</div>
-        <div id="inbox">
-            <p style="text-align: center; font-size: 0.5rem; color: #444; font-family: 'Syncopate';">WAITING...</p>
-        </div>
-
+        <div id="inbox"><p style="text-align: center; font-size: 0.5rem; color: #444; font-family: 'Syncopate';">WAITING...</p></div>
         <div class="section-header">HISTORY</div>
         <div id="historyList" class="card" style="padding: 10px; font-size: 0.6rem;"></div>
     </section>
-
     <div id="toast">SYSTEM_READY</div>
-
     <script>
         const DOMAIN = "1secmail.com";
-        const API_BASE = "https://www.1secmail.com/api/v1/";
-        
         let currentMode = 'random';
         let isMusicPlaying = false;
-
         function playMusic() {
             const music = document.getElementById('bgMusic');
-            if(!isMusicPlaying) {
-                music.play().catch(() => {});
-                isMusicPlaying = true;
-            }
+            if(!isMusicPlaying) { music.play().catch(() => {}); isMusicPlaying = true; }
         }
-
         function setMode(mode) {
             currentMode = mode;
             document.getElementById('randomMode').classList.toggle('active', mode === 'random');
@@ -195,22 +111,15 @@
             document.getElementById('actionBtn').innerText = (mode === 'random' ? "GENERATE" : "CREATE");
             if(mode === 'custom') input.focus();
         }
-
         function handleAction() {
             const input = document.getElementById('emailInput');
             const btn = document.getElementById('actionBtn');
             let val = input.value.trim().toLowerCase();
-            
             if(currentMode === 'custom' && !val) { showToast("NAME_REQUIRED"); return; }
-
             btn.disabled = true;
             btn.innerHTML = `<div class="spinner"></div>`;
-
             setTimeout(() => {
-                let username = (currentMode === 'random') 
-                    ? Math.random().toString(36).substring(2, 10) 
-                    : (val.includes('@') ? val.split('@')[0] : val);
-
+                let username = (currentMode === 'random') ? Math.random().toString(36).substring(2, 10) : (val.includes('@') ? val.split('@')[0] : val);
                 let fullMail = username + "@" + DOMAIN;
                 input.value = fullMail;
                 saveHistory(fullMail);
@@ -220,63 +129,42 @@
                 loadInbox();
             }, 500);
         }
-
         async function loadInbox() {
             const email = document.getElementById('emailInput').value;
             if(!email) return;
-            
             const [user, domain] = email.split('@');
             const container = document.getElementById('inbox');
             container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:var(--gold);">SYNCING...</p>';
-
             try {
-                const res = await fetch(`${API_BASE}?action=getMessages&login=${user}&domain=${domain}`);
-                const data = await res.json();
-                
+                const api = `https://www.1secmail.com/api/v1/?action=getMessages&login=${user}&domain=${domain}`;
+                const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(api)}`);
+                const out = await res.json();
+                const data = JSON.parse(out.contents);
                 if(!data || data.length === 0) {
                     container.innerHTML = '<p style="text-align:center; font-size:0.5rem; color:#444;">EMPTY</p>';
                 } else {
                     container.innerHTML = data.map(msg => {
                         const code = (msg.subject || "").match(/\b\d{4,8}\b/);
-                        return `
-                            <div class="msg-item">
-                                <div class="msg-header"><span>${msg.from}</span><span>ID: ${msg.id}</span></div>
-                                <div class="code-box">
-                                    <span style="font-size:0.6rem; overflow:hidden;">${msg.subject}</span>
-                                    <i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i>
-                                </div>
-                                ${code ? `<p style="color:var(--gold); font-size:0.4rem; margin-top:4px; text-align:center;">DETECTED CODE: ${code[0]}</p>` : ''}
-                            </div>`;
+                        return `<div class="msg-item">
+                            <div class="msg-header"><span>${msg.from}</span><span>ID: ${msg.id}</span></div>
+                            <div class="code-box"><span style="font-size:0.6rem; overflow:hidden;">${msg.subject}</span><i class="fas fa-copy" onclick="copyToClipboard('${code ? code[0] : msg.subject}')"></i></div>
+                            ${code ? `<p style="color:var(--gold); font-size:0.4rem; margin-top:4px; text-align:center;">DETECTED: ${code[0]}</p>` : ''}
+                        </div>`;
                     }).join('');
                 }
-            } catch (e) { 
-                container.innerHTML = '<p style="color:red; text-align:center; font-size:0.5rem;">ERROR CONNECTING TO API</p>'; 
-            }
+            } catch (e) { container.innerHTML = '<p style="color:red; text-align:center; font-size:0.5rem;">CONNECTION ERROR</p>'; }
         }
-
         function saveHistory(email) {
             let history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
-            if(!history.includes(email)) {
-                history.unshift(email);
-                localStorage.setItem('tempMailKurapika', JSON.stringify(history.slice(0, 5)));
-            }
+            if(!history.includes(email)) { history.unshift(email); localStorage.setItem('tempMailKurapika', JSON.stringify(history.slice(0, 5))); }
             renderHistory();
         }
-
         function renderHistory() {
             const history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
             const list = document.getElementById('historyList');
             if(!history.length) { list.innerHTML = '<p style="text-align:center; color:#444;">EMPTY</p>'; return; }
-            list.innerHTML = history.map((h, i) => `
-                <div class="history-item">
-                    <span style="color:var(--gold); font-size:0.5rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:70%;">${h}</span>
-                    <div class="history-actions">
-                        <i class="fas fa-sync" style="color:var(--blue);" onclick="useHistory('${h}')"></i>
-                        <i class="fas fa-trash" style="color:var(--accent);" onclick="deleteHistory(${i})"></i>
-                    </div>
-                </div>`).join('');
+            list.innerHTML = history.map((h, i) => `<div class="history-item"><span style="color:var(--gold); font-size:0.5rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:70%;">${h}</span><div class="history-actions"><i class="fas fa-sync" style="color:var(--blue);" onclick="useHistory('${h}')"></i><i class="fas fa-trash" style="color:var(--accent);" onclick="deleteHistory(${i})"></i></div></div>`).join('');
         }
-
         function deleteHistory(index) {
             let history = JSON.parse(localStorage.getItem('tempMailKurapika') || '[]');
             history.splice(index, 1);
@@ -284,30 +172,10 @@
             renderHistory();
             showToast("DELETED");
         }
-
-        function useHistory(email) {
-            document.getElementById('emailInput').value = email;
-            loadInbox();
-            showToast("RESTORED");
-        }
-
-        function copyEmail() { 
-            const m = document.getElementById('emailInput').value; 
-            if(m) copyToClipboard(m); 
-        }
-
-        function copyToClipboard(t) { 
-            navigator.clipboard.writeText(t); 
-            showToast("COPIED"); 
-        }
-
-        function showToast(m) { 
-            const t = document.getElementById('toast'); 
-            t.innerText = m; 
-            t.style.display = 'block'; 
-            setTimeout(() => t.style.display = 'none', 2000); 
-        }
-
+        function useHistory(email) { document.getElementById('emailInput').value = email; loadInbox(); showToast("RESTORED"); }
+        function copyEmail() { const m = document.getElementById('emailInput').value; if(m) copyToClipboard(m); }
+        function copyToClipboard(t) { navigator.clipboard.writeText(t); showToast("COPIED"); }
+        function showToast(m) { const t = document.getElementById('toast'); t.innerText = m; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2000); }
         window.onload = renderHistory;
     </script>
 </body>
